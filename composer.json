@@ -1,0 +1,12 @@
+{
+    "name": "vladimir/api",
+    "description": "education project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "require-dev": {
+        "phalcon/ide-stubs": "^5.9"
+    }
+}
