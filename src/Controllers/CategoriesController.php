@@ -27,27 +27,27 @@ final class CategoriesController extends Controller
 
     public function index()
     {
-        $products = Categories::find();
-        return json_encode($products);
+        $categories = Categories::find();
+        return json_encode($categories);
     }
 
     public function create()
     {
-        $product = new Categories();
+        $categories = new Categories();
         // Берем данные из POST-запроса
-        $product->Name = $this->request->getPost('name');
+        $categories->Name = $this->request->getPost('name');
 
-        if ($product->create()) {
+        if ($categories->create()) {
             return json_encode(['status' => 'Success! Product saved in DB']);
         } else {
-            return json_encode(['status' => 'Error', 'messages' => $product->getMessages()]);
+            return json_encode(['status' => 'Error', 'messages' => $categories->getMessages()]);
         }
     }
 
     public function delete($id)
     {
-        $product = Categories::findFirstById($id);
-        if ($product && $product->delete()) {
+        $categories = Categories::findFirstById($id);
+        if ($categories && $categories->delete()) {
             return json_encode(['status' => 'Deleted!']);
         }
         return json_encode(['status' => 'Not found']);
@@ -56,9 +56,9 @@ final class CategoriesController extends Controller
     public function update($id)
     {
         // 1. Ищем категорию в базе по Id
-        $category = Categories::findFirstById($id);
+        $categories = Categories::findFirstById($id);
 
-        if (!$category) {
+        if (!$categories) {
             return json_encode(['status' => 'Error', 'message' => 'Category not found']);
         }
 
@@ -70,12 +70,12 @@ final class CategoriesController extends Controller
         }
 
         // 3. Обновляем свойство и сохраняем
-        $category->Name = $newName;
+        $categories->Name = $newName;
 
-        if ($category->save()) {
+        if ($categories->save()) {
             return json_encode(['status' => 'Success', 'message' => 'Category updated!']);
         } else {
-            return json_encode(['status' => 'Error', 'messages' => $category->getMessages()]);
+            return json_encode(['status' => 'Error', 'messages' => $categories->getMessages()]);
         }
     }
 
