@@ -3,7 +3,8 @@
 namespace App;
 
 use App\Controllers\IndexController;
-use App\Controllers\ProductsController;
+use App\Controllers\CategoriesController;
+use App\Models\Categories;
 use Phalcon\Db\Adapter\Pdo\Mysql;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Mvc\Micro;
@@ -39,6 +40,6 @@ final class Application
     private function mountRoutes(): void
     {
         $this->app->mount(IndexController::routes());
-        $this->app->mount(ProductsController::routes());
+        $this->app->mount(CategoriesController::routes());
     }
 }
