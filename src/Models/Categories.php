@@ -19,9 +19,9 @@ class Categories extends Model
     }
 
     // Авто-заполнение даты перед сохранением
-    public function beforeCreate()
+    public function beforeCreate():void
     {
-        $this->Created_At = date('Y-m-d H:i:s');
+        $this->created_at = date('Y-m-d H:i:s');
     }
 }
 

@@ -1,12 +1,12 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\Controllers;
 
 use App\Models\Categories;
 use Phalcon\Mvc\Controller;
 use Phalcon\Mvc\Micro\Collection as MicroCollection;
-use App\Models\Products; // ОБЯЗАТЕЛЬНО импортируем модель
 
 final class CategoriesController extends Controller
 {
@@ -25,17 +25,17 @@ final class CategoriesController extends Controller
         return $collection;
     }
 
-    public function index()
+    public function index():string
     {
         $categories = Categories::find();
         return json_encode($categories);
     }
 
-    public function create()
+    public function create():string
     {
         $categories = new Categories();
         // Берем данные из POST-запроса
-        $categories->Name = $this->request->getPost('name');
+        $categories->name = $this->request->getPost('name');
 
         if ($categories->create()) {
             return json_encode(['status' => 'Success! Product saved in DB']);
@@ -44,7 +44,7 @@ final class CategoriesController extends Controller
         }
     }
 
-    public function delete($id)
+    public function delete($id):string
     {
         $categories = Categories::findFirstById($id);
         if ($categories && $categories->delete()) {
@@ -53,7 +53,7 @@ final class CategoriesController extends Controller
         return json_encode(['status' => 'Not found']);
     }
 
-    public function update($id)
+    public function update($id):string
     {
         // 1. Ищем категорию в базе по Id
         $categories = Categories::findFirstById($id);
@@ -70,9 +70,9 @@ final class CategoriesController extends Controller
         }
 
         // 3. Обновляем свойство и сохраняем
-        $categories->Name = $newName;
+        $categories->name = $newName;
 
-        if ($categories->save()) {
+        if ($categories->update()) {
             return json_encode(['status' => 'Success', 'message' => 'Category updated!']);
         } else {
             return json_encode(['status' => 'Error', 'messages' => $categories->getMessages()]);
