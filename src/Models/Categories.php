@@ -10,9 +10,9 @@ class Categories extends Model
 {
     public int $id;         // Именно так в phpMyAdmin
     public string $name;       // Именно так в phpMyAdmin
-    public string $created_At; // Именно так в phpMyAdmin
+    public string $created_at; // Именно так в phpMyAdmin
 
-    public function initialize()
+    public function initialize():void
     {
         // Указываем таблицу из базы 'shop'
         $this->setSource('categories');
