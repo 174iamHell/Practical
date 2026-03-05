@@ -8,9 +8,9 @@ use Phalcon\Mvc\Model;
 
 class Categories extends Model
 {
-    public int $id;         // Именно так в phpMyAdmin
-    public string $name;       // Именно так в phpMyAdmin
-    public string $created_at; // Именно так в phpMyAdmin
+    public int $id;         
+    public string $name;       
+    public string $created_at; 
 
     public function initialize():void
     {

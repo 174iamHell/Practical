@@ -7,6 +7,7 @@ namespace App\Controllers;
 use App\Models\Categories;
 use App\Models\CategoriesProducts;
 use App\Models\Products;
+use App\Request\ProductsCreateRequest;
 use Phalcon\Mvc\Controller;
 use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
@@ -35,22 +36,30 @@ final class ProductsController extends Controller
 
     public function create():void
     {
+        $validate = new ProductsCreateRequest;
+        
         $json = $this->request->getJsonRawBody();
+        if($validate->validate($json))
+            {
+                $products = new Products();
+                $products -> name =  $json -> product_name;
+                $products -> mnp = $json -> mnp;
+                $products -> brand_id = $json -> brand_id;
+                $products->create();
 
-        $products = new Products();
-        $products -> name =  $json -> product_name;
-        $products -> mnp = $json -> mnp;
-        $products -> brand_id = $json -> brand_id;
-        $products->create();
-
-        foreach($json->categories_ids as $categoryId)
-        {
-            $categories_products = new CategoriesProducts();
-            $categories_products -> category_id = $categoryId;
-            $categories_products -> product_id =  $products -> id;
-            $categories_products->create();
-        }
-
+                foreach($json->categories_ids as $categoryId)
+                {
+                    $categories_products = new CategoriesProducts();
+                    $categories_products -> category_id = $categoryId;
+                    $categories_products -> product_id =  $products -> id;
+                    $categories_products->create();
+                }
+            }
+       
+        foreach($validate->errors as $error)
+            {
+                echo $error;
+            }
     }
 
     public function delete($id):string
