@@ -5,16 +5,18 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use App\Models\Categories;
+use App\Models\CategoriesProducts;
+use App\Models\Products;
 use Phalcon\Mvc\Controller;
 use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
-final class CategoriesController extends Controller
+final class ProductsController extends Controller
 {
     public static function routes(): MicroCollection
     {
         $collection = new MicroCollection();
         $collection->setHandler(new self()); // Используем текущий класс
-        $collection->setPrefix('/categories');
+        $collection->setPrefix('/products');
 
         $collection->get('/', 'index');          // GET /products
         $collection->post('/add', 'create');     // POST /products/add
@@ -27,27 +29,34 @@ final class CategoriesController extends Controller
 
     public function index():string
     {
-        $categories = Categories::find();
-        return json_encode($categories);
+        $products = Products::find();
+        return json_encode($products);
     }
 
-    public function create():string
+    public function create():void
     {
-        $categories = new Categories();
-        // Берем данные из POST-запроса
-        $categories->name = $this->request->getPost('name');
+        $json = $this->request->getJsonRawBody();
 
-        if ($categories->create()) {
-            return json_encode(['status' => 'Success! Product saved in DB']);
-        } else {
-            return json_encode(['status' => 'Error', 'messages' => $categories->getMessages()]);
+        $products = new Products();
+        $products -> name =  $json -> product_name;
+        $products -> mnp = $json -> mnp;
+        $products -> brand_id = $json -> brand_id;
+        $products->create();
+
+        foreach($json->categories_ids as $categoryId)
+        {
+            $categories_products = new CategoriesProducts();
+            $categories_products -> category_id = $categoryId;
+            $categories_products -> product_id =  $products -> id;
+            $categories_products->create();
         }
+
     }
 
     public function delete($id):string
     {
-        $categories = Categories::findFirstById($id);
-        if ($categories && $categories->delete()) {
+        $products = Products::findFirstById($id);
+        if ($products && $products->delete()) {
             return json_encode(['status' => 'Deleted!']);
         }
         return json_encode(['status' => 'Not found']);
@@ -56,9 +65,9 @@ final class CategoriesController extends Controller
     public function update($id):string
     {
         // 1. Ищем категорию в базе по Id
-        $categories = Categories::findFirstById($id);
+        $products = Products::findFirstById($id);
 
-        if (!$categories) {
+        if (!$products) {
             return json_encode(['status' => 'Error', 'message' => 'Category not found']);
         }
 
@@ -70,12 +79,12 @@ final class CategoriesController extends Controller
         }
 
         // 3. Обновляем свойство и сохраняем
-        $categories->name = $postName;
+        $products->name = $postName;
 
-        if ($categories->update()) {
+        if ($products->update()) {
             return json_encode(['status' => 'Success', 'message' => 'Category updated!']);
         } else {
-            return json_encode(['status' => 'Error', 'messages' => $categories->getMessages()]);
+            return json_encode(['status' => 'Error', 'messages' => $products->getMessages()]);
         }
     }
 
