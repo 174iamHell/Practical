@@ -3,7 +3,8 @@
 declare(strict_types=1);
 
 namespace App\Controllers;
-
+use App\Request\CategoriesUpdateRequest;
+use App\Request\CategoriesCreateRequest;
 use App\Models\Categories;
 use Phalcon\Mvc\Controller;
 use Phalcon\Mvc\Micro\Collection as MicroCollection;
@@ -19,7 +20,7 @@ final class CategoriesController extends Controller
         $collection->get('/', 'index');          // GET /products
         $collection->post('/add', 'create');     // POST /products/add
         $collection->get('/delete/{id}', 'delete'); // GET /products/delete/1
-        $collection->post('/update/{id}','update');
+        $collection->post('/update','update');
         
 
         return $collection;
@@ -31,17 +32,23 @@ final class CategoriesController extends Controller
         return json_encode($categories);
     }
 
-    public function create():string
+    public function create()
     {
+        $validate = new CategoriesCreateRequest();
         $categories = new Categories();
-        // Берем данные из POST-запроса
-        $categories->name = $this->request->getPost('name');
 
-        if ($categories->create()) {
-            return json_encode(['status' => 'Success! Product saved in DB']);
-        } else {
-            return json_encode(['status' => 'Error', 'messages' => $categories->getMessages()]);
+        $json = $this->request->getJsonRawBody();
+
+        if($validate->validate($json))
+        {
+            $categories->name = $json->name;
+
+            $categories->create();
         }
+        else{
+            $validate->errorOutput();
+        }
+        
     }
 
     public function delete($id):string
@@ -53,30 +60,18 @@ final class CategoriesController extends Controller
         return json_encode(['status' => 'Not found']);
     }
 
-    public function update($id):string
+    public function update():void
     {
-        // 1. Ищем категорию в базе по Id
-        $categories = Categories::findFirstById($id);
+        $validate = new CategoriesUpdateRequest();
 
-        if (!$categories) {
-            return json_encode(['status' => 'Error', 'message' => 'Category not found']);
+        $json = $this->request->getJsonRawBody();
+
+        if($validate->validate($json)){
+            $categories = Categories::findFirstById($json->id);
+            $categories->name = $json->name;
+            $categories->update();
         }
-
-        // 2. Получаем новое имя из POST-данных
-        $postName = $this->request->getPost('name');
-
-        if (!$postName) {
-            return json_encode(['status' => 'Error', 'message' => 'Name is required']);
-        }
-
-        // 3. Обновляем свойство и сохраняем
-        $categories->name = $postName;
-
-        if ($categories->update()) {
-            return json_encode(['status' => 'Success', 'message' => 'Category updated!']);
-        } else {
-            return json_encode(['status' => 'Error', 'messages' => $categories->getMessages()]);
-        }
+        
     }
 
    

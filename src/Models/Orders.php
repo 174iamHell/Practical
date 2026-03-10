@@ -6,16 +6,16 @@ namespace App\Models;
 
 use Phalcon\Mvc\Model;
 
-class Brands extends Model
+class Orders extends Model
 {
-    public int $id;         // Именно так в phpMyAdmin
-    public string $name;       // Именно так в phpMyAdmin
-    public string $created_at; // Именно так в phpMyAdmin
+    public int $id;
+    public string $created_at;
+    public int $user_id;
 
     public function initialize():void
     {
         // Указываем таблицу из базы 'shop'
-        $this->setSource('categories');
+        $this->setSource('orders');
     }
 
     // Авто-заполнение даты перед сохранением
@@ -24,4 +24,3 @@ class Brands extends Model
         $this->created_at = date('Y-m-d H:i:s');
     }
 }
-
