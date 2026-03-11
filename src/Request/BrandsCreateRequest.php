@@ -2,8 +2,8 @@
 
 namespace App\Request;
 
+use App\Filters\StringsFilter;
 use Override;
-use App\Models\Brands;
 
 class BrandsCreateRequest extends AbstractRequest
 {
@@ -12,10 +12,11 @@ class BrandsCreateRequest extends AbstractRequest
     #[Override]
     public function validate(object $json): bool
     {
+        $filters = new StringsFilter();
 
-        if (!isset($json->name) || $json->name !== '') {
+        if (!$filters->existence($json->name)) {
             $this->errors[] = 'Поле наименование обязательное';
-        } else if (mb_strlen($json->name) <= 255) {
+        } else if (!$filters->range($json->name,1,255)) {
             $this->errors[] = 'Поле наименование должно иметь длину от одного до 255 символов';
         }
 

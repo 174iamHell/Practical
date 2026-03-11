@@ -6,19 +6,17 @@ namespace App\Models;
 
 use Phalcon\Mvc\Model;
 
-class Products extends Model
+class Users extends Model
 {
-    public int $brand_id;
-    public string $created_at;
     public int $id;
-    public int $mnp;
     public string $name;
-    public float $price;
+    public string $creared_at;
+
 
     public function initialize(): void
     {
         // Указываем таблицу из базы 'shop'
-        $this->setSource('products');
+        $this->setSource('user');
     }
 
     // Авто-заполнение даты перед сохранением

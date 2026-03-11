@@ -12,23 +12,8 @@ abstract class AbstractRequest
         return count($this->errors) === 0;
     }
 
-    public function errorOutput()
+    public function errorOutput(): string
     {
-        foreach($this->errors as $error)
-            {
-                echo($error);
-            }
-    }
-
-    public function existenceСheck(object $object,string $name,string $desiredName ):bool
-    {
-        foreach($object->$name as $item)
-            {
-                if($item==$desiredName)
-                    {
-                        return true;
-                    }
-            }
-        return false;
+        return json_encode(['errors' => $this->errors, 'success' => false]);
     }
 }

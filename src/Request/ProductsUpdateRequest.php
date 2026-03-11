@@ -7,15 +7,15 @@ use App\Filters\StringsFilter;
 use Override;
 use App\Models\Brands;
 
-class ProductsCreateRequest extends AbstractRequest
+class ProductsUpdateRequest extends AbstractRequest
 {
 
 
     #[Override]
     public function validate(object $json): bool
     {
-        $filtersFloat = new FloatFilter();
         $filtersString = new StringsFilter();
+        $filtersFloat = new FloatFilter();
 
         if (!$filtersString->existence($json->name)) {
             $this->errors[] = 'Поле наименование обязательное';
@@ -28,13 +28,16 @@ class ProductsCreateRequest extends AbstractRequest
         } else if (!$filtersString->range($json->mpn, 1, 255)) {
             $this->errors[] = 'Поле артикул должно иметь длину от одного до 255 символов';
         }
-        if ($filtersString->existence($json->brand_id)) {
+
+        if (!$filtersFloat->existence($json->brand_id)) {
             $this->errors[] = 'Поле Бренд обязательное';
         } else {
-            if (!Brands::findFirst($json->brand_id)) {
+            $brandExists = Brands::findFirst($json->brand_id);
+            if ($brandExists) {
                 $this->errors[] = 'Такого бренда не существует';
             }
         }
+
         if (!$filtersFloat->existence($json->price)) {
             $this->errors[] = 'Поле цены обязательно для заполнения';
         }

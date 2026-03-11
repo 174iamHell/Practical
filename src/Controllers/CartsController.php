@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Request\BrandsUpdateRequest;
-use App\Request\BrandsCreateRequest;
-use App\Models\Brands;
+use App\Request\CartsUpdateRequest;
+use App\Models\Carts;
+use App\Request\CartsCreateRequest;
 use Phalcon\Mvc\Controller;
 use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
@@ -16,7 +16,7 @@ final class CategoriesController extends Controller
     {
         $collection = new MicroCollection();
         $collection->setHandler(new self()); // Используем текущий класс
-        $collection->setPrefix('/brands');
+        $collection->setPrefix('/carts');
 
         $collection->get('/', 'index');          // GET /products
         $collection->post('/add', 'create');     // POST /products/add
@@ -29,45 +29,41 @@ final class CategoriesController extends Controller
 
     public function index(): string
     {
-        $brands = Brands::find();
-        return json_encode($brands);
+        $carts = Carts::find();
+        return json_encode($carts);
     }
 
     public function create()
     {
-        $validate = new BrandsCreateRequest();
-        $brands = new Brands();
+        $validate = new CartsCreateRequest();
+
+        $carts = new Carts();
 
         $json = $this->request->getJsonRawBody();
 
         if ($validate->validate($json)) {
-            $brands->name = $json->name;
+            $carts->name = $json->name;
 
-            $brands->create();
-        } else {
-            $validate->errorOutput();
+            $carts->create();
         }
     }
 
-    public function delete($id): string
+    public function delete($id): void
     {
-        $brands = Brands::findFirstById($id);
-        if ($brands && $brands->delete()) {
-            return json_encode(['status' => 'Deleted!']);
-        }
-        return json_encode(['status' => 'Not found']);
+        $carts = Carts::findFirstById($id);
+        $carts->delete();
     }
 
     public function update(): void
     {
-        $validate = new BrandsUpdateRequest();
+        $validate = new CartsUpdateRequest();
 
         $json = $this->request->getJsonRawBody();
 
         if ($validate->validate($json)) {
-            $brands = Brands::findFirstById($json->id);
-            $brands->name = $json->name;
-            $brands->update();
+            $carts = Carts::findFirstById($json->id);
+            $carts->name = $json->name;
+            $carts->update();
         }
     }
 }

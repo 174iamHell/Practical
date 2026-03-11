@@ -14,11 +14,13 @@
 
 # Этап 2
 
-- [] - выделим новый слой Request (запрос) - который будет в себе содержать всю валидацию и выдавать массив сообщений. Создать Abstract класс AbstractRequest. Должен содержать абстрактный метод validate(?object $json): bool.
-- [] - Создать имплементацию на Products/Create. Проверяем, что наименование не пустое и длина в пределах БД, уникальное. Тоже самое для MPN. Проверяем бренд на существование. Проверяем категории на существование.
-- [] - Создать имплементацию на Brands/Create|Update, Categories/Create|Update, Products/Update. Постараться вынести утилиту по проверки строки в базовый класс либо в отдельный класс валидатор.
+- [x] - выделим новый слой Request (запрос) - который будет в себе содержать всю валидацию и выдавать массив сообщений. Создать Abstract класс AbstractRequest. Должен содержать абстрактный метод validate(?object $json): bool.
+- [x] - Создать имплементацию на Products/Create. Проверяем, что наименование не пустое и длина в пределах БД, уникальное. Тоже самое для MPN. Проверяем бренд на существование. Проверяем категории на существование.
+- [x] - Создать имплементацию на Brands/Create|Update, Categories/Create|Update, Products/Update. Постараться вынести утилиту по проверки строки в базовый класс либо в отдельный класс валидатор.
 
 # Этап 3
 
-- [] Модифицировать таблицу продуктов, добавить поле price (float). Дополнить create/update/model.
-- [] Создать таблицу корзины (cart), счетов (orders) и таблицу (orders_products). Созать Orders/Create, Cart/Add, Cart/Remove, Cart/Update.
+- [x] Модифицировать таблицу продуктов, добавить поле price (float).
+- [x] Дополнить Products/create|update|model.
+- [] Создать таблицу корзины (cart), счетов (orders) и таблицу (orders_products). Создать Orders/Create, Cart/Add, Cart/Remove, Cart/Update.
+- [] Порабать с Select (SQL, modelsManager). При создании заказа для пользователя, мы берем корзину (cart) делаем innerJoin Products, получая формат product_id(cart), quantity(cart), price(products) и создаем на их основе order_products (id, order_id, product_id, price, created_at), т.е. мы на каждый quantity создаем order_products. 
