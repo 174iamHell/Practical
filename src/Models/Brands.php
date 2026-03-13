@@ -8,20 +8,19 @@ use Phalcon\Mvc\Model;
 
 class Brands extends Model
 {
-    public int $id;         // Именно так в phpMyAdmin
-    public string $name;       // Именно так в phpMyAdmin
+    public  $id;         // Именно так в phpMyAdmin
+    public  string $name;       // Именно так в phpMyAdmin
     public string $created_at; // Именно так в phpMyAdmin
 
-    public function initialize():void
+    public function initialize(): void
     {
         // Указываем таблицу из базы 'shop'
-        $this->setSource('categories');
+        $this->setSource('brands');
     }
 
     // Авто-заполнение даты перед сохранением
-    public function beforeCreate():void
+    public function beforeValidationOnCreate(): void
     {
         $this->created_at = date('Y-m-d H:i:s');
     }
 }
-

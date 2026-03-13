@@ -2,11 +2,15 @@
 
 namespace App;
 
+use App\Controllers\BrandsController;
 use App\Controllers\IndexController;
 use App\Controllers\CategoriesController;
+use App\Controllers\ProductsController;
+use App\Middlewares\ResponseMiddleware;
 use App\Models\Categories;
 use Phalcon\Db\Adapter\Pdo\Mysql;
 use Phalcon\Di\FactoryDefault;
+use Phalcon\Http\Response;
 use Phalcon\Mvc\Micro;
 
 final class Application
@@ -15,7 +19,6 @@ final class Application
 
     public function run(): void
     {
-        
         $container = new FactoryDefault();
 
         $container->setShared('db', function () {
@@ -30,6 +33,8 @@ final class Application
 
         $this->app = new Micro($container);
 
+        $this->app->after(new ResponseMiddleware());
+
         $this->app->notFound(function () {
             echo '404';
         });
@@ -41,5 +46,7 @@ final class Application
     {
         $this->app->mount(IndexController::routes());
         $this->app->mount(CategoriesController::routes());
+        $this->app->mount(BrandsController::routes());
+        $this->app->mount(ProductsController::routes());
     }
 }

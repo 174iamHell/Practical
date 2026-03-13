@@ -11,6 +11,6 @@ class FloatFilter
 
     public function existence(?float $value): bool
     {
-        return $value == null;
+        return $value !== null;
     }
 }

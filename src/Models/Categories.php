@@ -8,20 +8,20 @@ use Phalcon\Mvc\Model;
 
 class Categories extends Model
 {
-    public int $id;         
-    public string $name;       
-    public string $created_at; 
+    public string $name;
+    public string $created_at;
+    public $id;
 
-    public function initialize():void
+
+    public function initialize(): void
     {
         // Указываем таблицу из базы 'shop'
         $this->setSource('categories');
     }
 
     // Авто-заполнение даты перед сохранением
-    public function beforeValidationOnCreate():void
+    public function beforeValidationOnCreate(): void
     {
-        $this->Created_At = date('Y-m-d H:i:s');
+        $this->created_At = date('Y-m-d H:i:s');
     }
 }
-

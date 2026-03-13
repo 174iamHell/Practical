@@ -10,7 +10,7 @@ class Products extends Model
 {
     public int $brand_id;
     public string $created_at;
-    public int $id;
+    public  $id;
     public int $mnp;
     public string $name;
     public float $price;
@@ -22,7 +22,7 @@ class Products extends Model
     }
 
     // Авто-заполнение даты перед сохранением
-    public function beforeCreate(): void
+    public function beforeValidationOnCreate(): void
     {
         $this->created_at = date('Y-m-d H:i:s');
     }

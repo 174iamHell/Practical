@@ -12,8 +12,8 @@ abstract class AbstractRequest
         return count($this->errors) === 0;
     }
 
-    public function errorOutput(): string
+    public function errorOutput(): array
     {
-        return json_encode(['errors' => $this->errors, 'success' => false]);
+        return ['errors' => $this->errors, 'success' => false];
     }
 }

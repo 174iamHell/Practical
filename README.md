@@ -24,3 +24,4 @@
 - [x] Дополнить Products/create|update|model.
 - [] Создать таблицу корзины (cart), счетов (orders) и таблицу (orders_products). Создать Orders/Create, Cart/Add, Cart/Remove, Cart/Update.
 - [] Порабать с Select (SQL, modelsManager). При создании заказа для пользователя, мы берем корзину (cart) делаем innerJoin Products, получая формат product_id(cart), quantity(cart), price(products) и создаем на их основе order_products (id, order_id, product_id, price, created_at), т.е. мы на каждый quantity создаем order_products. 
+- [] Обновим таблицу Order, добавим статусы (Создан, Завершен, Отменен)

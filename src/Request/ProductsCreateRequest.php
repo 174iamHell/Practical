@@ -23,12 +23,12 @@ class ProductsCreateRequest extends AbstractRequest
             $this->errors[] = 'Поле наименование должно иметь длину от одного до 255 символов';
         }
 
-        if (!$filtersString->existence($json->mpn)) {
+        if (!$filtersString->existence($json->mnp)) {
             $this->errors[] = 'Поле артикул обязательное';
-        } else if (!$filtersString->range($json->mpn, 1, 255)) {
+        } else if (!$filtersString->range($json->mnp, 1, 255)) {
             $this->errors[] = 'Поле артикул должно иметь длину от одного до 255 символов';
         }
-        if ($filtersString->existence($json->brand_id)) {
+        if (!$filtersString->existence($json->brand_id)) {
             $this->errors[] = 'Поле Бренд обязательное';
         } else {
             if (!Brands::findFirst($json->brand_id)) {

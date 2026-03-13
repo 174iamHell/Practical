@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 namespace App\Controllers;
+
 use App\Request\CategoriesUpdateRequest;
 use App\Request\CategoriesCreateRequest;
 use App\Models\Categories;
@@ -20,16 +21,16 @@ final class CategoriesController extends Controller
         $collection->get('/', 'index');          // GET /products
         $collection->post('/add', 'create');     // POST /products/add
         $collection->get('/delete/{id}', 'delete'); // GET /products/delete/1
-        $collection->post('/update','update');
-        
+        $collection->post('/update', 'update');
+
 
         return $collection;
     }
 
-    public function index():string
+    public function index(): object
     {
         $categories = Categories::find();
-        return json_encode($categories);
+        return $categories;
     }
 
     public function create()
@@ -39,19 +40,25 @@ final class CategoriesController extends Controller
 
         $json = $this->request->getJsonRawBody();
 
-        if($validate->validate($json))
-        {
+        if ($validate->validate($json)) {
             $categories->name = $json->name;
 
-            $categories->create();
+            if ($categories->create()) {
+                return $this->response->setJsonContent(['status' => 'Created!']);
+            }
+
+            // 1. Извлекаем реальные ошибки из модели
+            $errors = [];
+            foreach ($categories->getMessages() as $message) {
+                $errors[] = $message->getMessage();
+            }
+            return $errors;
+        } else {
+            return $validate->errorOutput();
         }
-        else{
-            $validate->errorOutput();
-        }
-        
     }
 
-    public function delete($id):string
+    public function delete($id): string
     {
         $categories = Categories::findFirstById($id);
         if ($categories && $categories->delete()) {
@@ -60,19 +67,16 @@ final class CategoriesController extends Controller
         return json_encode(['status' => 'Not found']);
     }
 
-    public function update():void
+    public function update(): void
     {
         $validate = new CategoriesUpdateRequest();
 
         $json = $this->request->getJsonRawBody();
 
-        if($validate->validate($json)){
+        if ($validate->validate($json)) {
             $categories = Categories::findFirstById($json->id);
             $categories->name = $json->name;
             $categories->update();
         }
-        
     }
-
-   
 }

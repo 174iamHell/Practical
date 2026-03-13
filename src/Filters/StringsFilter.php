@@ -13,6 +13,6 @@ class StringsFilter
 
     public function existence(?string $value)
     {
-        return $value = null && $value !== '';
+        return $value == null || $value !== '';
     }
 }

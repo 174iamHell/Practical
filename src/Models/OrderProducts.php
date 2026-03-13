@@ -1,0 +1,27 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Models;
+
+use Phalcon\Mvc\Model;
+
+class OrderProducts extends Model
+{
+    public int $id;
+    public int $order_id;
+    public int $product_id;
+    public float $price;
+    public string $created_at;
+
+    public function initialize(): void
+    {
+
+        $this->setSource('order_products');
+    }
+
+    public function beforeCreate(): void
+    {
+        $this->created_at = date('Y-m-d H:i:s');
+    }
+}

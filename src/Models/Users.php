@@ -16,7 +16,7 @@ class Users extends Model
     public function initialize(): void
     {
         // Указываем таблицу из базы 'shop'
-        $this->setSource('user');
+        $this->setSource('users');
     }
 
     // Авто-заполнение даты перед сохранением

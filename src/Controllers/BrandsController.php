@@ -10,7 +10,7 @@ use App\Models\Brands;
 use Phalcon\Mvc\Controller;
 use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
-final class CategoriesController extends Controller
+final class BrandsController extends Controller
 {
     public static function routes(): MicroCollection
     {
@@ -27,10 +27,10 @@ final class CategoriesController extends Controller
         return $collection;
     }
 
-    public function index(): string
+    public function index(): object
     {
         $brands = Brands::find();
-        return json_encode($brands);
+        return $brands;
     }
 
     public function create()
@@ -43,9 +43,18 @@ final class CategoriesController extends Controller
         if ($validate->validate($json)) {
             $brands->name = $json->name;
 
-            $brands->create();
+            if ($brands->create()) {
+                return $this->response->setJsonContent(['status' => 'Created!']);
+            }
+
+            // 1. Извлекаем реальные ошибки из модели
+            $errors = [];
+            foreach ($brands->getMessages() as $message) {
+                $errors[] = $message->getMessage();
+            }
+            return $errors;
         } else {
-            $validate->errorOutput();
+            return     $validate->errorOutput();
         }
     }
 
