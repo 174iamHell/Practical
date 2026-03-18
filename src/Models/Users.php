@@ -8,9 +8,9 @@ use Phalcon\Mvc\Model;
 
 class Users extends Model
 {
-    public int $id;
+    public $id;
     public string $name;
-    public string $creared_at;
+    public string $created_at;
 
 
     public function initialize(): void
@@ -20,7 +20,7 @@ class Users extends Model
     }
 
     // Авто-заполнение даты перед сохранением
-    public function beforeCreate(): void
+    public function beforeValidationOnCreate(): void
     {
         $this->created_at = date('Y-m-d H:i:s');
     }

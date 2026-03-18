@@ -21,7 +21,7 @@ class UsersUpdateRequest extends AbstractRequest
             $this->errors[] = 'Поле наименование должно иметь длину от одного до 255 символов';
         }
 
-        if (!Users::findFirst($json->brand_id)) {
+        if (!Users::findFirst($json->id)) {
             $this->errors[] = 'Такого пользователя не существует';
         }
 

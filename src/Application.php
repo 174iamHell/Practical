@@ -2,12 +2,15 @@
 
 namespace App;
 
+use App\Controllers\CartsController;
 use App\Controllers\BrandsController;
 use App\Controllers\IndexController;
 use App\Controllers\CategoriesController;
+use App\Controllers\OrderProductsController;
+use App\Controllers\OrdersController;
 use App\Controllers\ProductsController;
+use App\Controllers\UsersController;
 use App\Middlewares\ResponseMiddleware;
-use App\Models\Categories;
 use Phalcon\Db\Adapter\Pdo\Mysql;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Http\Response;
@@ -48,5 +51,9 @@ final class Application
         $this->app->mount(CategoriesController::routes());
         $this->app->mount(BrandsController::routes());
         $this->app->mount(ProductsController::routes());
+        $this->app->mount(UsersController::routes());
+        $this->app->mount(CartsController::routes());
+        $this->app->mount(OrdersController::routes());
+        $this->app->mount(OrderProductsController::routes());
     }
 }

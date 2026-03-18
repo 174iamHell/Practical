@@ -6,7 +6,7 @@ use App\Models\Products;
 use App\Models\Users;
 use Override;
 
-class CartsCreateRequest extends AbstractRequest
+class CartCreateRequest extends AbstractRequest
 {
 
 

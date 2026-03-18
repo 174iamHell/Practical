@@ -8,12 +8,12 @@ use Phalcon\Mvc\Model;
 
 class Carts extends Model
 {
-    public int $id;
+    public  $id;
     public string $created_at;
-    public int $product_id;
-    public int $user_id;  
+    public  $product_id;
+    public  $user_id;
 
-    public function initialize():void
+    public function initialize(): void
     {
         $this->setSource('cart');
     }
@@ -23,5 +23,3 @@ class Carts extends Model
         $this->created_at = date('Y-m-d H:i:s');
     }
 }
-
-

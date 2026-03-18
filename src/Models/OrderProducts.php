@@ -8,7 +8,7 @@ use Phalcon\Mvc\Model;
 
 class OrderProducts extends Model
 {
-    public int $id;
+    public  $id;
     public int $order_id;
     public int $product_id;
     public float $price;
@@ -20,7 +20,7 @@ class OrderProducts extends Model
         $this->setSource('order_products');
     }
 
-    public function beforeCreate(): void
+    public function beforeValidationOnCreate(): void
     {
         $this->created_at = date('Y-m-d H:i:s');
     }

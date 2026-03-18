@@ -17,7 +17,7 @@ final class OrderProductsController extends Controller
     {
         $collection = new MicroCollection();
         $collection->setHandler(new self()); // Используем текущий класс
-        $collection->setPrefix('/OrderProducts');
+        $collection->setPrefix('/orderProducts');
 
         $collection->get('/', 'index');          // GET /products
         $collection->post('/add/{id}', 'create');     // POST /products/add
@@ -36,16 +36,16 @@ final class OrderProductsController extends Controller
 
     public function create($id)
     {
-        $userId = $id;
+        $userId = (int)$id;
 
         $cartItems = $this->modelsManager->createBuilder()
             ->columns([
                 'p.id as product_id',
-                'p.price',
+                'p.price'
             ])
             ->from(['c' => Carts::class])
             ->innerJoin(Products::class, 'c.product_id = p.id', 'p')
-            ->where("c.user_id", [
+            ->where("c.user_id = :id:", [
                 'id' => $userId
             ])
             ->getQuery()
@@ -57,22 +57,24 @@ final class OrderProductsController extends Controller
         $order->user_id = $userId;
         $order->create();
 
-        // 4. Цикл по товарам из корзины
         foreach ($cartItems as $item) {
-            for ($i = 0; $i < $item->quantity; $i++) {
-                $orderProduct = new OrderProducts();
-                $orderProduct->order_id   = $order->id;
-                $orderProduct->product_id = $item->product_id;
-                $orderProduct->price      = $item->price;
 
-                if (!$orderProduct->create()) {
-                    $this->db->rollback();
+
+            $orderProduct = new OrderProducts();
+            $orderProduct->order_id   = (int)$order->id;
+            $orderProduct->product_id = (int)$item->product_id;
+            $orderProduct->price      = (float)$item->price;
+
+            if (!$orderProduct->create()) {
+                $errors = [];
+                foreach ($orderProduct->getMessages() as $message) {
+                    $errors[] = $message->getMessage();
                 }
+                $this->db->rollback();
+                return $errors;
             }
         }
-        // Надо удалить из корзины товары
-
         $this->db->commit();
-        echo "Заказ успешно создан!";
+        return "Заказ успешно создан!";
     }
 }

@@ -42,13 +42,20 @@ final class ProductsController extends Controller
         if ($validate->validate($json)) {
             $products = new Products();
             $products->name =  $json->name;
-            $products->mnp = $json->mnp;
+            $products->mpn = $json->mnp;
             $products->brand_id = $json->brand_id;
             $products->price = $json->price;
-            $products->create();
-            return 'test';
+            if ($products->create()) {
+                return $this->response->setJsonContent(['status' => 'Created!']);
+            }
+
+            // 1. Извлекаем реальные ошибки из модели
+            $errors = [];
+            foreach ($products->getMessages() as $message) {
+                $errors[] = $message->getMessage();
+            }
+            return $errors;
         } else {
-            echo "validate";
             return $validate->errorOutput();
         }
     }

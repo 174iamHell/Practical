@@ -34,19 +34,26 @@ final class UsersController extends Controller
         return json_encode($products);
     }
 
-    public function create(): string
+    public function create()
     {
         $validate = new UsersCreateRequest;
 
         $json = $this->request->getJsonRawBody();
         if ($validate->validate($json)) {
 
-            $products = new Users();
+            $users = new Users();
 
-            $products->name =  $json->name;
-            $products->create();
+            $users->name =  $json->name;
+            if ($users->create()) {
+                return $this->response->setJsonContent(['status' => 'Created!']);
+            }
 
-            return json_encode(['success' => true]);
+            // 1. Извлекаем реальные ошибки из модели
+            $errors = [];
+            foreach ($users->getMessages() as $message) {
+                $errors[] = $message->getMessage();
+            }
+            return $errors;
         }
 
         return $validate->errorOutput();
@@ -61,7 +68,7 @@ final class UsersController extends Controller
         return json_encode(['status' => 'Not found']);
     }
 
-    public function update(): string
+    public function update(): array
     {
         $validate = new UsersUpdateRequest();
 

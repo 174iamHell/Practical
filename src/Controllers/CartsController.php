@@ -6,11 +6,11 @@ namespace App\Controllers;
 
 use App\Request\CartsUpdateRequest;
 use App\Models\Carts;
-use App\Request\CartsCreateRequest;
+use App\Request\CartCreateRequest;
 use Phalcon\Mvc\Controller;
 use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
-final class CategoriesController extends Controller
+final class CartsController extends Controller
 {
     public static function routes(): MicroCollection
     {
@@ -35,7 +35,7 @@ final class CategoriesController extends Controller
 
     public function create()
     {
-        $validate = new CartsCreateRequest();
+        $validate = new CartCreateRequest();
 
         $carts = new Carts();
 
@@ -43,8 +43,16 @@ final class CategoriesController extends Controller
 
         if ($validate->validate($json)) {
             $carts->name = $json->name;
+            $carts->product_id = $json->product_id;
+            $carts->user_id = $json->user_id;
 
-            $carts->create();
+            if (!$carts->create()) {
+                $errors = [];
+                foreach ($carts->getMessages() as $messages) {
+                    $errors = $messages->getMessage();
+                }
+                return $errors;
+            }
         }
     }
 
