@@ -1,0 +1,35 @@
+{
+  "name": "sinbadxiii/phalcon-auth-jwt",
+  "description": "Basic Phalcon JWT Auth",
+  "keywords": ["phalcon", "auth", "Phalcon Auth JWT", "jwt", "phalcon jwt", "auth jwt"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sergey Mukhin",
+      "email": "sinbadxiii@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^7.4 || ^8.3 || ^8.4",
+    "nesbot/carbon": "^2.0",
+    "sinbadxiii/phalcon-auth": "^v2.0.0",
+    "lcobucci/jwt": "^5.0",
+    "ext-phalcon": "^5.0"
+  },
+  "require-dev": {
+    "mockery/mockery": "^1.4",
+    "phpunit/phpunit": "^9.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Sinbadxiii\\PhalconAuthJWT\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Sinbadxiii\\PhalconAuthJWT\\Tests\\": "tests/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

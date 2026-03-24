@@ -7,6 +7,7 @@
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
+
 namespace Phalcon\Config;
 
 use Phalcon\Support\Collection;
@@ -50,9 +51,7 @@ class Config extends Collection implements \Phalcon\Config\ConfigInterface
      *
      * @return string
      */
-    public function getPathDelimiter(): string
-    {
-    }
+    public function getPathDelimiter(): string {}
 
     /**
      * Merges a configuration into the current one
@@ -74,9 +73,7 @@ class Config extends Collection implements \Phalcon\Config\ConfigInterface
      * @return ConfigInterface
      * @throws Exception
      */
-    public function merge($toMerge): ConfigInterface
-    {
-    }
+    public function merge($toMerge): ConfigInterface {}
 
     /**
      * Returns a value from current config using a dot separated path.
@@ -91,9 +88,7 @@ class Config extends Collection implements \Phalcon\Config\ConfigInterface
      *
      * @return mixed
      */
-    public function path(string $path, $defaultValue = null, string $delimiter = null): mixed
-    {
-    }
+    public function path(string $path, $defaultValue = null, string $delimiter = null): mixed {}
 
     /**
      * Sets the default path delimiter
@@ -102,9 +97,7 @@ class Config extends Collection implements \Phalcon\Config\ConfigInterface
      *
      * @return ConfigInterface
      */
-    public function setPathDelimiter(string $delimiter = null): ConfigInterface
-    {
-    }
+    public function setPathDelimiter(string $delimiter = null): ConfigInterface {}
 
     /**
      * Converts recursively the object to an array
@@ -117,9 +110,7 @@ class Config extends Collection implements \Phalcon\Config\ConfigInterface
      *
      * @return array
      */
-    public function toArray(): array
-    {
-    }
+    public function toArray(): array {}
 
     /**
      * Performs a merge recursively
@@ -129,9 +120,7 @@ class Config extends Collection implements \Phalcon\Config\ConfigInterface
      *
      * @return array
      */
-    final protected function internalMerge(array $source, array $target): array
-    {
-    }
+    final protected function internalMerge(array $source, array $target): array {}
 
     /**
      * Sets the collection data
@@ -140,7 +129,5 @@ class Config extends Collection implements \Phalcon\Config\ConfigInterface
      * @param mixed $value
      * @return void
      */
-    protected function setData($element, $value): void
-    {
-    }
+    protected function setData($element, $value): void {}
 }

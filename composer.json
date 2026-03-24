@@ -8,5 +8,9 @@
     },
     "require-dev": {
         "phalcon/ide-stubs": "^5.9"
+    },
+    "require": {
+        "sinbadxiii/phalcon-auth": "^v2.0.0",
+        "sinbadxiii/phalcon-auth-jwt": "dev-master"
     }
 }
