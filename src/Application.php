@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Controllers\Auth\LoginController;
 use App\Controllers\CartsController;
 use App\Controllers\BrandsController;
 use App\Controllers\IndexController;
@@ -11,11 +12,15 @@ use App\Controllers\OrdersController;
 use App\Controllers\ProductsController;
 use App\Controllers\UsersController;
 use App\Middlewares\ResponseMiddleware;
+use App\Security\Authenticate;
+use Phalcon\Cache\AdapterFactory;
+use Phalcon\Cache\Cache;
 use Phalcon\Config\Config;
 use Phalcon\Db\Adapter\Pdo\Mysql;
 use Phalcon\Di\FactoryDefault;
-use Phalcon\Http\Response;
 use Phalcon\Mvc\Micro;
+use Phalcon\Storage\SerializerFactory;
+use Sinbadxiii\PhalconAuth\Manager;
 use Sinbadxiii\PhalconAuthJWT\Blacklist;
 use Sinbadxiii\PhalconAuthJWT\Builder;
 use Sinbadxiii\PhalconAuthJWT\Http\Parser\Chains\AuthHeaders;
@@ -44,9 +49,27 @@ final class Application
                     'user' => 'root',
                     'password' => 'root',
                 ],
-                'auth' => [],
+                'auth' => [
+                    [
+                        'defaults' => [
+                            'guard' => 'jwt'
+                        ],
+                        'guards' => [
+                            'jwt' => [
+                                'driver' => 'token',
+                                'provider' => 'users',
+                            ],
+                        ],
+                        'providers' => [
+                            'users' => [
+                                'adapter' => 'model',
+                                'model'  => \App\Models\Users::class,
+                            ],
+                        ],
+                    ],
+                ],
                 'jwt' => [
-                    'secret' => $_ENV['JWT_SECRET'],
+                    'secret' => 'S@l5"kyT9O{dN9S{>F$p~m&X££vMXW/W',
 
                     'keys' => [
                         'public' => $_ENV['JWT_PUBLIC_KEY'],
@@ -55,13 +78,13 @@ final class Application
                     ],
 
                     //default 30
-                    'ttl' => $_ENV['JWT_TTL'],
+                    'ttl' => 30,
 
                     //default null
-                    'max_refresh_period' => $_ENV['JWT_MAX_REFRESH_PERIOD'],
+                    'max_refresh_period' => null,
 
                     //default HS256
-                    'algo' => $_ENV['JWT_ALGO'],
+                    'algo' => 'HS256',
 
                     'required_claims' => [
                         Claims\Issuer::NAME,
@@ -74,13 +97,13 @@ final class Application
                     'lock_subject' => true,
 
                     //default 0
-                    'leeway' => $_ENV['JWT_LEEWAY'],
+                    'leeway' => 0,
 
                     //default true
-                    'blacklist_enabled' => $_ENV['JWT_BLACKLIST_ENABLED'],
+                    'blacklist_enabled' => true,
 
                     //default 0
-                    'blacklist_grace_period' => $_ENV['JWT_BLACKLIST_GRACE_PERIOD'],
+                    'blacklist_grace_period' => 0,
 
                     'decrypt_cookies' => false,
 
@@ -107,6 +130,18 @@ final class Application
             ]);
         });
 
+        $container->setShared('cache', function () {
+            $serializerFactory = new SerializerFactory();
+            $adapterFactory    = new AdapterFactory($serializerFactory);
+
+            $options = [
+                'defaultSerializer' => 'Json',
+                'lifetime'          => 7200
+            ];
+
+            $adapter = $adapterFactory->newInstance('apcu', $options);
+            return new Cache($adapter);
+        });
 
         $container->setShared("jwt", function () use ($container) {
 
@@ -145,29 +180,32 @@ final class Application
             return new JWT($builder, $manager, $parser);
         });
 
-        $di->setShared("auth", function () {
+        $container->setShared("auth", function () use ($container) {
+            $config = $container->getShared('config')->get('auth')->toArray();
+            $security = $container->getSecurity();
 
-            $security = $this->getSecurity();
 
             $adapter     = new \Sinbadxiii\PhalconAuth\Adapter\Model($security);
-            $adapter->setModel(App\Models\User::class);
+            $adapter->setModel(\App\Models\Users::class);
 
             $guard = new \Sinbadxiii\PhalconAuthJWT\Guard\JWTGuard(
                 $adapter,
-                $this->getJwt(),
-                $this->getRequest(),
-                $this->getEventsManager(),
+                $container->getJwt(),
+                $container->getRequest(),
+                $container->getEventsManager(),
             );
 
-            $manager = new Manager();
-            $manager->addGuard("jwt", $guard);
+            $manager = new Manager($config);
+            $manager->addGuard("jwt", $guard, true);
             $manager->setDefaultGuard($guard);
 
-            $manager->setAccess(new \App\Security\Access\Jwt());
-            $manager->except("/auth/login");
+            // $manager->setAccess(new \App\Security\Access\Jwt());
+            // $manager->setAccessList(new Authenticate()->getAccessList());
+            // $manager->except("/auth/login");
 
             return $manager;
         });
+
 
         $this->app = new Micro($container);
 
@@ -190,5 +228,6 @@ final class Application
         $this->app->mount(CartsController::routes());
         $this->app->mount(OrdersController::routes());
         $this->app->mount(OrderProductsController::routes());
+        $this->app->mount(LoginController::routes());
     }
 }

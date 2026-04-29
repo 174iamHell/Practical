@@ -37,7 +37,7 @@ class Users extends Model implements JWTSubject
     {
         return [
             "email" => $this->email,
-            "username" => $this->username
+            "username" => $this->user_name
         ];
     }
 }

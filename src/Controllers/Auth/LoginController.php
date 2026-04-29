@@ -5,67 +5,64 @@ declare(strict_types=1);
 namespace App\Controllers\Auth;
 
 use Phalcon\Mvc\Controller;
+use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
 class LoginController extends Controller
 {
-    public function onConstruct()
+    public static function routes(): MicroCollection
     {
-        //except actions "logout" from guest access
-        $this->getDI()->getShared("auth")->access("guest")->except("logout");
+        $collection = new MicroCollection();
+        $collection->setHandler(new self()); // Используем текущий класс
+        $collection->setPrefix('/auth');
+
+        $collection->post('/login', 'login'); // POST /auth/login
+
+        return $collection;
     }
 
-    public function loginFormAction() {}
+    // public function onConstruct()
+    // {
+    //     $this->auth->access("guest");
+    // }
 
     public function loginAction()
     {
-        if ($this->attemptLogin()) {
-            return $this->succesLogin();
-        }
+        var_dump(123);
+        // $credentials = [
+        //     'email' => $this->request->getJsonRawBody()->email,
+        //     'password' => $this->request->getJsonRawBody()->password
+        // ];
 
-        return $this->failLogin();
+        // $this->auth->claims(['aud' => [
+        //     $this->request->getURI()
+        // ]]);
+
+        // if (! $token = $this->auth->attempt($credentials)) {
+        //     return $this->response->setJsonContent(['error' => 'Unauthorized'])->send();
+        // }
+
+        // return $this->respondWithToken($token);
     }
 
-    protected function succesLogin()
-    {
-        return $this->response->redirect("/profile");
-    }
+    // public function meAction()
+    // {
+    //     $this->response->setJsonContent($this->auth->user())->send();
+    // }
 
-    private function failLogin()
-    {
-        $this->flashSession->error(
-            "Email or password is incorrect, please try again"
-        );
+    // public function logoutAction()
+    // {
+    //     $this->auth->logout();
 
-        return $this->response->redirect("/login");
-    }
+    //     $this->response->setJsonContent(['message' => 'Successfully logged out'])->send();
+    // }
 
-    public function logoutAction()
-    {
-        $this->auth->logout();
+    // public function refreshAction()
+    // {
+    //     return $this->respondWithToken($this->auth->refresh());
+    // }
 
-        return $this->response->redirect(
-            "/login",
-            true
-        );
-    }
-
-    private function attemptLogin()
-    {
-        $remember = $this->request->getPost('remember') ? true : false;
-
-        return $this->auth->attempt($this->credentials(), $remember);
-    }
-
-    private function credentials()
-    {
-        $username = $this->request->getPost($this->loginKey(), 'string');
-        $password = $this->request->getPost('password', 'string');
-
-        return [$this->loginKey() => $username, 'password' => $password];
-    }
-
-    public function loginKey()
-    {
-        return 'email'; //or maybe for example username
-    }
+    // protected function respondWithToken($token)
+    // {
+    //     $this->response->setJsonContent($token->toResponse())->send();
+    // }
 }
