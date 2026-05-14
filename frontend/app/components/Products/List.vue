@@ -56,9 +56,6 @@ const products = ref([
 </script>
 
 <template>
-    <ul>
-        <ContentProductsItem v-for="product in products" :key="product.id" :product="product" />
-    </ul>
     <li v-for="product in products" :key="product.title" class="card-list">
         <a class="product" href="">
             <img class="img-product" :src=product.image alt="" style="height: 157px; width:100%;">
