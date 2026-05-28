@@ -14,6 +14,7 @@ type HydrationStrategies = {
 type LazyComponent<T> = DefineComponent<HydrationStrategies, {}, {}, {}, {}, {}, {}, { hydrated: () => void }> & T
 
 
+export const Heading: typeof import("../app/components/Heading.vue")['default']
 export const LayoutFooter: typeof import("../app/components/Layout/Footer.vue")['default']
 export const LayoutHeader: typeof import("../app/components/Layout/Header.vue")['default']
 export const LayoutMain: typeof import("../app/components/Layout/Main.vue")['default']
@@ -46,6 +47,7 @@ export const Head: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Html']
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const NuxtIsland: typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
+export const LazyHeading: LazyComponent<typeof import("../app/components/Heading.vue")['default']>
 export const LazyLayoutFooter: LazyComponent<typeof import("../app/components/Layout/Footer.vue")['default']>
 export const LazyLayoutHeader: LazyComponent<typeof import("../app/components/Layout/Header.vue")['default']>
 export const LazyLayoutMain: LazyComponent<typeof import("../app/components/Layout/Main.vue")['default']>

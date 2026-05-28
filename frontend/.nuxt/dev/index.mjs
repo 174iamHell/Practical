@@ -2139,7 +2139,22 @@ _aD3cP2VOVOCeELcZFrvHHC5gUo0HWGHAWt71wqEqiTk,
 _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw
 ];
 
-const assets = {};
+const assets = {
+  "/index.mjs": {
+    "type": "text/javascript; charset=utf-8",
+    "etag": "\"1b787-25/Ck5q3IbSpsmHS0BjnoxVobds\"",
+    "mtime": "2026-05-28T09:58:59.488Z",
+    "size": 112519,
+    "path": "index.mjs"
+  },
+  "/index.mjs.map": {
+    "type": "application/json",
+    "etag": "\"6d33f-nKaMpIjVwijmwM1m1NpMMT8IjC0\"",
+    "mtime": "2026-05-28T09:58:59.488Z",
+    "size": 447295,
+    "path": "index.mjs.map"
+  }
+};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));
@@ -2599,10 +2614,14 @@ async function getIslandContext(event) {
 	};
 }
 
+const _lazy_G2RXgG = () => Promise.resolve().then(function () { return _id__get; });
+const _lazy_9RDFMj = () => Promise.resolve().then(function () { return suggestions_get$1; });
 const _lazy_ghIsoW = () => Promise.resolve().then(function () { return renderer; });
 
 const handlers = [
   { route: '', handler: _1VcYyg, lazy: false, middleware: true, method: undefined },
+  { route: '/api/categories/:id', handler: _lazy_G2RXgG, lazy: true, middleware: false, method: "get" },
+  { route: '/api/cities/suggestions', handler: _lazy_9RDFMj, lazy: true, middleware: false, method: "get" },
   { route: '/__nuxt_error', handler: _lazy_ghIsoW, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_island/**', handler: handler$1, lazy: false, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_ghIsoW, lazy: true, middleware: false, method: undefined }
@@ -2943,6 +2962,80 @@ const styles = {};
 const styles$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
   default: styles
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _id__get = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const suggestions_get = defineEventHandler((event) => {
+  const query = getQuery$1(event);
+  const searchText = (query.search || "").toString().toLowerCase().trim();
+  const cities = [
+    { "id": 3, "name": "\u041C\u043E\u0441\u043A\u0432\u0430" },
+    { "id": 5, "name": "\u0421\u0430\u043D\u043A\u0442-\u041F\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433" },
+    { "id": 22, "name": "\u0411\u0430\u0440\u043D\u0430\u0443\u043B" },
+    { "id": 1251, "name": "\u0411\u0435\u043B\u0433\u043E\u0440\u043E\u0434" },
+    { "id": 229, "name": "\u0412\u043B\u0430\u0434\u0438\u0432\u043E\u0441\u0442\u043E\u043A" },
+    { "id": 914, "name": "\u0412\u043B\u0430\u0434\u0438\u043A\u0430\u0432\u043A\u0430\u0437" },
+    { "id": 20, "name": "\u0412\u043E\u043B\u0433\u043E\u0433\u0440\u0430\u0434" },
+    { "id": 630, "name": "\u0412\u043E\u043B\u043E\u0433\u0434\u0430" },
+    { "id": 13, "name": "\u0412\u043E\u0440\u043E\u043D\u0435\u0436" },
+    { "id": 8, "name": "\u0415\u043A\u0430\u0442\u0435\u0440\u0438\u043D\u0431\u0443\u0440\u0433" },
+    { "id": 540, "name": "\u0418\u0436\u0435\u0432\u0441\u043A" },
+    { "id": 16, "name": "\u0418\u0440\u043A\u0443\u0442\u0441\u043A" },
+    { "id": 21, "name": "\u041A\u0430\u0437\u0430\u043D\u044C" },
+    { "id": 623, "name": "\u041A\u0430\u043B\u0438\u043D\u0438\u043D\u0433\u0440\u0430\u0434" },
+    { "id": 11, "name": "\u041A\u0435\u043C\u0435\u0440\u043E\u0432\u043E" },
+    { "id": 292, "name": "\u041A\u0438\u0440\u043E\u0432 (\u041A\u0438\u0440\u043E\u0432\u0441\u043A\u0430\u044F \u043E\u0431\u043B\u0430\u0441\u0442\u044C)" },
+    { "id": 12, "name": "\u041A\u0440\u0430\u0441\u043D\u043E\u0434\u0430\u0440" },
+    { "id": 23, "name": "\u041A\u0440\u0430\u0441\u043D\u043E\u044F\u0440\u0441\u043A" },
+    { "id": 26, "name": "\u041A\u0443\u0440\u0433\u0430\u043D" },
+    { "id": 1565, "name": "\u041B\u0438\u043F\u0435\u0446\u043A" },
+    { "id": 25, "name": "\u041C\u0430\u0433\u043D\u0438\u0442\u043E\u0433\u043E\u0440\u0441\u043A" },
+    { "id": 873, "name": "\u041C\u0430\u0445\u0430\u0447\u043A\u0430\u043B\u0430" },
+    { "id": 24, "name": "\u041C\u0438\u0430\u0441\u0441" },
+    { "id": 483, "name": "\u041D\u0430\u0431\u0435\u0440\u0435\u0436\u043D\u044B\u0435 \u0427\u0435\u043B\u043D\u044B" },
+    { "id": 90, "name": "\u041D\u0438\u0436\u043D\u0435\u0432\u0430\u0440\u0442\u043E\u0432\u0441\u043A" },
+    { "id": 7, "name": "\u041D\u0438\u0436\u043D\u0438\u0439 \u041D\u043E\u0432\u0433\u043E\u0440\u043E\u0434" },
+    { "id": 974, "name": "\u041D\u043E\u0432\u043E\u043A\u0443\u0437\u043D\u0435\u0446\u043A" },
+    { "id": 9, "name": "\u041D\u043E\u0432\u043E\u0441\u0438\u0431\u0438\u0440\u0441\u043A" },
+    { "id": 123, "name": "\u041D\u043E\u0432\u044B\u0439 \u0423\u0440\u0435\u043D\u0433\u043E\u0439" },
+    { "id": 27, "name": "\u041D\u043E\u044F\u0431\u0440\u044C\u0441\u043A" },
+    { "id": 10, "name": "\u041E\u043C\u0441\u043A" },
+    { "id": 19, "name": "\u041E\u0440\u0435\u043D\u0431\u0443\u0440\u0433" },
+    { "id": 393, "name": "\u041F\u0435\u043D\u0437\u0430" },
+    { "id": 14, "name": "\u041F\u0435\u0440\u043C\u044C" },
+    { "id": 6, "name": "\u0420\u043E\u0441\u0442\u043E\u0432-\u043D\u0430-\u0414\u043E\u043D\u0443" },
+    { "id": 126, "name": "\u0421\u0430\u043B\u0435\u0445\u0430\u0440\u0434 (\u042F\u043C\u0430\u043B\u043E-\u041D\u0435\u043D\u0435\u0446\u043A\u0438\u0439 \u0410\u041E)" },
+    { "id": 17, "name": "\u0421\u0430\u043C\u0430\u0440\u0430" },
+    { "id": 18, "name": "\u0421\u0430\u0440\u0430\u0442\u043E\u0432" },
+    { "id": 15, "name": "\u0421\u0442\u0430\u0432\u0440\u043E\u043F\u043E\u043B\u044C" },
+    { "id": 89, "name": "\u0421\u0443\u0440\u0433\u0443\u0442" },
+    { "id": 775, "name": "\u0421\u044B\u043A\u0442\u044B\u0432\u043A\u0430\u0440" },
+    { "id": 1574, "name": "\u0422\u0432\u0435\u0440\u044C" },
+    { "id": 1221, "name": "\u0422\u043E\u043C\u0441\u043A" },
+    { "id": 2, "name": "\u0422\u044E\u043C\u0435\u043D\u044C" },
+    { "id": 322, "name": "\u0423\u043B\u044C\u044F\u043D\u043E\u0432\u0441\u043A" },
+    { "id": 4, "name": "\u0423\u0444\u0430" },
+    { "id": 222, "name": "\u0425\u0430\u0431\u0430\u0440\u043E\u0432\u0441\u043A" },
+    { "id": 591, "name": "\u0427\u0435\u0431\u043E\u043A\u0441\u0430\u0440\u044B" },
+    { "id": 1, "name": "\u0427\u0435\u043B\u044F\u0431\u0438\u043D\u0441\u043A" },
+    { "id": 233, "name": "\u042E\u0436\u043D\u043E-\u0421\u0430\u0445\u0430\u043B\u0438\u043D\u0441\u043A" },
+    { "id": 143, "name": "\u042F\u043A\u0443\u0442\u0441\u043A" },
+    { "id": 1504, "name": "\u042F\u0440\u043E\u0441\u043B\u0430\u0432\u043B\u044C" }
+  ];
+  if (!searchText) {
+    return cities;
+  }
+  return cities.filter((city) => {
+    return city.name.toLowerCase().includes(searchText);
+  });
+});
+
+const suggestions_get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: suggestions_get
 }, Symbol.toStringTag, { value: 'Module' }));
 
 function renderPayloadResponse(ssrContext) {
