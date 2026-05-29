@@ -86,8 +86,6 @@ const { product } = defineProps<{
 
 }
 
-.product {}
-
 .img-product {
     height: 140px;
     width: 140px;

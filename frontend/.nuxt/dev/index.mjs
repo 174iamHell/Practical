@@ -2142,16 +2142,16 @@ _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw
 const assets = {
   "/index.mjs": {
     "type": "text/javascript; charset=utf-8",
-    "etag": "\"1b787-25/Ck5q3IbSpsmHS0BjnoxVobds\"",
-    "mtime": "2026-05-28T09:58:59.488Z",
-    "size": 112519,
+    "etag": "\"1cc24-jyctZuzCG8qBXxKHwPPRlUO9hOo\"",
+    "mtime": "2026-05-29T12:28:32.470Z",
+    "size": 117796,
     "path": "index.mjs"
   },
   "/index.mjs.map": {
     "type": "application/json",
-    "etag": "\"6d33f-nKaMpIjVwijmwM1m1NpMMT8IjC0\"",
-    "mtime": "2026-05-28T09:58:59.488Z",
-    "size": 447295,
+    "etag": "\"72e76-kKelck3HZSMj9EZ5AcNTOeCMdNI\"",
+    "mtime": "2026-05-29T12:28:32.470Z",
+    "size": 470646,
     "path": "index.mjs.map"
   }
 };
@@ -2614,7 +2614,7 @@ async function getIslandContext(event) {
 	};
 }
 
-const _lazy_G2RXgG = () => Promise.resolve().then(function () { return _id__get; });
+const _lazy_G2RXgG = () => Promise.resolve().then(function () { return _id__get$1; });
 const _lazy_9RDFMj = () => Promise.resolve().then(function () { return suggestions_get$1; });
 const _lazy_ghIsoW = () => Promise.resolve().then(function () { return renderer; });
 
@@ -2964,8 +2964,102 @@ const styles$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   default: styles
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const _id__get = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-  __proto__: null
+const categoriesMap = {
+  1: {
+    title: "\u042D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u0438\u043A\u0430",
+    products: [
+      { title: "\u0421\u043C\u0430\u0440\u0442\u0444\u043E\u043D \u0424\u043B\u0430\u0433\u043C\u0430\u043D 2026", price: "89 990 \u20BD", image: "/img/products/phone.jpg" },
+      { title: "\u0411\u0435\u0441\u043F\u0440\u043E\u0432\u043E\u0434\u043D\u044B\u0435 \u043D\u0430\u0443\u0448\u043D\u0438\u043A\u0438 Pro", price: "14 500 \u20BD", image: "/img/products/headphones.jpg" },
+      { title: "\u0423\u043C\u043D\u044B\u0435 \u0447\u0430\u0441\u044B 5", price: "24 990 \u20BD", image: "/img/products/watch.jpg" }
+    ]
+  },
+  2: {
+    title: "\u041E\u0434\u0435\u0436\u0434\u0430 \u0438 \u043E\u0431\u0443\u0432\u044C",
+    products: [
+      { title: "\u041A\u0440\u043E\u0441\u0441\u043E\u0432\u043A\u0438 \u0434\u0435\u043C\u0438\u0441\u0435\u0437\u043E\u043D\u043D\u044B\u0435", price: "8 200 \u20BD", image: "/img/products/shoes.jpg" },
+      { title: "\u041A\u0443\u0440\u0442\u043A\u0430-\u0431\u043E\u043C\u0431\u0435\u0440 \u043E\u0432\u0435\u0440\u0441\u0430\u0439\u0437", price: "12 400 \u20BD", image: "/img/products/jacket.jpg" }
+    ]
+  },
+  3: {
+    title: "\u0425\u0438\u0442 \u043F\u0440\u043E\u0434\u0430\u0436",
+    products: [
+      {
+        title: "\u0414\u0438\u0437\u0435\u043B\u044C\u043D\u0430\u044F \u0433\u043E\u0440\u0435\u043B\u043A\u0430 RUF RTL 20",
+        price: "69 500 \u20BD",
+        image: "https://ruf-burners.ru/files/sp/027/05/000/113/453/item/gorelki/ruf-rtl-20-126-512169.jpg"
+      },
+      {
+        title: "\u0416\u0438\u0442\u043A\u043E\u0442\u043E\u043F\u043B\u0438\u0432\u043D\u044B\u0439 \u044D\u043B\u0435\u043A\u0442\u0440\u043E\u043C\u0430\u0433\u043D\u0438\u0442\u043D\u044B\u0439 \u043A\u043B\u0430\u043F\u0430\u043D RUF",
+        price: "3 500",
+        image: "https://ruf-burners.ru/files/b/000/364/item/ruf.webp"
+      },
+      {
+        title: "\u041A\u0430\u0431\u0435\u043B\u044C \u0440\u043E\u0437\u0436\u0438\u0433\u0430 RUF BTGY-G5x550-A",
+        price: "2 250",
+        image: "https://ruf-burners.ru/files/b/000/364/item/ruf.webp"
+      },
+      {
+        title: "\u0414\u0438\u0437\u0435\u043B\u044C\u043D\u0430\u044F \u0433\u043E\u0440\u0435\u043B\u043A\u0430 RUF 40 G20",
+        price: "66 000",
+        image: "https://ruf-burners.ru/files/sp/027/05/000/116/281/item/gorelki/ruf-40-g20-113-508180.jpg"
+      },
+      {
+        title: "\u0413\u0430\u0437\u043E\u0432\u0430\u044F \u0433\u043E\u0440\u0435\u043B\u043A\u0430 RUF RTG 12 L250",
+        price: "113 000",
+        image: "https://ruf-burners.ru/files/sp/027/05/000/124/828/item/gorelki/ruf-rtg-12-l250-1388-508095.jpg"
+      },
+      {
+        title: "\u041A\u0430\u0431\u0435\u043B\u044C \u044D\u043B\u0435\u043A\u0442\u0440\u043E\u0434\u0430 \u0438\u043E\u043D\u0438\u0437\u0430\u0446\u0438\u0438 RUF BTGY-L5x580-4B",
+        price: "2 200",
+        image: "https://ruf-burners.ru/files/b/000/364/item/ruf.webp"
+      },
+      {
+        title: "\u0414\u0438\u0437\u0435\u043B\u044C\u043D\u0430\u044F \u0433\u043E\u0440\u0435\u043B\u043A\u0430 RUF RTL 10",
+        price: "59 500",
+        image: "https://ruf-burners.ru/files/sp/027/05/000/116/280/item/gorelki/ruf-40-g10-114-508168.jpg"
+      },
+      {
+        title: "\u0414\u0438\u0437\u0435\u043B\u044C\u043D\u044F \u0433\u0440\u0435\u043B\u043A\u0430 RUF 40 G10",
+        price: "60 500",
+        image: "https://ruf-burners.ru/files/sp/027/05/000/116/280/item/gorelki/ruf-40-g10-114-508168.jpg"
+      },
+      {
+        title: "\u0414\u0438\u0437\u0435\u043B\u044C\u043D\u0430\u044F \u0433\u043E\u0440\u0435\u043B\u043A\u0430 RUF RTL 14",
+        price: "67 500",
+        image: "https://ruf-burners.ru/files/sp/027/05/000/113/449/item/gorelki/ruf-rtl-3-130-512274.jpg"
+      },
+      {
+        title: "\u0414\u0438\u0437\u0435\u043B\u044C\u043D\u0430\u044F \u0433\u043E\u0440\u0435\u043B\u043A\u0430 RUF RTL 3",
+        price: "55 000",
+        image: "https://ruf-burners.ru/files/sp/027/05/000/113/449/item/gorelki/ruf-rtl-3-130-512274.jpg"
+      },
+      {
+        title: "\u0416\u0438\u0434\u043A\u043E\u0442\u043E\u043F\u043B\u0438\u0432\u043D\u044B\u0439 \u0444\u0438\u043B\u044C\u0442\u0440 RUF RP 3/8",
+        price: "1 300",
+        image: "https://ruf-burners.ru/files/sp/027/05/000/113/494/item/filtry-dlya-gorelok/ruf-ru0005070237-1373-508011.jpg"
+      },
+      {
+        title: "\u0413\u0430\u0437\u043E\u0432\u0430\u044F \u0433\u043E\u0440\u0435\u043B\u043A\u0430 RUF RTG 6",
+        price: "96 000",
+        image: "https://ruf-burners.ru/files/sp/027/05/000/113/476/item/gorelki/ruf-rtg-6-97-508653.jpg"
+      }
+    ]
+  }
+};
+const _id__get = defineEventHandler((event) => {
+  const id = getRouterParam(event, "id");
+  if (Number.isNaN(id)) {
+    throw createError({
+      "statusCode": 400
+    });
+  }
+  const category = categoriesMap[Number(id)];
+  return category;
+});
+
+const _id__get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__get
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const suggestions_get = defineEventHandler((event) => {

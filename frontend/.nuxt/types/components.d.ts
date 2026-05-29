@@ -14,11 +14,11 @@ type HydrationStrategies = {
 type LazyComponent<T> = DefineComponent<HydrationStrategies, {}, {}, {}, {}, {}, {}, { hydrated: () => void }> & T
 
 interface _GlobalComponents {
-  Heading: typeof import("../../app/components/Heading.vue")['default']
   LayoutFooter: typeof import("../../app/components/Layout/Footer.vue")['default']
   LayoutHeader: typeof import("../../app/components/Layout/Header.vue")['default']
   LayoutMain: typeof import("../../app/components/Layout/Main.vue")['default']
   MainLayoutFirstLayout: typeof import("../../app/components/MainLayout/FirstLayout.vue")['default']
+  MainLayoutHeading: typeof import("../../app/components/MainLayout/Heading.vue")['default']
   MainLayoutSecondLayout: typeof import("../../app/components/MainLayout/SecondLayout.vue")['default']
   ProductsCategories: typeof import("../../app/components/Products/Categories.vue")['default']
   ProductsItem: typeof import("../../app/components/Products/Item.vue")['default']
@@ -47,11 +47,11 @@ interface _GlobalComponents {
   Html: typeof import("../../node_modules/nuxt/dist/head/runtime/components")['Html']
   Body: typeof import("../../node_modules/nuxt/dist/head/runtime/components")['Body']
   NuxtIsland: typeof import("../../node_modules/nuxt/dist/app/components/nuxt-island")['default']
-  LazyHeading: LazyComponent<typeof import("../../app/components/Heading.vue")['default']>
   LazyLayoutFooter: LazyComponent<typeof import("../../app/components/Layout/Footer.vue")['default']>
   LazyLayoutHeader: LazyComponent<typeof import("../../app/components/Layout/Header.vue")['default']>
   LazyLayoutMain: LazyComponent<typeof import("../../app/components/Layout/Main.vue")['default']>
   LazyMainLayoutFirstLayout: LazyComponent<typeof import("../../app/components/MainLayout/FirstLayout.vue")['default']>
+  LazyMainLayoutHeading: LazyComponent<typeof import("../../app/components/MainLayout/Heading.vue")['default']>
   LazyMainLayoutSecondLayout: LazyComponent<typeof import("../../app/components/MainLayout/SecondLayout.vue")['default']>
   LazyProductsCategories: LazyComponent<typeof import("../../app/components/Products/Categories.vue")['default']>
   LazyProductsItem: LazyComponent<typeof import("../../app/components/Products/Item.vue")['default']>

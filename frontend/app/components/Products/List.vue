@@ -1,5 +1,5 @@
 <script setup>
-
+/*
 const products = ref([
     {
         title: 'Дизельная горелка RUF RTL 20',
@@ -52,11 +52,43 @@ const products = ref([
         price: '96 000',
         image: 'https://ruf-burners.ru/files/sp/027/05/000/113/476/item/gorelki/ruf-rtg-6-97-508653.jpg'
     }
-]);
+]);*/
 </script>
 
 <template>
-    <ProductsItem v-for="product in products" :key="product.title" :product="product" />
+    <div class="box-main">
+        <p class="bestsellers">{{ title }}</p>
+        <div cards-block>
+            <ul class="catalog-cards">
+                <ProductsItem v-for="product in products" :key="product.title" :product="product" />
+            </ul>
+        </div>
+    </div>
+
 </template>
 
-<style></style>
+<style>
+.catalog-cards {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+
+    gap: 10px;
+    list-style-type: none;
+    padding: 0;
+}
+
+.box-main {
+    max-width: 1536px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.bestsellers {
+    font-weight: bold;
+    font-size: 20px;
+
+    margin: 0;
+    margin-bottom: 24px;
+
+}
+</style>
