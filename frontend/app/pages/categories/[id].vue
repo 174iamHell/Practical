@@ -16,9 +16,6 @@ const products = computed(() => {
 
 <template>
     <main>
-        <MainLayoutHeading>
-            {{ title }}
-        </MainLayoutHeading>
-        <ProductsList :products="products" />
+        <ProductsList :title="title ?? ''" :products="products ?? []" />
     </main>
 </template>

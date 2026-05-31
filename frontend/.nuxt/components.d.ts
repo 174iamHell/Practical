@@ -18,7 +18,6 @@ export const LayoutFooter: typeof import("../app/components/Layout/Footer.vue")[
 export const LayoutHeader: typeof import("../app/components/Layout/Header.vue")['default']
 export const LayoutMain: typeof import("../app/components/Layout/Main.vue")['default']
 export const MainLayoutFirstLayout: typeof import("../app/components/MainLayout/FirstLayout.vue")['default']
-export const MainLayoutHeading: typeof import("../app/components/MainLayout/Heading.vue")['default']
 export const MainLayoutSecondLayout: typeof import("../app/components/MainLayout/SecondLayout.vue")['default']
 export const ProductsCategories: typeof import("../app/components/Products/Categories.vue")['default']
 export const ProductsItem: typeof import("../app/components/Products/Item.vue")['default']
@@ -51,7 +50,6 @@ export const LazyLayoutFooter: LazyComponent<typeof import("../app/components/La
 export const LazyLayoutHeader: LazyComponent<typeof import("../app/components/Layout/Header.vue")['default']>
 export const LazyLayoutMain: LazyComponent<typeof import("../app/components/Layout/Main.vue")['default']>
 export const LazyMainLayoutFirstLayout: LazyComponent<typeof import("../app/components/MainLayout/FirstLayout.vue")['default']>
-export const LazyMainLayoutHeading: LazyComponent<typeof import("../app/components/MainLayout/Heading.vue")['default']>
 export const LazyMainLayoutSecondLayout: LazyComponent<typeof import("../app/components/MainLayout/SecondLayout.vue")['default']>
 export const LazyProductsCategories: LazyComponent<typeof import("../app/components/Products/Categories.vue")['default']>
 export const LazyProductsItem: LazyComponent<typeof import("../app/components/Products/Item.vue")['default']>
