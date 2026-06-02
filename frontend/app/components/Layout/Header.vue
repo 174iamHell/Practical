@@ -1,7 +1,9 @@
 <script setup>
+
 const isVisible = ref(false);
 const selectCity = useCookie('selectCity', { default: () => 'Челябинск' })
 const querySearch = ref('');
+const popupRef = useTemplateRef('myPopap')
 
 const { data: dataCities, execute } = await useFetch('/api/cities/suggestions', {
     server: false,
@@ -42,10 +44,37 @@ function onSelectCity(city) {
 
     onClose();
 }
+
 </script>
 
 <template>
     <div class="menu">
+        <PopapHendlessComponent ref="myPopap">
+            <div class="flex title">
+                <h2 class="h2-title">Обратный звонок</h2>
+                <button @click="popupRef.close" class="close-button flex">
+                    <svg viewBox="0 0 24 24" width="25" height="25">
+                        <path fill="currentColor"
+                            d="m11.575 13.4-4.9 4.9a.948.948 0 0 1-.7.275.948.948 0 0 1-.7-.275.948.948 0 0 1-.275-.7.95.95 0 0 1 .275-.7l4.9-4.9-4.9-4.9A.948.948 0 0 1 5 6.4a.95.95 0 0 1 .275-.7.948.948 0 0 1 .7-.275.95.95 0 0 1 .7.275l4.9 4.9 4.9-4.9a.948.948 0 0 1 .7-.275.95.95 0 0 1 .7.275.948.948 0 0 1 .275.7.948.948 0 0 1-.275.7l-4.9 4.9 4.9 4.9a.949.949 0 0 1 .275.7.948.948 0 0 1-.275.7.948.948 0 0 1-.7.275.948.948 0 0 1-.7-.275l-4.9-4.9Z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="box-number">
+                <div class="form-number">
+                    <p class="p-box-number">Телефон</p>
+                    <input type="text" alt="0000-000-0-000-">
+                </div>
+                <div class="form-name">
+                    <p class="p-box-number">Фамилия Имя Отчество</p>
+                    <input type="text" alt="Фамилия Имя Отчество">
+                </div>
+            </div>
+            <button class="send-button flex">
+                Отправить
+            </button>
+
+        </PopapHendlessComponent>
         <div class="main-menu">
             <a class="box-logo" href="/">
                 <img class="logo" src="/img/logo.jpeg" alt="LOGO">
@@ -118,7 +147,8 @@ function onSelectCity(city) {
             <div class="navigation-number">
                 <div class="block-number">
                     <a class="number display-block" href="+73517501886">+7 (351) 750-18-86</a>
-                    <span class="tell-number display-block">Обратный звонок</span>
+                    <span @click="popupRef.open" class="tell-number display-block" role="button" tabindex="0">Обратный
+                        звонок</span>
                 </div>
                 <nav>
                     <ul class="navigation-pay flex">
@@ -153,7 +183,7 @@ function onSelectCity(city) {
                             <input v-model="querySearch" @input="execute" class="city-input" type="text">
                             <div></div>
                             <ul ref="slider" class="list-citys">
-                                <li v-for="city in dataCities" @click="onSelectCity(city)" :key="city.id"
+                                <li v-for="city in dataCities" @click="     onSelectCity(city)" :key="city.id"
                                     class="city-item hover-red" role="button" tabindex="0">{{
                                         city.name }}</li>
                             </ul>
@@ -326,6 +356,8 @@ function onSelectCity(city) {
     text-decoration-style: dashed;
     text-underline-offset: 4px;
     text-decoration-line: underline;
+
+    cursor: pointer;
 }
 
 .block-number {
@@ -404,5 +436,42 @@ function onSelectCity(city) {
 
 .city-item {
     cursor: pointer;
+}
+
+
+
+
+.h2-title {
+    margin: 0;
+}
+
+.title {
+    margin: 10px;
+    justify-content: space-between;
+}
+
+.close-button {
+    border-radius: 20px;
+}
+
+.form-number {}
+
+.form-name {}
+
+.send-button {
+    margin-top: 10px;
+    width: max-content;
+}
+
+.space-berween {
+    justify-content: space-between;
+}
+
+.flex {
+    display: flex;
+}
+
+.p-box-number {
+    margin: 0;
 }
 </style>

@@ -1,9 +1,12 @@
 <script setup lang="ts">
+import SecondLayout from './SecondLayout.vue';
+
 
 </script>
 
 
 <template>
+
     <div class="box-main">
         <ul class="products-list">
             <ProductsCategories />

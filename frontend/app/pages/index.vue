@@ -1,5 +1,9 @@
 <template>
-    <main>
-        <LayoutMain />
-    </main>
+
+    <body>
+        <main>
+            <PopapAssent />
+            <LayoutMain />
+        </main>
+    </body>
 </template>

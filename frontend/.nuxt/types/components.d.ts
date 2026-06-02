@@ -19,6 +19,8 @@ interface _GlobalComponents {
   LayoutMain: typeof import("../../app/components/Layout/Main.vue")['default']
   MainLayoutFirstLayout: typeof import("../../app/components/MainLayout/FirstLayout.vue")['default']
   MainLayoutSecondLayout: typeof import("../../app/components/MainLayout/SecondLayout.vue")['default']
+  PopapAssent: typeof import("../../app/components/Popap/Assent.vue")['default']
+  PopapHendlessComponent: typeof import("../../app/components/Popap/HendlessComponent.vue")['default']
   ProductsCategories: typeof import("../../app/components/Products/Categories.vue")['default']
   ProductsItem: typeof import("../../app/components/Products/Item.vue")['default']
   ProductsList: typeof import("../../app/components/Products/List.vue")['default']
@@ -51,6 +53,8 @@ interface _GlobalComponents {
   LazyLayoutMain: LazyComponent<typeof import("../../app/components/Layout/Main.vue")['default']>
   LazyMainLayoutFirstLayout: LazyComponent<typeof import("../../app/components/MainLayout/FirstLayout.vue")['default']>
   LazyMainLayoutSecondLayout: LazyComponent<typeof import("../../app/components/MainLayout/SecondLayout.vue")['default']>
+  LazyPopapAssent: LazyComponent<typeof import("../../app/components/Popap/Assent.vue")['default']>
+  LazyPopapHendlessComponent: LazyComponent<typeof import("../../app/components/Popap/HendlessComponent.vue")['default']>
   LazyProductsCategories: LazyComponent<typeof import("../../app/components/Products/Categories.vue")['default']>
   LazyProductsItem: LazyComponent<typeof import("../../app/components/Products/Item.vue")['default']>
   LazyProductsList: LazyComponent<typeof import("../../app/components/Products/List.vue")['default']>
