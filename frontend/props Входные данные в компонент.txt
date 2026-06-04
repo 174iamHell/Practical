@@ -44,3 +44,28 @@ route-params + симуляция работы страницы
 ----
 
 Компонентную систему - Сделать абстрактный Popap -> HeadlessComponent
+
+HeadlessComponent (Без верстки и стилей, только с функционалом)
+  -> Modal -> Callback
+  -> Cookie
+
+----
+
+https://ankas.ru/ Берем за основу ankas.ru как макет верстки
+
+1. Пробуем работать с внешними библиотеками -> @ankasru/utils-ts -> async.debounce / https://doka.guide/js/debounce/
+2. Делаем два маршрута:
+  - /api/search/products => Подсказки для правой части поиска
+  - /api/search/tips => Подсказки для левой части поиска
+3. Продолжаем отправлять запросы с $fetch -> используя debounce.
+4. Посмотреть overflow + flex + grid + hover.
+5. Ограничить наименование продукта четырьмя строками.
+
+----
+
+На выходные:
+
+- типы: number, bool, string, FUNCTION, ARRAY (map, reduce, filter, forEach, includes, slice, splice, sort), OBJECT, class;
+- почитать про event loop;
+- Promise, then, catch, all, async await;
+- декораторы -> функции которые вызывают функции, не новые @наименование

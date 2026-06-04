@@ -1,9 +1,10 @@
-<script setup>
+<script setup lang="ts">
 
 const isVisible = ref(false);
 const selectCity = useCookie('selectCity', { default: () => 'Челябинск' })
 const querySearch = ref('');
-const popupRef = useTemplateRef('myPopap')
+const popupRef = useTemplateRef('myPopap');
+const searchActive = ref(false);
 
 const { data: dataCities, execute } = await useFetch('/api/cities/suggestions', {
     server: false,
@@ -31,7 +32,7 @@ function toggleBlock() {
     onOpen();
 }
 
-function onSelectCity(city) {
+function onSelectCity(city: any) {
 
     selectCity.value = city.name;
 
@@ -44,15 +45,21 @@ function onSelectCity(city) {
 
     onClose();
 }
+function searchAсtiveOn() {
+    searchActive.value = true;
+}
+function searchActiveOff() {
+    searchActive.value = false;
+}
 
 </script>
 
 <template>
     <div class="menu">
-        <PopapHendlessComponent ref="myPopap">
+        <PopapModal :top="20" :left="40" ref="myPopap">
             <div class="flex title">
                 <h2 class="h2-title">Обратный звонок</h2>
-                <button @click="popupRef.close" class="close-button flex">
+                <button @click="popupRef?.close" class="close-button flex">
                     <svg viewBox="0 0 24 24" width="25" height="25">
                         <path fill="currentColor"
                             d="m11.575 13.4-4.9 4.9a.948.948 0 0 1-.7.275.948.948 0 0 1-.7-.275.948.948 0 0 1-.275-.7.95.95 0 0 1 .275-.7l4.9-4.9-4.9-4.9A.948.948 0 0 1 5 6.4a.95.95 0 0 1 .275-.7.948.948 0 0 1 .7-.275.95.95 0 0 1 .7.275l4.9 4.9 4.9-4.9a.948.948 0 0 1 .7-.275.95.95 0 0 1 .7.275.948.948 0 0 1 .275.7.948.948 0 0 1-.275.7l-4.9 4.9 4.9 4.9a.949.949 0 0 1 .275.7.948.948 0 0 1-.275.7.948.948 0 0 1-.7.275.948.948 0 0 1-.7-.275l-4.9-4.9Z">
@@ -73,8 +80,7 @@ function onSelectCity(city) {
             <button class="send-button flex">
                 Отправить
             </button>
-
-        </PopapHendlessComponent>
+        </PopapModal>
         <div class="main-menu">
             <a class="box-logo" href="/">
                 <img class="logo" src="/img/logo.jpeg" alt="LOGO">
@@ -91,8 +97,10 @@ function onSelectCity(city) {
             </div>
             <div class="search-block">
                 <search class="search">
+                    <div v-if="searchActive" class="overlay"></div>
+                    <div v-if="searchActive" class="modal"></div>
                     <div class="scan">
-                        <input class="input-search" type="text">
+                        <input @focus="searchAсtiveOn" @blur="searchActiveOff" class="input-search" type="text">
                         <button class="search-button" alt="поиск">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                 class="bi bi-search" viewBox="0 0 16 16">
@@ -147,8 +155,9 @@ function onSelectCity(city) {
             <div class="navigation-number">
                 <div class="block-number">
                     <a class="number display-block" href="+73517501886">+7 (351) 750-18-86</a>
-                    <span @click="popupRef.open" class="tell-number display-block" role="button" tabindex="0">Обратный
-                        звонок</span>
+                    <span @click="popupRef?.open" class="tell-number display-block" role="button" tabindex="0">
+                        Обратный звонок
+                    </span>
                 </div>
                 <nav>
                     <ul class="navigation-pay flex">
@@ -180,7 +189,7 @@ function onSelectCity(city) {
                     <p class="title-search-citys">Выберите город</p>
                     <div class="search">
                         <form action="">
-                            <input v-model="querySearch" @input="execute" class="city-input" type="text">
+                            <input v-model="querySearch" @input="() => execute" class="city-input" type="text">
                             <div></div>
                             <ul ref="slider" class="list-citys">
                                 <li v-for="city in dataCities" @click="     onSelectCity(city)" :key="city.id"
@@ -252,12 +261,36 @@ function onSelectCity(city) {
     gap: 40px;
 }
 
+.modal {
+    position: absolute;
+
+    z-index: 1;
+    bottom: -120%;
+    left: 0;
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 8px;
+
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
 .search-block {
     flex-grow: 1;
     display: flex;
 }
 
 .search {
+    position: relative;
+    z-index: 10000;
     margin: 0;
     padding: 0;
     display: flex;
@@ -271,6 +304,8 @@ function onSelectCity(city) {
     padding: 0;
     border: none;
     outline: none;
+    background-color: inherit;
+
 }
 
 .search-button {
@@ -294,12 +329,18 @@ function onSelectCity(city) {
 .scan {
     display: flex;
     flex-grow: 1;
+    z-index: 1;
 
+    background-color: #e9e9e9;
     padding: 4px 0 4px 16px;
     border: #e30016 solid 2px;
     border-radius: 7px;
 
     position: relative;
+}
+
+.scan:focus-within {
+    background-color: white;
 }
 
 .panel {
