@@ -17,6 +17,7 @@ type LazyComponent<T> = DefineComponent<HydrationStrategies, {}, {}, {}, {}, {},
 export const LayoutFooter: typeof import("../app/components/Layout/Footer.vue")['default']
 export const LayoutHeader: typeof import("../app/components/Layout/Header.vue")['default']
 export const LayoutMain: typeof import("../app/components/Layout/Main.vue")['default']
+export const LayoutSearch: typeof import("../app/components/Layout/Search.vue")['default']
 export const MainLayoutFirstLayout: typeof import("../app/components/MainLayout/FirstLayout.vue")['default']
 export const MainLayoutSecondLayout: typeof import("../app/components/MainLayout/SecondLayout.vue")['default']
 export const PopapAssent: typeof import("../app/components/Popap/Assent.vue")['default']
@@ -25,6 +26,7 @@ export const PopapModal: typeof import("../app/components/Popap/Modal.vue")['def
 export const ProductsCategories: typeof import("../app/components/Products/Categories.vue")['default']
 export const ProductsItem: typeof import("../app/components/Products/Item.vue")['default']
 export const ProductsList: typeof import("../app/components/Products/List.vue")['default']
+export const ProductsSearchProducts: typeof import("../app/components/Products/Search/Products.vue")['default']
 export const NuxtWelcome: typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']
 export const NuxtLayout: typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
 export const NuxtErrorBoundary: typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']
@@ -52,6 +54,7 @@ export const NuxtIsland: typeof import("../node_modules/nuxt/dist/app/components
 export const LazyLayoutFooter: LazyComponent<typeof import("../app/components/Layout/Footer.vue")['default']>
 export const LazyLayoutHeader: LazyComponent<typeof import("../app/components/Layout/Header.vue")['default']>
 export const LazyLayoutMain: LazyComponent<typeof import("../app/components/Layout/Main.vue")['default']>
+export const LazyLayoutSearch: LazyComponent<typeof import("../app/components/Layout/Search.vue")['default']>
 export const LazyMainLayoutFirstLayout: LazyComponent<typeof import("../app/components/MainLayout/FirstLayout.vue")['default']>
 export const LazyMainLayoutSecondLayout: LazyComponent<typeof import("../app/components/MainLayout/SecondLayout.vue")['default']>
 export const LazyPopapAssent: LazyComponent<typeof import("../app/components/Popap/Assent.vue")['default']>
@@ -60,6 +63,7 @@ export const LazyPopapModal: LazyComponent<typeof import("../app/components/Popa
 export const LazyProductsCategories: LazyComponent<typeof import("../app/components/Products/Categories.vue")['default']>
 export const LazyProductsItem: LazyComponent<typeof import("../app/components/Products/Item.vue")['default']>
 export const LazyProductsList: LazyComponent<typeof import("../app/components/Products/List.vue")['default']>
+export const LazyProductsSearchProducts: LazyComponent<typeof import("../app/components/Products/Search/Products.vue")['default']>
 export const LazyNuxtWelcome: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']>
 export const LazyNuxtLayout: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']>
 export const LazyNuxtErrorBoundary: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']>

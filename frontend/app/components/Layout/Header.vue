@@ -4,7 +4,10 @@ const isVisible = ref(false);
 const selectCity = useCookie('selectCity', { default: () => 'Челябинск' })
 const querySearch = ref('');
 const popupRef = useTemplateRef('myPopap');
+const searchRef = useTemplateRef('searchInput');
 const searchActive = ref(false);
+const inputSearch = ref('');
+
 
 const { data: dataCities, execute } = await useFetch('/api/cities/suggestions', {
     server: false,
@@ -96,11 +99,22 @@ function searchActiveOff() {
                 </button>
             </div>
             <div class="search-block">
+                <div @click="searchActiveOff" v-if="searchActive" class="overlay"></div>
+                <div v-if="searchActive" class="modal">
+                    <ProductsSearchProducts ref="searchInput" :term="inputSearch" />
+                    <ul class="list-products">
+                        <li>
+                            <a href="">
+                                <img src="" alt="">
+                                <span></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
                 <search class="search">
-                    <div v-if="searchActive" class="overlay"></div>
-                    <div v-if="searchActive" class="modal"></div>
                     <div class="scan">
-                        <input @focus="searchAсtiveOn" @blur="searchActiveOff" class="input-search" type="text">
+                        <input @click="searchAсtiveOn" v-model="inputSearch" @change="searchRef?.executeSearch"
+                            class="input-search" type="text">
                         <button class="search-button" alt="поиск">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                 class="bi bi-search" viewBox="0 0 16 16">
@@ -192,7 +206,7 @@ function searchActiveOff() {
                             <input v-model="querySearch" @input="() => execute" class="city-input" type="text">
                             <div></div>
                             <ul ref="slider" class="list-citys">
-                                <li v-for="city in dataCities" @click="     onSelectCity(city)" :key="city.id"
+                                <li v-for="city in dataCities" :key="city.id" @click="onSelectCity(city)"
                                     class="city-item hover-red" role="button" tabindex="0">{{
                                         city.name }}</li>
                             </ul>
@@ -205,7 +219,7 @@ function searchActiveOff() {
     </div>
 </template>
 
-<style>
+<style scoped>
 .menu {
     max-width: 1536px;
     width: 100%;
@@ -263,14 +277,21 @@ function searchActiveOff() {
 
 .modal {
     position: absolute;
-
     z-index: 1;
-    bottom: -120%;
     left: 0;
-    background: #ffffff;
-    padding: 24px;
-    border-radius: 8px;
+    top: 100%;
 
+    height: 400px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 0;
+
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .overlay {
@@ -283,14 +304,24 @@ function searchActiveOff() {
     z-index: 1;
 }
 
+
+
+.list-products {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
 .search-block {
+    z-index: 10000;
+    position: relative;
     flex-grow: 1;
     display: flex;
 }
 
 .search {
     position: relative;
-    z-index: 10000;
+
     margin: 0;
     padding: 0;
     display: flex;
@@ -494,10 +525,6 @@ function searchActiveOff() {
 .close-button {
     border-radius: 20px;
 }
-
-.form-number {}
-
-.form-name {}
 
 .send-button {
     margin-top: 10px;

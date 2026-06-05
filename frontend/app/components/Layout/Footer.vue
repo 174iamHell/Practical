@@ -72,7 +72,7 @@ const links = ref([
     </div>
 </template>
 
-<style>
+<style scoped>
 .title-colum {
     font-weight: bold;
     font-size: 18px;

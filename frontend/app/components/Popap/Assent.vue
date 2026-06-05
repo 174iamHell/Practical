@@ -29,7 +29,7 @@ function onAccepted() {
 </template>
 
 
-<style>
+<style scoped>
 .baner {
     width: 400px;
 }

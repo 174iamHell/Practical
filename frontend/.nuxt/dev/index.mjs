@@ -2139,7 +2139,22 @@ _aD3cP2VOVOCeELcZFrvHHC5gUo0HWGHAWt71wqEqiTk,
 _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw
 ];
 
-const assets = {};
+const assets = {
+  "/index.mjs": {
+    "type": "text/javascript; charset=utf-8",
+    "etag": "\"1e8c2-5iHCJBvMP3hybe08xEwvl6TPOm8\"",
+    "mtime": "2026-06-05T10:34:25.144Z",
+    "size": 125122,
+    "path": "index.mjs"
+  },
+  "/index.mjs.map": {
+    "type": "application/json",
+    "etag": "\"7affb-DHb2qD3+LfnhAb95W0G83F5gBXE\"",
+    "mtime": "2026-06-05T10:34:25.144Z",
+    "size": 503803,
+    "path": "index.mjs.map"
+  }
+};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));
@@ -2600,13 +2615,15 @@ async function getIslandContext(event) {
 }
 
 const _lazy_G2RXgG = () => Promise.resolve().then(function () { return _id__get$1; });
-const _lazy_9RDFMj = () => Promise.resolve().then(function () { return suggestions_get$1; });
+const _lazy_9RDFMj = () => Promise.resolve().then(function () { return suggestions_get$3; });
+const _lazy_MyX3z7 = () => Promise.resolve().then(function () { return suggestions_get$1; });
 const _lazy_ghIsoW = () => Promise.resolve().then(function () { return renderer; });
 
 const handlers = [
   { route: '', handler: _1VcYyg, lazy: false, middleware: true, method: undefined },
   { route: '/api/categories/:id', handler: _lazy_G2RXgG, lazy: true, middleware: false, method: "get" },
   { route: '/api/cities/suggestions', handler: _lazy_9RDFMj, lazy: true, middleware: false, method: "get" },
+  { route: '/api/products/suggestions', handler: _lazy_MyX3z7, lazy: true, middleware: false, method: "get" },
   { route: '/__nuxt_error', handler: _lazy_ghIsoW, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_island/**', handler: handler$1, lazy: false, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_ghIsoW, lazy: true, middleware: false, method: undefined }
@@ -3047,7 +3064,7 @@ const _id__get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty
   default: _id__get
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const suggestions_get = defineEventHandler((event) => {
+const suggestions_get$2 = defineEventHandler((event) => {
   const query = getQuery$1(event);
   const searchText = (query.search || "").toString().toLowerCase().trim();
   const cities = [
@@ -3110,6 +3127,138 @@ const suggestions_get = defineEventHandler((event) => {
   return cities.filter((city) => {
     return city.name.toLowerCase().includes(searchText);
   });
+});
+
+const suggestions_get$3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: suggestions_get$2
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const suggestions_get = defineEventHandler((event) => {
+  const query = getQuery$1(event);
+  const searchText = (query.search || "").toString().toLowerCase().trim();
+  const products = {
+    "items": {
+      "products": [
+        {
+          "name": "\u041C\u0435\u0440\u043D\u0438\u043A \u041C2\u0420-10-01\u041F, \u043F\u0435\u043D\u043E\u0433\u0430\u0441\u0438\u0442\u0435\u043B\u044C, \u0432\u0435\u0440\u0445\u043D\u0438\u0439 \u0441\u043B\u0438\u0432",
+          "url": "merniki-dlya-azs/kontur-m-m2r-10-01p-penogasitel-verhniy-sliv-962",
+          "image": "/files/p/000/962/item/kontur-m-m2r-10-01p-penogasitel-verhniy-sliv-962.jpg",
+          "id": "962"
+        },
+        {
+          "name": "\u041D\u0430\u0441\u043E\u0441 \u043F\u0440\u0430\u0432\u043E\u0433\u043E \u0432\u0440\u0430\u0449\u0435\u043D\u0438\u044F \u041F\u0435\u043D\u0437\u0430\u0441\u043F\u0435\u0446\u0430\u0432\u0442\u043E\u043C\u0430\u0448 1\u0421\u0412\u041D-80\u0410-\u041F-\u04232",
+          "url": "nasosy-dlya-goryuche-smazochnyh-materialov/penzaspecavtomash-1svn-80a-p-u2-36133",
+          "image": "/files/p/036/133/item/penzaspecavtomash-1svn-80a-p-u2-36133-653577.jpg",
+          "id": "36133"
+        },
+        {
+          "name": "\u041D\u0430\u0441\u043E\u0441 \u0434\u043B\u044F \u0442\u043E\u043F\u043B\u0438\u0432\u0430 \u0421\u0412\u041D-80 \u041F",
+          "url": "nasosy-dlya-goryuche-smazochnyh-materialov/svn-80-pravogo-vrashheniya-7129",
+          "image": "/files/p/007/129/item/svn-80-pravogo-vrashheniya-7129.jpg",
+          "id": "7129"
+        },
+        {
+          "name": "\u041C\u0435\u0440\u043D\u0438\u043A \u041A\u043E\u043D\u0442\u0443\u0440-\u041C \u041C2\u0420-100-01\u041F, \u043F\u0435\u043D\u043E\u0433\u0430\u0441\u0438\u0442\u0435\u043B\u044C (\u043D\u0435\u0440\u0436\u0430\u0432\u0435\u044E\u0449\u0438\u0439)",
+          "url": "merniki-dlya-azs/kontur-m-m2r-100-01p-penogasitel-nerzhaveyushhiy-995",
+          "image": "/files/p/000/995/item/kontur-m-m2r-100-01p-penogasitel-nerzhaveyushhiy-995.jpg",
+          "id": "995"
+        },
+        {
+          "name": "\u0420\u0443\u043A\u0430\u0432 \u0434\u043B\u044F \u043F\u0438\u0449\u0435\u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432 \u041F-2-32-3",
+          "url": "rukava-dlya-pishheproduktov/p-2-32-3-p-2-32-3-34054",
+          "image": "/files/p/034/054/item/p-2-32-3-p-2-32-3-34054.jpg",
+          "id": "34054"
+        },
+        {
+          "name": "\u041F-2-50-3",
+          "url": "rukava-dlya-pishheproduktov/p-2-50-3-p-2-50-3-34056",
+          "image": "/files/p/034/056/item/p-2-50-3-p-2-50-3-34056.jpg",
+          "id": "34056"
+        },
+        {
+          "name": "\u041F-2-50-5",
+          "url": "rukava-dlya-pishheproduktov/p-2-50-5-p-2-50-5-34068",
+          "image": "/files/p/034/068/item/p-2-50-5-p-2-50-5-34068.jpg",
+          "id": "34068"
+        },
+        {
+          "name": "\u041F-2-50-10",
+          "url": "rukava-dlya-pishheproduktov/p-2-50-10-p-2-50-10-34080",
+          "image": "/files/p/034/080/item/p-2-50-10-p-2-50-10-34080.jpg",
+          "id": "34080"
+        },
+        {
+          "name": "\u0420\u0443\u043A\u0430\u0432 \u0434\u043B\u044F \u043F\u0438\u0449\u0435\u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432 \u041F-2-25-3",
+          "url": "rukava-dlya-pishheproduktov/p-2-25-3-p-2-25-3-34053",
+          "image": "/files/p/034/053/item/p-2-25-3-p-2-25-3-34053.jpg",
+          "id": "34053"
+        },
+        {
+          "name": "\u0420\u0443\u043A\u0430\u0432 \u0434\u043B\u044F \u043F\u0438\u0449\u0435\u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432 \u041F-2-38-3",
+          "url": "rukava-dlya-pishheproduktov/p-2-38-3-p-2-38-3-34055",
+          "image": "/files/p/034/055/item/p-2-38-3-p-2-38-3-34055.jpg",
+          "id": "34055"
+        },
+        {
+          "name": "\u0420\u0443\u043A\u0430\u0432 \u0434\u043B\u044F \u043F\u0438\u0449\u0435\u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432 \u041F-2-65-3",
+          "url": "rukava-dlya-pishheproduktov/p-2-65-3-p-2-65-3-34057",
+          "image": "/files/p/034/057/item/p-2-65-3-p-2-65-3-34057.jpg",
+          "id": "34057"
+        },
+        {
+          "name": "\u0420\u0443\u043A\u0430\u0432 \u0434\u043B\u044F \u043F\u0438\u0449\u0435\u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432 \u041F-2-75-3",
+          "url": "rukava-dlya-pishheproduktov/p-2-75-3-p-2-75-3-34058",
+          "image": "/files/p/034/058/item/p-2-75-3-p-2-75-3-34058.jpg",
+          "id": "34058"
+        },
+        {
+          "name": "\u0420\u0443\u043A\u0430\u0432 \u0434\u043B\u044F \u043F\u0438\u0449\u0435\u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432 \u041F-2-100-3",
+          "url": "rukava-dlya-pishheproduktov/p-2-100-3-p-2-100-3-34059",
+          "image": "/files/p/034/059/item/p-2-100-3-p-2-100-3-34059.jpg",
+          "id": "34059"
+        },
+        {
+          "name": "\u0420\u0443\u043A\u0430\u0432 \u0434\u043B\u044F \u043F\u0438\u0449\u0435\u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432 \u041F-2-125-3",
+          "url": "rukava-dlya-pishheproduktov/p-2-125-3-p-2-125-3-34060",
+          "image": "/files/p/034/060/item/p-2-125-3-p-2-125-3-34060.jpg",
+          "id": "34060"
+        },
+        {
+          "name": "\u0420\u0443\u043A\u0430\u0432 \u0434\u043B\u044F \u043F\u0438\u0449\u0435\u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432 \u041F-2-150-3",
+          "url": "rukava-dlya-pishheproduktov/p-2-150-3-p-2-150-3-34061",
+          "image": "/files/p/034/061/item/p-2-150-3-p-2-150-3-34061.jpg",
+          "id": "34061"
+        },
+        {
+          "name": "\u0420\u0443\u043A\u0430\u0432 \u0434\u043B\u044F \u043F\u0438\u0449\u0435\u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432 \u041F-2-200-3",
+          "url": "rukava-dlya-pishheproduktov/p-2-200-3-p-2-200-3-34062",
+          "image": "/files/p/034/062/item/p-2-200-3-p-2-200-3-34062.jpg",
+          "id": "34062"
+        },
+        {
+          "name": "\u0420\u0443\u043A\u0430\u0432 \u0434\u043B\u044F \u043F\u0438\u0449\u0435\u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432 \u041F-2-300-3",
+          "url": "rukava-dlya-pishheproduktov/p-2-300-3-p-2-300-3-34063",
+          "image": "/files/p/034/063/item/p-2-300-3-p-2-300-3-34063.jpg",
+          "id": "34063"
+        },
+        {
+          "name": "\u0420\u0443\u043A\u0430\u0432 \u0434\u043B\u044F \u043F\u0438\u0449\u0435\u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432 \u041F-2-250-3",
+          "url": "rukava-dlya-pishheproduktov/p-2-250-3-p-2-250-3-34064",
+          "image": "/files/p/034/064/item/p-2-250-3-p-2-250-3-34064.jpg",
+          "id": "34064"
+        }
+      ]}
+  };
+  const filterProducts = products.items.products.filter((product) => {
+    return product.name.toLowerCase().includes(searchText);
+  });
+  return {
+    items: {
+      products: filterProducts,
+      show_get_more: (filterProducts || []).length > 0
+    }
+  };
 });
 
 const suggestions_get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({

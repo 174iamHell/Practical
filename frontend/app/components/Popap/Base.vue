@@ -3,7 +3,6 @@ const isModalOpen = ref(false);
 
 const open = () => { isModalOpen.value = true }
 const close = () => { isModalOpen.value = false }
-console.log("isModal", isModalOpen)
 defineExpose({ open, close })
 </script>
 

@@ -22,7 +22,7 @@ defineExpose({
     </PopapBase>
 </template>
 
-<style>
+<style scoped>
 .modal {
     position: fixed;
     z-index: 999;
