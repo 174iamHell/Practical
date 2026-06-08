@@ -4,10 +4,9 @@ const isVisible = ref(false);
 const selectCity = useCookie('selectCity', { default: () => 'Челябинск' })
 const querySearch = ref('');
 const popupRef = useTemplateRef('myPopap');
-const searchRef = useTemplateRef('searchInput');
 const searchActive = ref(false);
 const inputSearch = ref('');
-
+const inputRef = useTemplateRef('searchInput')
 
 const { data: dataCities, execute } = await useFetch('/api/cities/suggestions', {
     server: false,
@@ -38,13 +37,6 @@ function toggleBlock() {
 function onSelectCity(city: any) {
 
     selectCity.value = city.name;
-
-    $fetch('/api/cities/select', {
-        method: 'POST',
-        body: {
-            id: city.id
-        }
-    });
 
     onClose();
 }
@@ -113,7 +105,7 @@ function searchActiveOff() {
                 </div>
                 <search class="search">
                     <div class="scan">
-                        <input @click="searchAсtiveOn" v-model="inputSearch" @change="searchRef?.executeSearch"
+                        <input @click="searchAсtiveOn" v-model="inputSearch" @input="inputRef?.search"
                             class="input-search" type="text">
                         <button class="search-button" alt="поиск">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"

@@ -17,7 +17,6 @@ interface _GlobalComponents {
   LayoutFooter: typeof import("../../app/components/Layout/Footer.vue")['default']
   LayoutHeader: typeof import("../../app/components/Layout/Header.vue")['default']
   LayoutMain: typeof import("../../app/components/Layout/Main.vue")['default']
-  LayoutSearch: typeof import("../../app/components/Layout/Search.vue")['default']
   MainLayoutFirstLayout: typeof import("../../app/components/MainLayout/FirstLayout.vue")['default']
   MainLayoutSecondLayout: typeof import("../../app/components/MainLayout/SecondLayout.vue")['default']
   PopapAssent: typeof import("../../app/components/Popap/Assent.vue")['default']
@@ -54,7 +53,6 @@ interface _GlobalComponents {
   LazyLayoutFooter: LazyComponent<typeof import("../../app/components/Layout/Footer.vue")['default']>
   LazyLayoutHeader: LazyComponent<typeof import("../../app/components/Layout/Header.vue")['default']>
   LazyLayoutMain: LazyComponent<typeof import("../../app/components/Layout/Main.vue")['default']>
-  LazyLayoutSearch: LazyComponent<typeof import("../../app/components/Layout/Search.vue")['default']>
   LazyMainLayoutFirstLayout: LazyComponent<typeof import("../../app/components/MainLayout/FirstLayout.vue")['default']>
   LazyMainLayoutSecondLayout: LazyComponent<typeof import("../../app/components/MainLayout/SecondLayout.vue")['default']>
   LazyPopapAssent: LazyComponent<typeof import("../../app/components/Popap/Assent.vue")['default']>

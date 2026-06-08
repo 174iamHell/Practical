@@ -17,7 +17,6 @@ type LazyComponent<T> = DefineComponent<HydrationStrategies, {}, {}, {}, {}, {},
 export const LayoutFooter: typeof import("../app/components/Layout/Footer.vue")['default']
 export const LayoutHeader: typeof import("../app/components/Layout/Header.vue")['default']
 export const LayoutMain: typeof import("../app/components/Layout/Main.vue")['default']
-export const LayoutSearch: typeof import("../app/components/Layout/Search.vue")['default']
 export const MainLayoutFirstLayout: typeof import("../app/components/MainLayout/FirstLayout.vue")['default']
 export const MainLayoutSecondLayout: typeof import("../app/components/MainLayout/SecondLayout.vue")['default']
 export const PopapAssent: typeof import("../app/components/Popap/Assent.vue")['default']
@@ -54,7 +53,6 @@ export const NuxtIsland: typeof import("../node_modules/nuxt/dist/app/components
 export const LazyLayoutFooter: LazyComponent<typeof import("../app/components/Layout/Footer.vue")['default']>
 export const LazyLayoutHeader: LazyComponent<typeof import("../app/components/Layout/Header.vue")['default']>
 export const LazyLayoutMain: LazyComponent<typeof import("../app/components/Layout/Main.vue")['default']>
-export const LazyLayoutSearch: LazyComponent<typeof import("../app/components/Layout/Search.vue")['default']>
 export const LazyMainLayoutFirstLayout: LazyComponent<typeof import("../app/components/MainLayout/FirstLayout.vue")['default']>
 export const LazyMainLayoutSecondLayout: LazyComponent<typeof import("../app/components/MainLayout/SecondLayout.vue")['default']>
 export const LazyPopapAssent: LazyComponent<typeof import("../app/components/Popap/Assent.vue")['default']>

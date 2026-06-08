@@ -2142,16 +2142,16 @@ _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw
 const assets = {
   "/index.mjs": {
     "type": "text/javascript; charset=utf-8",
-    "etag": "\"1e8c2-5iHCJBvMP3hybe08xEwvl6TPOm8\"",
-    "mtime": "2026-06-05T10:34:25.144Z",
-    "size": 125122,
+    "etag": "\"1e8e1-5owquR1XqHPNsK77/8n7lQC1q70\"",
+    "mtime": "2026-06-08T06:11:51.911Z",
+    "size": 125153,
     "path": "index.mjs"
   },
   "/index.mjs.map": {
     "type": "application/json",
-    "etag": "\"7affb-DHb2qD3+LfnhAb95W0G83F5gBXE\"",
-    "mtime": "2026-06-05T10:34:25.144Z",
-    "size": 503803,
+    "etag": "\"7b04a-Q/SPzjn3n+l5nAcS8BjnlFdtZVc\"",
+    "mtime": "2026-06-08T06:11:51.911Z",
+    "size": 503882,
     "path": "index.mjs.map"
   }
 };
@@ -3253,6 +3253,7 @@ const suggestions_get = defineEventHandler((event) => {
   const filterProducts = products.items.products.filter((product) => {
     return product.name.toLowerCase().includes(searchText);
   });
+  console.log(filterProducts);
   return {
     items: {
       products: filterProducts,

@@ -1,4 +1,7 @@
 <script setup lang="ts">
+
+import { async } from '@ankasru/utils-ts';
+
 const {
     term
 } = defineProps<{
@@ -9,17 +12,24 @@ const query = computed(() => ({
     search: term
 }));
 
+const search = async.debounce({
+    callback: () => {
+        execute()
+    },
+    timeout: 1000
+});
+
 const { data: items, execute } = await useFetch("/api/products/suggestions", {
     server: false,
     immediate: false,
     query,
 })
 
-const executeSearch = () => {
-    execute();
-    console.log("Пришли товары:", items.value?.items?.products);
-};
-defineExpose({ executeSearch })
+
+
+watch(query, () => { search() })
+
+defineExpose({ search })
 </script>
 
 <template>

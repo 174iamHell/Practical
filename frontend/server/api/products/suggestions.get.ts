@@ -1,7 +1,9 @@
+
 export default defineEventHandler((event) => {
 
     const query = getQuery(event)
     const searchText = (query.search || '').toString().toLowerCase().trim()
+
     const products =
     {
         "items": {
@@ -124,11 +126,13 @@ export default defineEventHandler((event) => {
         return product.name.toLowerCase().includes(searchText)
     })
 
-
+    console.log(filterProducts)
     return {
         items: {
             products: filterProducts,
             show_get_more: (filterProducts || []).length > 0
         }
     }
+
 })
+
