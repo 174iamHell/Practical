@@ -26,6 +26,7 @@ interface _GlobalComponents {
   ProductsItem: typeof import("../../app/components/Products/Item.vue")['default']
   ProductsList: typeof import("../../app/components/Products/List.vue")['default']
   ProductsSearchProducts: typeof import("../../app/components/Products/Search/Products.vue")['default']
+  ProductsSearchPromt: typeof import("../../app/components/Products/Search/Promt.vue")['default']
   NuxtWelcome: typeof import("../../node_modules/nuxt/dist/app/components/welcome.vue")['default']
   NuxtLayout: typeof import("../../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
   NuxtErrorBoundary: typeof import("../../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']
@@ -62,6 +63,7 @@ interface _GlobalComponents {
   LazyProductsItem: LazyComponent<typeof import("../../app/components/Products/Item.vue")['default']>
   LazyProductsList: LazyComponent<typeof import("../../app/components/Products/List.vue")['default']>
   LazyProductsSearchProducts: LazyComponent<typeof import("../../app/components/Products/Search/Products.vue")['default']>
+  LazyProductsSearchPromt: LazyComponent<typeof import("../../app/components/Products/Search/Promt.vue")['default']>
   LazyNuxtWelcome: LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/welcome.vue")['default']>
   LazyNuxtLayout: LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/nuxt-layout")['default']>
   LazyNuxtErrorBoundary: LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']>

@@ -2142,16 +2142,16 @@ _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw
 const assets = {
   "/index.mjs": {
     "type": "text/javascript; charset=utf-8",
-    "etag": "\"1e8e1-5owquR1XqHPNsK77/8n7lQC1q70\"",
-    "mtime": "2026-06-08T06:11:51.911Z",
-    "size": 125153,
+    "etag": "\"1e960-kM67J2nw6jypqiLVO/kaVqb6QAo\"",
+    "mtime": "2026-06-09T09:41:11.906Z",
+    "size": 125280,
     "path": "index.mjs"
   },
   "/index.mjs.map": {
     "type": "application/json",
-    "etag": "\"7b04a-Q/SPzjn3n+l5nAcS8BjnlFdtZVc\"",
-    "mtime": "2026-06-08T06:11:51.911Z",
-    "size": 503882,
+    "etag": "\"7a7a7-HyJlBkbod2kohSuflAVX3+odMyw\"",
+    "mtime": "2026-06-09T09:41:11.906Z",
+    "size": 501671,
     "path": "index.mjs.map"
   }
 };
@@ -2615,15 +2615,17 @@ async function getIslandContext(event) {
 }
 
 const _lazy_G2RXgG = () => Promise.resolve().then(function () { return _id__get$1; });
-const _lazy_9RDFMj = () => Promise.resolve().then(function () { return suggestions_get$3; });
-const _lazy_MyX3z7 = () => Promise.resolve().then(function () { return suggestions_get$1; });
+const _lazy_9RDFMj = () => Promise.resolve().then(function () { return suggestions_get$1; });
+const _lazy_UTanuh = () => Promise.resolve().then(function () { return suggestionsProducts_get$1; });
+const _lazy_vW30Me = () => Promise.resolve().then(function () { return suggestionsPromt_get$1; });
 const _lazy_ghIsoW = () => Promise.resolve().then(function () { return renderer; });
 
 const handlers = [
   { route: '', handler: _1VcYyg, lazy: false, middleware: true, method: undefined },
   { route: '/api/categories/:id', handler: _lazy_G2RXgG, lazy: true, middleware: false, method: "get" },
   { route: '/api/cities/suggestions', handler: _lazy_9RDFMj, lazy: true, middleware: false, method: "get" },
-  { route: '/api/products/suggestions', handler: _lazy_MyX3z7, lazy: true, middleware: false, method: "get" },
+  { route: '/api/products/suggestionsProducts', handler: _lazy_UTanuh, lazy: true, middleware: false, method: "get" },
+  { route: '/api/products/suggestionsPromt', handler: _lazy_vW30Me, lazy: true, middleware: false, method: "get" },
   { route: '/__nuxt_error', handler: _lazy_ghIsoW, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_island/**', handler: handler$1, lazy: false, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_ghIsoW, lazy: true, middleware: false, method: undefined }
@@ -3064,7 +3066,7 @@ const _id__get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty
   default: _id__get
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const suggestions_get$2 = defineEventHandler((event) => {
+const suggestions_get = defineEventHandler((event) => {
   const query = getQuery$1(event);
   const searchText = (query.search || "").toString().toLowerCase().trim();
   const cities = [
@@ -3129,12 +3131,12 @@ const suggestions_get$2 = defineEventHandler((event) => {
   });
 });
 
-const suggestions_get$3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+const suggestions_get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
-  default: suggestions_get$2
+  default: suggestions_get
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const suggestions_get = defineEventHandler((event) => {
+const suggestionsProducts_get = defineEventHandler((event) => {
   const query = getQuery$1(event);
   const searchText = (query.search || "").toString().toLowerCase().trim();
   const products = {
@@ -3143,117 +3145,69 @@ const suggestions_get = defineEventHandler((event) => {
         {
           "name": "\u041C\u0435\u0440\u043D\u0438\u043A \u041C2\u0420-10-01\u041F, \u043F\u0435\u043D\u043E\u0433\u0430\u0441\u0438\u0442\u0435\u043B\u044C, \u0432\u0435\u0440\u0445\u043D\u0438\u0439 \u0441\u043B\u0438\u0432",
           "url": "merniki-dlya-azs/kontur-m-m2r-10-01p-penogasitel-verhniy-sliv-962",
-          "image": "/files/p/000/962/item/kontur-m-m2r-10-01p-penogasitel-verhniy-sliv-962.jpg",
+          "image": "https://unsplash.com",
           "id": "962"
         },
         {
           "name": "\u041D\u0430\u0441\u043E\u0441 \u043F\u0440\u0430\u0432\u043E\u0433\u043E \u0432\u0440\u0430\u0449\u0435\u043D\u0438\u044F \u041F\u0435\u043D\u0437\u0430\u0441\u043F\u0435\u0446\u0430\u0432\u0442\u043E\u043C\u0430\u0448 1\u0421\u0412\u041D-80\u0410-\u041F-\u04232",
           "url": "nasosy-dlya-goryuche-smazochnyh-materialov/penzaspecavtomash-1svn-80a-p-u2-36133",
-          "image": "/files/p/036/133/item/penzaspecavtomash-1svn-80a-p-u2-36133-653577.jpg",
+          "image": "https://unsplash.com",
           "id": "36133"
         },
         {
           "name": "\u041D\u0430\u0441\u043E\u0441 \u0434\u043B\u044F \u0442\u043E\u043F\u043B\u0438\u0432\u0430 \u0421\u0412\u041D-80 \u041F",
           "url": "nasosy-dlya-goryuche-smazochnyh-materialov/svn-80-pravogo-vrashheniya-7129",
-          "image": "/files/p/007/129/item/svn-80-pravogo-vrashheniya-7129.jpg",
+          "image": "https://unsplash.com",
           "id": "7129"
         },
         {
           "name": "\u041C\u0435\u0440\u043D\u0438\u043A \u041A\u043E\u043D\u0442\u0443\u0440-\u041C \u041C2\u0420-100-01\u041F, \u043F\u0435\u043D\u043E\u0433\u0430\u0441\u0438\u0442\u0435\u043B\u044C (\u043D\u0435\u0440\u0436\u0430\u0432\u0435\u044E\u0449\u0438\u0439)",
           "url": "merniki-dlya-azs/kontur-m-m2r-100-01p-penogasitel-nerzhaveyushhiy-995",
-          "image": "/files/p/000/995/item/kontur-m-m2r-100-01p-penogasitel-nerzhaveyushhiy-995.jpg",
+          "image": "https://unsplash.com",
           "id": "995"
         },
         {
           "name": "\u0420\u0443\u043A\u0430\u0432 \u0434\u043B\u044F \u043F\u0438\u0449\u0435\u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432 \u041F-2-32-3",
           "url": "rukava-dlya-pishheproduktov/p-2-32-3-p-2-32-3-34054",
-          "image": "/files/p/034/054/item/p-2-32-3-p-2-32-3-34054.jpg",
+          "image": "https://unsplash.com",
           "id": "34054"
         },
         {
           "name": "\u041F-2-50-3",
           "url": "rukava-dlya-pishheproduktov/p-2-50-3-p-2-50-3-34056",
-          "image": "/files/p/034/056/item/p-2-50-3-p-2-50-3-34056.jpg",
+          "image": "https://unsplash.com",
           "id": "34056"
         },
         {
           "name": "\u041F-2-50-5",
           "url": "rukava-dlya-pishheproduktov/p-2-50-5-p-2-50-5-34068",
-          "image": "/files/p/034/068/item/p-2-50-5-p-2-50-5-34068.jpg",
+          "image": "https://unsplash.com",
           "id": "34068"
         },
         {
           "name": "\u041F-2-50-10",
           "url": "rukava-dlya-pishheproduktov/p-2-50-10-p-2-50-10-34080",
-          "image": "/files/p/034/080/item/p-2-50-10-p-2-50-10-34080.jpg",
+          "image": "https://unsplash.com",
           "id": "34080"
         },
         {
           "name": "\u0420\u0443\u043A\u0430\u0432 \u0434\u043B\u044F \u043F\u0438\u0449\u0435\u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432 \u041F-2-25-3",
           "url": "rukava-dlya-pishheproduktov/p-2-25-3-p-2-25-3-34053",
-          "image": "/files/p/034/053/item/p-2-25-3-p-2-25-3-34053.jpg",
+          "image": "https://unsplash.com",
           "id": "34053"
         },
         {
           "name": "\u0420\u0443\u043A\u0430\u0432 \u0434\u043B\u044F \u043F\u0438\u0449\u0435\u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432 \u041F-2-38-3",
           "url": "rukava-dlya-pishheproduktov/p-2-38-3-p-2-38-3-34055",
-          "image": "/files/p/034/055/item/p-2-38-3-p-2-38-3-34055.jpg",
+          "image": "https://unsplash.com",
           "id": "34055"
-        },
-        {
-          "name": "\u0420\u0443\u043A\u0430\u0432 \u0434\u043B\u044F \u043F\u0438\u0449\u0435\u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432 \u041F-2-65-3",
-          "url": "rukava-dlya-pishheproduktov/p-2-65-3-p-2-65-3-34057",
-          "image": "/files/p/034/057/item/p-2-65-3-p-2-65-3-34057.jpg",
-          "id": "34057"
-        },
-        {
-          "name": "\u0420\u0443\u043A\u0430\u0432 \u0434\u043B\u044F \u043F\u0438\u0449\u0435\u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432 \u041F-2-75-3",
-          "url": "rukava-dlya-pishheproduktov/p-2-75-3-p-2-75-3-34058",
-          "image": "/files/p/034/058/item/p-2-75-3-p-2-75-3-34058.jpg",
-          "id": "34058"
-        },
-        {
-          "name": "\u0420\u0443\u043A\u0430\u0432 \u0434\u043B\u044F \u043F\u0438\u0449\u0435\u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432 \u041F-2-100-3",
-          "url": "rukava-dlya-pishheproduktov/p-2-100-3-p-2-100-3-34059",
-          "image": "/files/p/034/059/item/p-2-100-3-p-2-100-3-34059.jpg",
-          "id": "34059"
-        },
-        {
-          "name": "\u0420\u0443\u043A\u0430\u0432 \u0434\u043B\u044F \u043F\u0438\u0449\u0435\u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432 \u041F-2-125-3",
-          "url": "rukava-dlya-pishheproduktov/p-2-125-3-p-2-125-3-34060",
-          "image": "/files/p/034/060/item/p-2-125-3-p-2-125-3-34060.jpg",
-          "id": "34060"
-        },
-        {
-          "name": "\u0420\u0443\u043A\u0430\u0432 \u0434\u043B\u044F \u043F\u0438\u0449\u0435\u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432 \u041F-2-150-3",
-          "url": "rukava-dlya-pishheproduktov/p-2-150-3-p-2-150-3-34061",
-          "image": "/files/p/034/061/item/p-2-150-3-p-2-150-3-34061.jpg",
-          "id": "34061"
-        },
-        {
-          "name": "\u0420\u0443\u043A\u0430\u0432 \u0434\u043B\u044F \u043F\u0438\u0449\u0435\u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432 \u041F-2-200-3",
-          "url": "rukava-dlya-pishheproduktov/p-2-200-3-p-2-200-3-34062",
-          "image": "/files/p/034/062/item/p-2-200-3-p-2-200-3-34062.jpg",
-          "id": "34062"
-        },
-        {
-          "name": "\u0420\u0443\u043A\u0430\u0432 \u0434\u043B\u044F \u043F\u0438\u0449\u0435\u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432 \u041F-2-300-3",
-          "url": "rukava-dlya-pishheproduktov/p-2-300-3-p-2-300-3-34063",
-          "image": "/files/p/034/063/item/p-2-300-3-p-2-300-3-34063.jpg",
-          "id": "34063"
-        },
-        {
-          "name": "\u0420\u0443\u043A\u0430\u0432 \u0434\u043B\u044F \u043F\u0438\u0449\u0435\u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432 \u041F-2-250-3",
-          "url": "rukava-dlya-pishheproduktov/p-2-250-3-p-2-250-3-34064",
-          "image": "/files/p/034/064/item/p-2-250-3-p-2-250-3-34064.jpg",
-          "id": "34064"
         }
-      ]}
+      ]
+    }
   };
   const filterProducts = products.items.products.filter((product) => {
     return product.name.toLowerCase().includes(searchText);
   });
-  console.log(filterProducts);
   return {
     items: {
       products: filterProducts,
@@ -3262,9 +3216,79 @@ const suggestions_get = defineEventHandler((event) => {
   };
 });
 
-const suggestions_get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+const suggestionsProducts_get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
-  default: suggestions_get
+  default: suggestionsProducts_get
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const suggestionsPromt_get = defineEventHandler((event) => {
+  const query = getQuery$1(event);
+  const searchText = (query.search || "").toString().toLowerCase().trim();
+  const categories = {
+    "items": {
+      "categories": [
+        {
+          "name": "\u0410\u0441\u0438\u043D\u0445\u0440\u043E\u043D\u043D\u044B\u0435 \u044D\u043B\u0435\u043A\u0442\u0440\u043E\u0434\u0432\u0438\u0433\u0430\u0442\u0435\u043B\u0438 \u043D\u0430 380 \u0412",
+          "slug": "asinhronnye-elektrodvigateli-na-380-volt",
+          "image": "/files/c/016/459/small/asinhronnye-elektrodvigateli-na-380-volt.jpg",
+          "id": "16459",
+          "parent_category": "\u042D\u043B\u0435\u043A\u0442\u0440\u043E\u0434\u0432\u0438\u0433\u0430\u0442\u0435\u043B\u0438"
+        },
+        {
+          "name": "\u0410\u0441\u0438\u043D\u0445\u0440\u043E\u043D\u043D\u044B\u0435 \u044D\u043B\u0435\u043A\u0442\u0440\u043E\u0434\u0432\u0438\u0433\u0430\u0442\u0435\u043B\u0438 \u043D\u0430 220 \u0412",
+          "slug": "asinhronnye-elektrodvigateli-na-220-volt",
+          "image": "/files/c/016/458/small/asinhronnye-elektrodvigateli-na-220-volt.jpg",
+          "id": "16458",
+          "parent_category": "\u042D\u043B\u0435\u043A\u0442\u0440\u043E\u0434\u0432\u0438\u0433\u0430\u0442\u0435\u043B\u0438"
+        },
+        {
+          "name": "\u041D\u0430\u0441\u043E\u0441\u044B \u0434\u043B\u044F \u0442\u043E\u043F\u043B\u0438\u0432\u0430 220 \u0412",
+          "slug": "nasosy-dlya-topliva-220-volt",
+          "image": "/files/c/001/763/small/nasosy-dlya-perekachki-topliva-220-volt.jpg",
+          "id": "1763",
+          "parent_category": "\u041D\u0430\u0441\u043E\u0441\u044B \u0434\u043B\u044F \u0442\u043E\u043F\u043B\u0438\u0432\u0430"
+        },
+        {
+          "name": "\u0428\u043F\u0440\u0438\u0446\u044B \u0434\u043B\u044F \u0441\u043C\u0430\u0437\u043A\u0438 \u0432 \u0442\u0443\u0431\u0430\u0445",
+          "slug": "shpricy-dlya-smazki-v-tubah",
+          "image": "/files/c/001/844/small/shpric-dlya-smazki-v-tubah.jpg",
+          "id": "1844",
+          "parent_category": "\u0422\u0435\u0445\u043D\u0438\u0447\u0435\u0441\u043A\u0438\u0435 \u0448\u043F\u0440\u0438\u0446\u044B"
+        }
+      ],
+      "brands": [
+        {
+          "name": "Dungs",
+          "slug": "dungs",
+          "image": "/files/b/000/033/small/dungs.png",
+          "id": "33"
+        },
+        {
+          "name": "Danfoss",
+          "slug": "danfoss",
+          "image": "/files/b/000/216/small/danfoss.png",
+          "id": "216"
+        }
+      ]
+    }
+  };
+  const filterCategories = categories.items.categories.filter((category) => {
+    return category.name.toLowerCase().includes(searchText);
+  });
+  const filterBrands = categories.items.brands.filter((brand) => {
+    return brand.name.toLowerCase().includes(searchText);
+  });
+  return {
+    items: {
+      categories: filterCategories,
+      brands: filterBrands
+    }
+  };
+});
+
+const suggestionsPromt_get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: suggestionsPromt_get
 }, Symbol.toStringTag, { value: 'Module' }));
 
 function renderPayloadResponse(ssrContext) {

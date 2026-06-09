@@ -26,6 +26,7 @@ export const ProductsCategories: typeof import("../app/components/Products/Categ
 export const ProductsItem: typeof import("../app/components/Products/Item.vue")['default']
 export const ProductsList: typeof import("../app/components/Products/List.vue")['default']
 export const ProductsSearchProducts: typeof import("../app/components/Products/Search/Products.vue")['default']
+export const ProductsSearchPromt: typeof import("../app/components/Products/Search/Promt.vue")['default']
 export const NuxtWelcome: typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']
 export const NuxtLayout: typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
 export const NuxtErrorBoundary: typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']
@@ -62,6 +63,7 @@ export const LazyProductsCategories: LazyComponent<typeof import("../app/compone
 export const LazyProductsItem: LazyComponent<typeof import("../app/components/Products/Item.vue")['default']>
 export const LazyProductsList: LazyComponent<typeof import("../app/components/Products/List.vue")['default']>
 export const LazyProductsSearchProducts: LazyComponent<typeof import("../app/components/Products/Search/Products.vue")['default']>
+export const LazyProductsSearchPromt: LazyComponent<typeof import("../app/components/Products/Search/Promt.vue")['default']>
 export const LazyNuxtWelcome: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']>
 export const LazyNuxtLayout: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']>
 export const LazyNuxtErrorBoundary: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']>

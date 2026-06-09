@@ -6,7 +6,7 @@ const querySearch = ref('');
 const popupRef = useTemplateRef('myPopap');
 const searchActive = ref(false);
 const inputSearch = ref('');
-const inputRef = useTemplateRef('searchInput')
+
 
 const { data: dataCities, execute } = await useFetch('/api/cities/suggestions', {
     server: false,
@@ -93,20 +93,12 @@ function searchActiveOff() {
             <div class="search-block">
                 <div @click="searchActiveOff" v-if="searchActive" class="overlay"></div>
                 <div v-if="searchActive" class="modal">
-                    <ProductsSearchProducts ref="searchInput" :term="inputSearch" />
-                    <ul class="list-products">
-                        <li>
-                            <a href="">
-                                <img src="" alt="">
-                                <span></span>
-                            </a>
-                        </li>
-                    </ul>
+                    <ProductsSearchPromt :term="inputSearch" />
+                    <ProductsSearchProducts :term="inputSearch" />
                 </div>
                 <search class="search">
                     <div class="scan">
-                        <input @click="searchAсtiveOn" v-model="inputSearch" @input="inputRef?.search"
-                            class="input-search" type="text">
+                        <input @click="searchAсtiveOn" v-model="inputSearch" class="input-search" type="text">
                         <button class="search-button" alt="поиск">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                 class="bi bi-search" viewBox="0 0 16 16">
@@ -273,7 +265,7 @@ function searchActiveOff() {
     left: 0;
     top: 100%;
 
-    height: 400px;
+
     width: 100%;
     margin-top: 10px;
     padding: 0;

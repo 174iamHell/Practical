@@ -9,8 +9,11 @@ declare module "nitropack/types" {
     '/api/cities/suggestions': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/cities/suggestions.get').default>>>>
     }
-    '/api/products/suggestions': {
-      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/products/suggestions.get').default>>>>
+    '/api/products/suggestionsProducts': {
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/products/suggestionsProducts.get').default>>>>
+    }
+    '/api/products/suggestionsPromt': {
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/products/suggestionsPromt.get').default>>>>
     }
     '/__nuxt_error': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/@nuxt/nitro-server/dist/runtime/handlers/renderer').default>>>>

@@ -19,38 +19,127 @@ const search = async.debounce({
     timeout: 1000
 });
 
-const { data: items, execute } = await useFetch("/api/products/suggestions", {
+const { data: items, execute } = await useFetch("/api/products/suggestionsProducts", {
     server: false,
     immediate: false,
+    watch: false,
     query,
 })
 
 
 
 watch(query, () => { search() })
-
-defineExpose({ search })
 </script>
 
 <template>
-    <ul class="list-categories">
-        <li v-for="product in items?.items.products" :key="product.id">
-            <a href="">
-                <img :src=product.image alt="">
-                <span>{{ product.name }}</span>
-            </a>
-        </li>
-    </ul>
+    <div class="list-block">
+        <div>
+            <ul class="list-categories">
+                <li v-for="product in items?.items.products" :key="product.id" class="item-list">
+                    <a :href="product.url" class="list-link">
+                        <img src="https://profpribor.ru/wp-content/uploads/2017/08/%D0%9C%D0%B5%D1%80%D0%BD%D0%B8%D0%BA-%D0%9C2%D1%80-10-01%D0%9F-%D1%81-%D0%BF%D0%B5%D0%BD%D0%BE%D0%B3%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D0%B5%D0%BC-2.jpg"
+                            alt="" class="list-img">
+                        <span class="list-span">{{ product.name }}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <button v-if="items?.items.show_get_more" class="list-button">Показать все</button>
+    </div>
+
+
 </template>
 
 <style scoped>
+.list-block {
+    display: flex;
+    flex-direction: column;
+    max-height: 700px;
+    min-height: 500px;
+    overflow-y: scroll;
+}
+
 .list-categories {
     display: grid;
-    grid-template: repeat(auto-fit, minmax(185, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+    grid-auto-rows: max-content;
 
-    background-color: #f6f6f6;
+
+    background-color: white;
+    border-radius: 5px;
     margin: 0;
-    padding: 0;
+    padding: 5px;
     list-style: none;
+
+}
+
+.item-list {
+    border-radius: 10px;
+
+}
+
+.list-link {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.list-span {
+    position: relative;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    width: 114px;
+    color: black;
+    text-align: left;
+    word-break: break-all;
+    margin: 1px auto auto auto;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.list-span::before {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    content: '';
+    display: block;
+    width: 35px;
+    height: 15px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 40%, rgba(255, 255, 255, 1) 60%);
+}
+
+.list-img {
+    width: 114px;
+    height: 114px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+:hover.item-list {
+    background-color: #f6f6f6;
+}
+
+.item-list:hover .list-span {
+    color: blue;
+}
+
+.list-button {
+    justify-self: center;
+    margin: 10px auto 20px auto;
+    background: #1baa65;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    width: 180px;
 }
 </style>
