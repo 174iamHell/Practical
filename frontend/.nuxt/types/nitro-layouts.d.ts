@@ -1,4 +1,4 @@
-export type LayoutKey = "default"
+export type LayoutKey = "desktop" | "mobile"
 declare module 'nitropack' {
   interface NitroRouteConfig {
     appLayout?: LayoutKey | false

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import { async } from '@ankasru/utils-ts';
+import TextHighlight from './TextHighlight.vue';
 
 const {
     term
@@ -89,28 +90,13 @@ watch(query, () => { search() })
 
 .list-span {
     position: relative;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
     overflow: hidden;
     width: 114px;
     color: black;
     text-align: left;
-    word-break: break-all;
     margin: 1px auto auto auto;
     font-size: 14px;
     font-weight: 400;
-}
-
-.list-span::before {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    content: '';
-    display: block;
-    width: 35px;
-    height: 15px;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 40%, rgba(255, 255, 255, 1) 60%);
 }
 
 .list-img {

@@ -19,6 +19,9 @@ interface _GlobalComponents {
   LayoutMain: typeof import("../../app/components/Layout/Main.vue")['default']
   MainLayoutFirstLayout: typeof import("../../app/components/MainLayout/FirstLayout.vue")['default']
   MainLayoutSecondLayout: typeof import("../../app/components/MainLayout/SecondLayout.vue")['default']
+  MobileLayoutCities: typeof import("../../app/components/MobileLayout/Cities/Cities.vue")['default']
+  MobileLayoutCitiesSearchCity: typeof import("../../app/components/MobileLayout/Cities/SearchCity.vue")['default']
+  MobileLayoutHeader: typeof import("../../app/components/MobileLayout/Header.vue")['default']
   PopapAssent: typeof import("../../app/components/Popap/Assent.vue")['default']
   PopapBase: typeof import("../../app/components/Popap/Base.vue")['default']
   PopapModal: typeof import("../../app/components/Popap/Modal.vue")['default']
@@ -27,6 +30,7 @@ interface _GlobalComponents {
   ProductsList: typeof import("../../app/components/Products/List.vue")['default']
   ProductsSearchProducts: typeof import("../../app/components/Products/Search/Products.vue")['default']
   ProductsSearchPromt: typeof import("../../app/components/Products/Search/Promt.vue")['default']
+  ProductsSearchTextHighlight: typeof import("../../app/components/Products/Search/TextHighlight.vue")['default']
   NuxtWelcome: typeof import("../../node_modules/nuxt/dist/app/components/welcome.vue")['default']
   NuxtLayout: typeof import("../../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
   NuxtErrorBoundary: typeof import("../../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']
@@ -56,6 +60,9 @@ interface _GlobalComponents {
   LazyLayoutMain: LazyComponent<typeof import("../../app/components/Layout/Main.vue")['default']>
   LazyMainLayoutFirstLayout: LazyComponent<typeof import("../../app/components/MainLayout/FirstLayout.vue")['default']>
   LazyMainLayoutSecondLayout: LazyComponent<typeof import("../../app/components/MainLayout/SecondLayout.vue")['default']>
+  LazyMobileLayoutCities: LazyComponent<typeof import("../../app/components/MobileLayout/Cities/Cities.vue")['default']>
+  LazyMobileLayoutCitiesSearchCity: LazyComponent<typeof import("../../app/components/MobileLayout/Cities/SearchCity.vue")['default']>
+  LazyMobileLayoutHeader: LazyComponent<typeof import("../../app/components/MobileLayout/Header.vue")['default']>
   LazyPopapAssent: LazyComponent<typeof import("../../app/components/Popap/Assent.vue")['default']>
   LazyPopapBase: LazyComponent<typeof import("../../app/components/Popap/Base.vue")['default']>
   LazyPopapModal: LazyComponent<typeof import("../../app/components/Popap/Modal.vue")['default']>
@@ -64,6 +71,7 @@ interface _GlobalComponents {
   LazyProductsList: LazyComponent<typeof import("../../app/components/Products/List.vue")['default']>
   LazyProductsSearchProducts: LazyComponent<typeof import("../../app/components/Products/Search/Products.vue")['default']>
   LazyProductsSearchPromt: LazyComponent<typeof import("../../app/components/Products/Search/Promt.vue")['default']>
+  LazyProductsSearchTextHighlight: LazyComponent<typeof import("../../app/components/Products/Search/TextHighlight.vue")['default']>
   LazyNuxtWelcome: LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/welcome.vue")['default']>
   LazyNuxtLayout: LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/nuxt-layout")['default']>
   LazyNuxtErrorBoundary: LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']>

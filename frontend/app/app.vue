@@ -1,8 +1,11 @@
-<template>
+<script setup>
+const { device } = useDevice()
+</script>
 
-  <body>
-    <NuxtLayout>
+<template>
+  <div>
+    <NuxtLayout :name="device">
       <NuxtPage />
     </NuxtLayout>
-  </body>
+  </div>
 </template>

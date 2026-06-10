@@ -1,16 +1,15 @@
 <template>
     <div class="body">
         <header>
-            <LayoutHeader />
+            <MobileLayoutHeader />
         </header>
         <main>
             <slot />
         </main>
         <footer>
-            <LayoutFooter />
+
         </footer>
     </div>
-
 </template>
 
 <style>

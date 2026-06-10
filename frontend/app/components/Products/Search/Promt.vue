@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import { async } from '@ankasru/utils-ts';
-import Categories from '../Categories.vue';
+import TextHighlight from './TextHighlight.vue';
 
 const {
     term
@@ -35,7 +35,7 @@ watch(query, () => { search() })
                 <img src="https://profpribor.ru/wp-content/uploads/2017/08/%D0%9C%D0%B5%D1%80%D0%BD%D0%B8%D0%BA-%D0%9C2%D1%80-10-01%D0%9F-%D1%81-%D0%BF%D0%B5%D0%BD%D0%BE%D0%B3%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D0%B5%D0%BC-2.jpg"
                     alt="" class="list-img">
                 <div class="block-span">
-                    <span class="list-span">{{ product.name }}</span>
+                    <TextHighlight :query="query.search" :text="product.name" />
                     <span class="list-span-parent">{{ product.parent_category }}</span>
                 </div>
             </a>
@@ -82,12 +82,6 @@ watch(query, () => { search() })
 .list-span-parent {
     font-size: 12px;
     color: #929292;
-}
-
-.list-span {
-    color: black;
-    font-size: 14px;
-    font-weight: 400;
 }
 
 .list-img {
