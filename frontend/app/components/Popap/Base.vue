@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const isModalOpen = ref(false);
 
 const open = () => { isModalOpen.value = true }

@@ -1,5 +1,6 @@
-<script setup>
+<script setup lang="ts">
 const isCity = ref(false);
+const popapRef = useTemplateRef('popap');
 
 const toggleCity = () => { isCity.value = !isCity.value }
 </script>
@@ -19,7 +20,32 @@ const toggleCity = () => { isCity.value = !isCity.value }
         </button>
         <MobileLayoutCitiesSearchCity v-if="isCity" />
         <div class="block-call">
-            <span class="call-back">Обратный звонок</span>
+            <span @click="popapRef?.open" class="call-back">Обратный звонок</span>
+            <PopapModal :top="20" :left="40" ref="popap">
+                <div class="flex title">
+                    <h2 class="h2-title">Обратный звонок</h2>
+                    <button @click="popapRef?.close" class="close-button flex">
+                        <svg viewBox="0 0 24 24" width="25" height="25">
+                            <path fill="currentColor"
+                                d="m11.575 13.4-4.9 4.9a.948.948 0 0 1-.7.275.948.948 0 0 1-.7-.275.948.948 0 0 1-.275-.7.95.95 0 0 1 .275-.7l4.9-4.9-4.9-4.9A.948.948 0 0 1 5 6.4a.95.95 0 0 1 .275-.7.948.948 0 0 1 .7-.275.95.95 0 0 1 .7.275l4.9 4.9 4.9-4.9a.948.948 0 0 1 .7-.275.95.95 0 0 1 .7.275.948.948 0 0 1 .275.7.948.948 0 0 1-.275.7l-4.9 4.9 4.9 4.9a.949.949 0 0 1 .275.7.948.948 0 0 1-.275.7.948.948 0 0 1-.7.275.948.948 0 0 1-.7-.275l-4.9-4.9Z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="box-number">
+                    <div class="form-number">
+                        <p class="p-box-number">Телефон</p>
+                        <input type="text" alt="0000-000-0-000-">
+                    </div>
+                    <div class="form-name">
+                        <p class="p-box-number">Фамилия Имя Отчество</p>
+                        <input type="text" alt="Фамилия Имя Отчество">
+                    </div>
+                </div>
+                <button class="send-button flex">
+                    Отправить
+                </button>
+            </PopapModal>
             <a href="" class="phone">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
                     <path fill="currentColor"

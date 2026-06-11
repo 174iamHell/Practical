@@ -7,8 +7,9 @@
             <slot />
         </main>
         <footer>
-
+            <MobileLayoutFooter />
         </footer>
+        <MobileLayoutButtonBottom />
     </div>
 </template>
 
@@ -45,9 +46,7 @@ main {
 
 footer {
     flex-shrink: 0;
-    padding-top: 48px;
-    padding-bottom: 8px;
-    background-color: #f1f5f9;
+    padding-top: 0;
 }
 
 .hover-red:hover {

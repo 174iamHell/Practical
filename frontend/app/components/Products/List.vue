@@ -1,17 +1,18 @@
 <script setup lang='ts'>
-    const {title,products} = defineProps<{
-        title:string
-        products:{
-            title:string,
-            price:string,
-            image:string}[]
-    }>();
+const { title, products } = defineProps<{
+    title: string
+    products: {
+        title: string,
+        price: string,
+        image: string
+    }[]
+}>();
 </script>
 
 <template>
     <div class="box-main">
-        <p class ="bestsellers">{{ title }}</p>
-        <div class ="cards-block">
+        <p class="bestsellers">{{ title }}</p>
+        <div class="cards-block">
             <ul class="catalog-cards">
                 <ProductsItem v-for="product in products" :key="product.title" :product="product" />
             </ul>
@@ -20,7 +21,7 @@
 
 </template>
 
-<style>
+<style scoped>
 .catalog-cards {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -43,5 +44,19 @@
     margin: 0;
     margin-bottom: 24px;
 
+}
+
+@media(width < 768px) {
+    .catalog-cards {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 7px;
+    }
+}
+
+@media(width < 480px) {
+    .catalog-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+    }
 }
 </style>

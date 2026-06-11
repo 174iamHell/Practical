@@ -1,7 +1,6 @@
 <script setup lang="ts">
 
 import { async } from '@ankasru/utils-ts';
-import TextHighlight from './TextHighlight.vue';
 
 const {
     term
@@ -117,7 +116,7 @@ watch(query, () => { search() })
 .list-button {
     justify-self: center;
     margin: 10px auto 20px auto;
-    background: #1baa65;
+    background: #e30016;
     border-radius: 5px;
     border: none;
     color: #fff;

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const refPopap = useTemplateRef('myPopap')
 
 const isCookieAccept = useCookie('openCookie', { default: () => false })

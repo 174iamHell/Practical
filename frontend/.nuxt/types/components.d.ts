@@ -19,9 +19,13 @@ interface _GlobalComponents {
   LayoutMain: typeof import("../../app/components/Layout/Main.vue")['default']
   MainLayoutFirstLayout: typeof import("../../app/components/MainLayout/FirstLayout.vue")['default']
   MainLayoutSecondLayout: typeof import("../../app/components/MainLayout/SecondLayout.vue")['default']
+  MobileLayoutButtonBottom: typeof import("../../app/components/MobileLayout/ButtonBottom.vue")['default']
   MobileLayoutCities: typeof import("../../app/components/MobileLayout/Cities/Cities.vue")['default']
   MobileLayoutCitiesSearchCity: typeof import("../../app/components/MobileLayout/Cities/SearchCity.vue")['default']
+  MobileLayoutContactHeader: typeof import("../../app/components/MobileLayout/ContactHeader.vue")['default']
+  MobileLayoutFooter: typeof import("../../app/components/MobileLayout/Footer.vue")['default']
   MobileLayoutHeader: typeof import("../../app/components/MobileLayout/Header.vue")['default']
+  MobileLayoutInputHeader: typeof import("../../app/components/MobileLayout/InputHeader.vue")['default']
   PopapAssent: typeof import("../../app/components/Popap/Assent.vue")['default']
   PopapBase: typeof import("../../app/components/Popap/Base.vue")['default']
   PopapModal: typeof import("../../app/components/Popap/Modal.vue")['default']
@@ -60,9 +64,13 @@ interface _GlobalComponents {
   LazyLayoutMain: LazyComponent<typeof import("../../app/components/Layout/Main.vue")['default']>
   LazyMainLayoutFirstLayout: LazyComponent<typeof import("../../app/components/MainLayout/FirstLayout.vue")['default']>
   LazyMainLayoutSecondLayout: LazyComponent<typeof import("../../app/components/MainLayout/SecondLayout.vue")['default']>
+  LazyMobileLayoutButtonBottom: LazyComponent<typeof import("../../app/components/MobileLayout/ButtonBottom.vue")['default']>
   LazyMobileLayoutCities: LazyComponent<typeof import("../../app/components/MobileLayout/Cities/Cities.vue")['default']>
   LazyMobileLayoutCitiesSearchCity: LazyComponent<typeof import("../../app/components/MobileLayout/Cities/SearchCity.vue")['default']>
+  LazyMobileLayoutContactHeader: LazyComponent<typeof import("../../app/components/MobileLayout/ContactHeader.vue")['default']>
+  LazyMobileLayoutFooter: LazyComponent<typeof import("../../app/components/MobileLayout/Footer.vue")['default']>
   LazyMobileLayoutHeader: LazyComponent<typeof import("../../app/components/MobileLayout/Header.vue")['default']>
+  LazyMobileLayoutInputHeader: LazyComponent<typeof import("../../app/components/MobileLayout/InputHeader.vue")['default']>
   LazyPopapAssent: LazyComponent<typeof import("../../app/components/Popap/Assent.vue")['default']>
   LazyPopapBase: LazyComponent<typeof import("../../app/components/Popap/Base.vue")['default']>
   LazyPopapModal: LazyComponent<typeof import("../../app/components/Popap/Modal.vue")['default']>

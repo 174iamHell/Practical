@@ -18,8 +18,8 @@ const { product } = defineProps<{
                 <span class="price">{{ product.price }}</span>
             </strong>
         </div>
-        <span>
-            <a class="title hover-red" href="">{{ product.title }}</a>
+        <span class="title">
+            <a class="title-a hover-red" href="">{{ product.title }}</a>
         </span>
         <button class="button-add">Добавить в корзину</button>
         <button class="button-like">
@@ -32,7 +32,7 @@ const { product } = defineProps<{
     </li>
 </template>
 
-<style>
+<style scoped>
 .card-list {
     display: flex;
     flex-direction: column;
@@ -55,10 +55,17 @@ const { product } = defineProps<{
 }
 
 .title {
+    overflow: hidden;
+    margin: 0;
+}
+
+.title-a {
     text-decoration: none;
     color: black;
     font-size: 15px;
     font-weight: 550;
+    margin: 0;
+    margin-bottom: auto;
 }
 
 .button-add {
@@ -68,7 +75,7 @@ const { product } = defineProps<{
     border: #e30016 solid 1px;
     line-height: 24px;
 
-    font-size: 15px;
+    font-size: 12px;
     margin-top: auto;
 }
 

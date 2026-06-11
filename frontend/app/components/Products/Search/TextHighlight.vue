@@ -1,13 +1,12 @@
-<script setup>
-import { computed, h } from 'vue';
+<script setup lang="ts">
 
 const props = defineProps({
   text: { type: String, required: true },
   query: { type: String, default: '' }
 });
 
-const TextToken = (tokenProps) => h('span', { class: 'list-span' }, tokenProps.content);
-const HighlightToken = (tokenProps) => h('span', { class: 'highlight' }, tokenProps.content);
+const TextToken = (tokenProps: { content: string }) => h('span', { class: 'list-span' }, tokenProps.content);
+const HighlightToken = (tokenProps: { content: string }) => h('span', { class: 'highlight' }, tokenProps.content);
 
 const tokens = computed(() => {
   if (!props.query) {

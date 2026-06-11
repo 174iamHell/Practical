@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 
 const products = ref([
     {
@@ -90,8 +90,4 @@ const products = ref([
     flex-direction: column;
     align-items: center;
 }
-
-.block-product {}
-
-.title {}
 </style>

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import SecondLayout from './SecondLayout.vue';
-
 
 </script>
 
@@ -14,11 +12,11 @@ import SecondLayout from './SecondLayout.vue';
     </div>
 </template>
 
-<style>
+<style scoped>
 .products-list {
 
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(246px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 
     list-style-type: none;
     padding: 0;
@@ -30,5 +28,19 @@ import SecondLayout from './SecondLayout.vue';
     max-width: 1536px;
     width: 100%;
     margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .products-list {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .products-list {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 6px;
+    }
 }
 </style>

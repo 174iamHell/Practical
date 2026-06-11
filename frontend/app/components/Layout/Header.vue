@@ -7,6 +7,10 @@ const popupRef = useTemplateRef('myPopap');
 const searchActive = ref(false);
 const inputSearch = ref('');
 
+const searchActiveInput = () => {
+    return (inputSearch.value !== '' && searchActive.value);
+}
+
 
 const { data: dataCities, execute } = await useFetch('/api/cities/suggestions', {
     server: false,
@@ -40,6 +44,7 @@ function onSelectCity(city: any) {
 
     onClose();
 }
+
 function searchAсtiveOn() {
     searchActive.value = true;
 }
@@ -92,7 +97,7 @@ function searchActiveOff() {
             </div>
             <div class="search-block">
                 <div @click="searchActiveOff" v-if="searchActive" class="overlay"></div>
-                <div v-if="searchActive" class="modal">
+                <div v-if="searchActiveInput()" class="modal">
                     <ProductsSearchPromt :term="inputSearch" />
                     <ProductsSearchProducts :term="inputSearch" />
                 </div>
@@ -188,7 +193,6 @@ function searchActiveOff() {
                     <div class="search">
                         <form action="">
                             <input v-model="querySearch" @input="() => execute" class="city-input" type="text">
-                            <div></div>
                             <ul ref="slider" class="list-citys">
                                 <li v-for="city in dataCities" :key="city.id" @click="onSelectCity(city)"
                                     class="city-item hover-red" role="button" tabindex="0">{{

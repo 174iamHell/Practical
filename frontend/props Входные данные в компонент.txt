@@ -93,3 +93,13 @@ https://ankas.ru/ Берем за основу ankas.ru как макет вер
   { type: 'text', content: 'ss' }, (Обычный текст), только текст
 ]
 4. Мобильная версия
+
+---
+
+1. Кнопки едут
+2. В мобиле поиск
+3. Переписать компоненты на TS, пример frontend/app/components/Products/Search/Products.vue
+4. Скрывать результат поиска пока нет хотя бы одного символа
+5. Зеленую кнопку в цвет сайта в поиске
+6. В мобильной версии маленькое сердце
+7. frontend/app/components/Products/Search/TextHighlight.vue с filter + map переделать на array.reduce

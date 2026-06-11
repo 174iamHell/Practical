@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { async } from '@ankasru/utils-ts';
 const searchQuery = ref('');
 const { data: cities, execute } = useFetch('/api/cities/suggestions', {
@@ -19,6 +19,36 @@ const search = async.debounce({
 watch(searchQuery, () => {
     search()
 })
+
+
+
+
+const input = ref('')
+const searchActive = ref(false)
+
+// Следим за изменением searchActive
+watch(searchActive, (isActive) => {
+    if (isActive) {
+        // Блокируем скролл
+        document.body.style.overflow = 'hidden'
+    } else {
+        // Возвращаем скролл
+        document.body.style.overflow = ''
+    }
+})
+
+const handleSearchClick = () => {
+    searchActive.value = true
+}
+
+const searchActiveOff = () => {
+    searchActive.value = false
+    input.value = '' // Опционально: очистить поиск при закрытии
+}
+
+const searchActiveInput = () => {
+    return input.value !== ''
+}
 </script>
 
 <template>
