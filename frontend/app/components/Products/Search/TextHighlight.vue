@@ -17,15 +17,17 @@ const tokens = computed(() => {
   const regex = new RegExp(`(${escapedQuery})`, 'gi');
   const parts = props.text.split(regex);
 
-  return parts
-    .filter(part => part !== '')
-    .map(part => {
-      const isMatch = part.toLowerCase() === props.query.toLowerCase();
-      return {
-        type: isMatch ? 'highlight' : 'text',
-        content: part
-      };
+   return parts.reduce<{type:string; content:string}[]>((accum, part) => {
+    if (part === "") {
+      return accum;
+    }
+    const isMatch = part.toLowerCase() === props.query.toLowerCase();
+    accum.push({
+      type: isMatch ? 'highlight' : 'text',
+      content: part
     });
+    return accum;
+  }, []);
 });
 </script>
 

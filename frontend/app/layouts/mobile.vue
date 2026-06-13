@@ -1,6 +1,7 @@
 <template>
     <div class="body">
         <header>
+            <LangLocaleSwitcher/>
             <MobileLayoutHeader />
         </header>
         <main>
