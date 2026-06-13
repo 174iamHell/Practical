@@ -1,6 +1,40 @@
 <script setup lang="ts">
 import { async } from '@ankasru/utils-ts';
+import {
+  ComboboxAnchor,
+  ComboboxArrow,
+  ComboboxCancel,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxGroup,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxItemIndicator,
+  ComboboxLabel,
+  ComboboxPortal,
+  ComboboxRoot,
+  ComboboxSeparator,
+  ComboboxTrigger,
+  ComboboxViewport,
+
+} from 'reka-ui'
+
+
+const searchActive = ref(false)
 const searchQuery = ref('');
+
+const emit = defineEmits<{
+  (e: 'selectCity', city: { id: number; name: string }): void
+}>()
+
+const handleSelectCity = (cityName: string) => {
+    const selected = cities.value?.find(city => city.name === cityName);
+    if (selected) {
+        emit('selectCity', selected);
+    }
+}
+
+
 const { data: cities, execute } = useFetch('/api/cities/suggestions', {
     immediate: true,
     server: false,
@@ -21,52 +55,52 @@ watch(searchQuery, () => {
 })
 
 
-
-
-const input = ref('')
-const searchActive = ref(false)
-
-// Следим за изменением searchActive
 watch(searchActive, (isActive) => {
     if (isActive) {
-        // Блокируем скролл
+        
         document.body.style.overflow = 'hidden'
     } else {
-        // Возвращаем скролл
+        
         document.body.style.overflow = ''
     }
 })
-
-const handleSearchClick = () => {
-    searchActive.value = true
-}
-
-const searchActiveOff = () => {
-    searchActive.value = false
-    input.value = '' // Опционально: очистить поиск при закрытии
-}
-
-const searchActiveInput = () => {
-    return input.value !== ''
-}
 </script>
-
 <template>
-    <div class="block-search-city">
-        <h2 class="title">Выберите ваш город</h2>
-        <input class="search-input" v-model="searchQuery" type="text">
-        <ul class="list-city">
-            <li v-for="city in cities">
-                <span class="span-title">{{ city.name }}</span>
-            </li>
-        </ul>
-    </div>
+  <div class="block-search-city">
+    <h2 class="title">Выберите ваш город</h2>
+    
+    <ComboboxRoot defaultOpen :ignore-filter="true" >
+        <ComboboxInput 
+        :display-value="(v)=> ''"
+          class="search-input" 
+          v-model="searchQuery" 
+          type="text"
+        />
+       <ComboboxContent class="list-city">
+          <ComboboxViewport>
+            <ComboboxEmpty>Города не найдены</ComboboxEmpty>
+
+            <ComboboxItem 
+              v-for="city in cities" 
+              :key="city.id"
+              :value="city.name"
+              @click="handleSelectCity(city.name)"
+            >
+              <span @click="" class="span-title">{{ city.name }}</span>
+            </ComboboxItem>
+          </ComboboxViewport>
+        </ComboboxContent>
+        
+    </ComboboxRoot>
+  </div>
 </template>
+
+
 
 <style>
 .block-search-city {
     position: absolute;
-    z-index: 999;
+    z-index: 99999;
     top: 100%;
 
     border-radius: 5px;

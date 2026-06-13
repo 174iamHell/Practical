@@ -1,14 +1,21 @@
 <script setup lang="ts">
+const currentCity = ref('Челябинск');
 const isCity = ref(false);
 const popapRef = useTemplateRef('popap');
 
 const toggleCity = () => { isCity.value = !isCity.value }
+
+const handleSelectCity = (city: { id: number; name: string }) => {
+    currentCity.value = city.name;  
+    isCity.value = false;           
+}
+
 </script>
 
 <template>
     <div class="block-city">
         <button @click="toggleCity" class="button-city">
-            Москва
+            {{currentCity}}
             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
                 <path fill="currentColor"
                     d="M12 14c2.206 0 4-1.794 4-4s-1.794-4-4-4s-4 1.794-4 4s1.794 4 4 4m0-6c1.103 0 2 .897 2 2s-.897 2-2 2s-2-.897-2-2s.897-2 2-2">
@@ -18,7 +25,7 @@ const toggleCity = () => { isCity.value = !isCity.value }
                 </path>
             </svg>
         </button>
-        <MobileLayoutCitiesSearchCity v-if="isCity" />
+        <MobileLayoutCitiesSearchCity v-if="isCity" @selectCity="handleSelectCity" />
         <div class="block-call">
             <span @click="popapRef?.open" class="call-back">Обратный звонок</span>
             <PopapModal :top="20" :left="40" ref="popap">
