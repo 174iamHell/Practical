@@ -1,30 +1,19 @@
 <script setup lang="ts">
 import { async } from '@ankasru/utils-ts';
 import {
-  ComboboxAnchor,
-  ComboboxArrow,
-  ComboboxCancel,
-  ComboboxContent,
-  ComboboxEmpty,
-  ComboboxGroup,
-  ComboboxInput,
-  ComboboxItem,
-  ComboboxItemIndicator,
-  ComboboxLabel,
-  ComboboxPortal,
-  ComboboxRoot,
-  ComboboxSeparator,
-  ComboboxTrigger,
-  ComboboxViewport,
-
+    ComboboxContent,
+    ComboboxEmpty,
+    ComboboxInput,
+    ComboboxItem,
+    ComboboxRoot,
+    ComboboxViewport,
 } from 'reka-ui'
-
 
 const searchActive = ref(false)
 const searchQuery = ref('');
 
 const emit = defineEmits<{
-  (e: 'selectCity', city: { id: number; name: string }): void
+    (e: 'selectCity', city: { id: number; name: string }): void
 }>()
 
 const handleSelectCity = (cityName: string) => {
@@ -57,42 +46,32 @@ watch(searchQuery, () => {
 
 watch(searchActive, (isActive) => {
     if (isActive) {
-        
+
         document.body.style.overflow = 'hidden'
     } else {
-        
+
         document.body.style.overflow = ''
     }
 })
+
+
 </script>
 <template>
-  <div class="block-search-city">
-    <h2 class="title">Выберите ваш город</h2>
-    
-    <ComboboxRoot defaultOpen :ignore-filter="true" >
-        <ComboboxInput 
-        :display-value="(v)=> ''"
-          class="search-input" 
-          v-model="searchQuery" 
-          type="text"
-        />
-       <ComboboxContent class="list-city">
-          <ComboboxViewport>
-            <ComboboxEmpty>Города не найдены</ComboboxEmpty>
-
-            <ComboboxItem 
-              v-for="city in cities" 
-              :key="city.id"
-              :value="city.name"
-              @click="handleSelectCity(city.name)"
-            >
-              <span @click="" class="span-title">{{ city.name }}</span>
-            </ComboboxItem>
-          </ComboboxViewport>
-        </ComboboxContent>
-        
-    </ComboboxRoot>
-  </div>
+    <div class="block-search-city ">
+        <h2 class="title">Выберите ваш город</h2>
+        <ComboboxRoot defaultOpen :ignore-filter="true">
+            <ComboboxInput :display-value="(v) => ''" class="search-input" v-model="searchQuery" type="text" />
+            <ComboboxContent class="list-city">
+                <ComboboxViewport>
+                    <ComboboxEmpty>Города не найдены</ComboboxEmpty>
+                    <ComboboxItem v-for="city in cities" :key="city.id" :value="city.name"
+                        @click="handleSelectCity(city.name)">
+                        <span @click="" class="span-title cursor-pointer">{{ city.name }}</span>
+                    </ComboboxItem>
+                </ComboboxViewport>
+            </ComboboxContent>
+        </ComboboxRoot>
+    </div>
 </template>
 
 

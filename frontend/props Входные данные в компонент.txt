@@ -103,3 +103,55 @@ https://ankas.ru/ Берем за основу ankas.ru как макет вер
 5. Зеленую кнопку в цвет сайта в поиске
 6. В мобильной версии маленькое сердце
 7. frontend/app/components/Products/Search/TextHighlight.vue с filter + map переделать на array.reduce
+---
+
+1. Что такое singltone.
+2. Проблема программирования: Race condition. (Вариант решения: debounce, нижняя функция решает туже задачу но при других вводных условиях, давай разберем как поможет при удалении товара из корзины, почему она подходит лучше) 
+3. Выполнить код у себя в консоли:
+
+import { ref, type Ref } from 'vue';
+
+type Callback<T extends CallbackGeneric> = (
+  ...args: Parameters<T>
+) => any;
+type CallbackGeneric = (...args: any[]) => any;
+
+interface UseSingltoneAsyncFunctionReturnType<T extends CallbackGeneric> {
+  callback: Callback<T>;
+  isLoading: Ref<boolean>;
+}
+
+export function useSingltoneAsyncFunction<T extends CallbackGeneric>(
+  callback: T,
+): UseSingltoneAsyncFunctionReturnType<T> {
+  const isLoading = ref(false);
+
+  let promise: Promise<ReturnType<T>> | undefined = undefined;
+
+  return {
+    callback: async (...args: Parameters<T>) => {
+      isLoading.value = true;
+      promise ??= callback(...args).then((res: ReturnType<T>) => {
+        promise = undefined;
+        isLoading.value = false;
+        return res;
+      });
+      return <Promise<ReturnType<T>>>promise;
+    },
+    isLoading,
+  };
+}
+
+const { callback } = UseSingltoneAsyncFunction(async (text: string | number) => {
+  await async.wait(100);
+
+  console.log(text);
+}); 
+
+callback(123);
+callback('hello');
+callback('ti pidor');
+
+```
+
+1. Написать debounce -> С таймером и ожиданием

@@ -1,43 +1,43 @@
 import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};import { tmpdir } from 'node:os';
+import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, getResponseStatus, createError, getCookie, setCookie, sanitizeStatusCode, removeResponseHeader, getQuery as getQuery$1, readBody, getRouterParam, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getResponseStatusText } from 'file:///home/vladimir/www/api/frontend/node_modules/h3/dist/index.mjs';
 import { Server } from 'node:http';
 import { resolve, dirname, join } from 'node:path';
 import nodeCrypto from 'node:crypto';
 import { parentPort, threadId } from 'node:worker_threads';
-import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, getResponseStatus, createError, getCookie, setCookie, sanitizeStatusCode, removeResponseHeader, getQuery as getQuery$1, readBody, getRouterParam, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getResponseStatusText } from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/h3/dist/index.mjs';
-import { escapeHtml } from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/@vue/shared/dist/shared.cjs.js';
-import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/vue-bundle-renderer/dist/runtime.mjs';
-import { parseURL, withoutBase, joinURL, getQuery, withQuery, joinRelativeURL, parsePath, withLeadingSlash, withoutTrailingSlash, withTrailingSlash, decodePath } from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/ufo/dist/index.mjs';
-import destr, { destr as destr$1 } from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/destr/dist/index.mjs';
-import { renderToString } from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/vue/server-renderer/index.mjs';
-import { klona } from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/klona/dist/index.mjs';
-import defu, { defuFn, createDefu } from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/defu/dist/defu.mjs';
-import { snakeCase } from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/scule/dist/index.mjs';
-import { createHead as createHead$1, propsToString, renderSSRHead } from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/unhead/dist/server.mjs';
-import { stringify, uneval } from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/devalue/index.js';
-import { isVNode, isRef, toValue } from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/vue/index.mjs';
-import { createHooks } from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/nitropack/node_modules/hookable/dist/index.mjs';
-import { createFetch, Headers as Headers$1 } from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/ofetch/dist/node.mjs';
-import { fetchNodeRequestHandler, callNodeRequestHandler } from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/node-mock-http/dist/index.mjs';
-import { createStorage, prefixStorage } from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/unstorage/dist/index.mjs';
-import unstorage_47drivers_47fs from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/unstorage/drivers/fs.mjs';
-import { digest } from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/ohash/dist/index.mjs';
-import { toRouteMatcher, createRouter } from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/radix3/dist/index.mjs';
+import { escapeHtml } from 'file:///home/vladimir/www/api/frontend/node_modules/@vue/shared/dist/shared.cjs.js';
+import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'file:///home/vladimir/www/api/frontend/node_modules/vue-bundle-renderer/dist/runtime.mjs';
+import { parseURL, withoutBase, joinURL, getQuery, withQuery, joinRelativeURL, parsePath, withLeadingSlash, withoutTrailingSlash, withTrailingSlash, decodePath } from 'file:///home/vladimir/www/api/frontend/node_modules/ufo/dist/index.mjs';
+import destr, { destr as destr$1 } from 'file:///home/vladimir/www/api/frontend/node_modules/destr/dist/index.mjs';
+import { createHooks } from 'file:///home/vladimir/www/api/frontend/node_modules/nitropack/node_modules/hookable/dist/index.mjs';
+import { createFetch, Headers as Headers$1 } from 'file:///home/vladimir/www/api/frontend/node_modules/ofetch/dist/node.mjs';
+import { fetchNodeRequestHandler, callNodeRequestHandler } from 'file:///home/vladimir/www/api/frontend/node_modules/node-mock-http/dist/index.mjs';
+import { createStorage, prefixStorage } from 'file:///home/vladimir/www/api/frontend/node_modules/unstorage/dist/index.mjs';
+import unstorage_47drivers_47fs from 'file:///home/vladimir/www/api/frontend/node_modules/unstorage/drivers/fs.mjs';
+import { digest } from 'file:///home/vladimir/www/api/frontend/node_modules/ohash/dist/index.mjs';
+import { klona } from 'file:///home/vladimir/www/api/frontend/node_modules/klona/dist/index.mjs';
+import defu, { defuFn, createDefu } from 'file:///home/vladimir/www/api/frontend/node_modules/defu/dist/defu.mjs';
+import { snakeCase } from 'file:///home/vladimir/www/api/frontend/node_modules/scule/dist/index.mjs';
+import { getContext } from 'file:///home/vladimir/www/api/frontend/node_modules/unctx/dist/index.mjs';
+import { toRouteMatcher, createRouter } from 'file:///home/vladimir/www/api/frontend/node_modules/radix3/dist/index.mjs';
 import { readFile } from 'node:fs/promises';
-import consola, { consola as consola$1 } from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/consola/dist/index.mjs';
-import { ErrorParser } from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/youch-core/build/index.js';
-import { Youch } from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/youch/build/index.js';
-import { SourceMapConsumer } from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/source-map/source-map.js';
-import { createRouterMatcher } from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/vue-router/vue-router.node.mjs';
+import consola, { consola as consola$1 } from 'file:///home/vladimir/www/api/frontend/node_modules/consola/dist/index.mjs';
+import { ErrorParser } from 'file:///home/vladimir/www/api/frontend/node_modules/youch-core/build/index.js';
+import { Youch } from 'file:///home/vladimir/www/api/frontend/node_modules/youch/build/index.js';
+import { SourceMapConsumer } from 'file:///home/vladimir/www/api/frontend/node_modules/source-map/source-map.js';
+import { createRouterMatcher } from 'file:///home/vladimir/www/api/frontend/node_modules/vue-router/vue-router.node.mjs';
 import { AsyncLocalStorage } from 'node:async_hooks';
-import { getContext } from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/unctx/dist/index.mjs';
-import { captureRawStackTrace, parseRawStackTrace } from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/errx/dist/index.js';
-import _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/@nuxt/vite-builder/dist/fix-stacktrace.mjs';
+import { stringify, uneval } from 'file:///home/vladimir/www/api/frontend/node_modules/devalue/index.js';
+import { captureRawStackTrace, parseRawStackTrace } from 'file:///home/vladimir/www/api/frontend/node_modules/errx/dist/index.js';
+import { isVNode, isRef, toValue } from 'file:///home/vladimir/www/api/frontend/node_modules/vue/index.mjs';
+import _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw from 'file:///home/vladimir/www/api/frontend/node_modules/@nuxt/vite-builder/dist/fix-stacktrace.mjs';
 import { promises } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { dirname as dirname$1, resolve as resolve$1 } from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/pathe/dist/index.mjs';
-import { walkResolver } from 'file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/node_modules/unhead/dist/utils.mjs';
+import { dirname as dirname$1, resolve as resolve$1 } from 'file:///home/vladimir/www/api/frontend/node_modules/pathe/dist/index.mjs';
+import { createHead as createHead$1, propsToString, renderSSRHead } from 'file:///home/vladimir/www/api/frontend/node_modules/unhead/dist/server.mjs';
+import { renderToString } from 'file:///home/vladimir/www/api/frontend/node_modules/vue/server-renderer/index.mjs';
+import { walkResolver } from 'file:///home/vladimir/www/api/frontend/node_modules/unhead/dist/utils.mjs';
 
-const serverAssets = [{"baseName":"server","dir":"C:/проекты/Practical/frontend/server/assets"}];
+const serverAssets = [{"baseName":"server","dir":"/home/vladimir/www/api/frontend/server/assets"}];
 
 const assets$1 = createStorage();
 
@@ -49,11 +49,11 @@ const storage$1 = createStorage({});
 
 storage$1.mount('/assets', assets$1);
 
-storage$1.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"C:/проекты/Practical/frontend","watchOptions":{"ignored":[null]}}));
-storage$1.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"C:/проекты/Practical/frontend/server","watchOptions":{"ignored":[null]}}));
-storage$1.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"C:/проекты/Practical/frontend/.nuxt"}));
-storage$1.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"C:/проекты/Practical/frontend/.nuxt/cache"}));
-storage$1.mount('data', unstorage_47drivers_47fs({"driver":"fs","base":"C:/проекты/Practical/frontend/.data/kv"}));
+storage$1.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/home/vladimir/www/api/frontend","watchOptions":{"ignored":[null]}}));
+storage$1.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/home/vladimir/www/api/frontend/server","watchOptions":{"ignored":[null]}}));
+storage$1.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/home/vladimir/www/api/frontend/.nuxt"}));
+storage$1.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/home/vladimir/www/api/frontend/.nuxt/cache"}));
+storage$1.mount('data', unstorage_47drivers_47fs({"driver":"fs","base":"/home/vladimir/www/api/frontend/.data/kv"}));
 
 function useStorage(base = "") {
   return base ? prefixStorage(storage$1, base) : storage$1;
@@ -745,6 +745,11 @@ new Proxy(/* @__PURE__ */ Object.create(null), {
     }
     return void 0;
   }
+});
+
+getContext("nitro-app", {
+  asyncContext: false,
+  AsyncLocalStorage: void 0
 });
 
 const config = useRuntimeConfig();
@@ -2074,7 +2079,7 @@ if (!window.__NUXT_DEVTOOLS_TIME_METRIC__) {
 window.__NUXT_DEVTOOLS_TIME_METRIC__.appInit = Date.now()
 `;
 
-const _F3vaob3Ve7ZWGosKpHJQxJDZpNDh3TcNM79OkEYDUU = (function(nitro) {
+const _c9uZKUmwxoGF9O6MEXFD54SobSZxNvNiLWC9KoW5ek = (function(nitro) {
   nitro.hooks.hook("render:html", (htmlContext) => {
     htmlContext.head.push(`<script>${script}<\/script>`);
   });
@@ -2613,7 +2618,7 @@ function createRedirectResponse(event, dest, code) {
     body: `<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=${dest.replace(/"/g, "%22")}"></head></html>`
   };
 }
-const _Ck8aOPkdPdmZw4T4NmY2TZIDTH3eMvaX7ARFZH6z5k = defineNitroPlugin(async (nitro) => {
+const _1Ot0xPAKdAEj3gUG83YwvB93AUBG3OrFyz_DsMw0tWo = defineNitroPlugin(async (nitro) => {
   const runtimeI18n = useRuntimeI18n();
   const rootRedirect = resolveRootRedirect(runtimeI18n.rootRedirect);
   runtimeI18n.defaultLocale || "";
@@ -2716,7 +2721,7 @@ const _Ck8aOPkdPdmZw4T4NmY2TZIDTH3eMvaX7ARFZH6z5k = defineNitroPlugin(async (nit
   });
 });
 
-const rootDir = "C:/проекты/Practical/frontend";
+const rootDir = "/home/vladimir/www/api/frontend";
 
 const devReducers = {
 	VNode: (data) => isVNode(data) ? {
@@ -2729,7 +2734,7 @@ const asyncContext = getContext("nuxt-dev", {
 	asyncContext: true,
 	AsyncLocalStorage
 });
-const _mp9HIevcmwWGcheP0F95NicR9xUCjmeAHAFNjcjwRhc = (nitroApp) => {
+const _aD3cP2VOVOCeELcZFrvHHC5gUo0HWGHAWt71wqEqiTk = (nitroApp) => {
 	const handler = nitroApp.h3App.handler;
 	nitroApp.h3App.handler = (event) => {
 		return asyncContext.callAsync({
@@ -2803,9 +2808,9 @@ function onConsoleLog(callback) {
 }
 
 const plugins = [
-  _F3vaob3Ve7ZWGosKpHJQxJDZpNDh3TcNM79OkEYDUU,
-_Ck8aOPkdPdmZw4T4NmY2TZIDTH3eMvaX7ARFZH6z5k,
-_mp9HIevcmwWGcheP0F95NicR9xUCjmeAHAFNjcjwRhc,
+  _c9uZKUmwxoGF9O6MEXFD54SobSZxNvNiLWC9KoW5ek,
+_1Ot0xPAKdAEj3gUG83YwvB93AUBG3OrFyz_DsMw0tWo,
+_aD3cP2VOVOCeELcZFrvHHC5gUo0HWGHAWt71wqEqiTk,
 _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw
 ];
 
@@ -2834,7 +2839,7 @@ function getAsset (id) {
 
 const METHODS = /* @__PURE__ */ new Set(["HEAD", "GET"]);
 const EncodingMap = { gzip: ".gz", br: ".br" };
-const _HQKWd_ = eventHandler((event) => {
+const _1VcYyg = eventHandler((event) => {
   if (event.method && !METHODS.has(event.method)) {
     return;
   }
@@ -2961,9 +2966,9 @@ function setSSRError(ssrContext, error) {
 const APP_ROOT_OPEN_TAG = `<${appRootTag}${propsToString(appRootAttrs)}>`;
 const APP_ROOT_CLOSE_TAG = `</${appRootTag}>`;
 // @ts-expect-error file will be produced after app build
-const getServerEntry = () => import('file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/.nuxt//dist/server/server.mjs').then((r) => r.default || r);
+const getServerEntry = () => import('file:///home/vladimir/www/api/frontend/.nuxt//dist/server/server.mjs').then((r) => r.default || r);
 // @ts-expect-error file will be produced after app build
-const getClientManifest = () => import('file://C:/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/Practical/frontend/.nuxt//dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
+const getClientManifest = () => import('file:///home/vladimir/www/api/frontend/.nuxt//dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
 // -- SSR Renderer --
 const getSSRRenderer = lazyCachedFunction(async () => {
 	// Load server bundle
@@ -3370,24 +3375,24 @@ defineCachedEventHandler(_cachedMessageLoader, {
   swr: false,
   getKey: (event) => [getRouterParam(event, "locale") ?? "null", getRouterParam(event, "hash") ?? "null"].join("-")
 });
-const _uW2hd8 = _messagesHandler ;
+const __73yAN = _messagesHandler ;
 
-const _lazy_adW1Qu = () => Promise.resolve().then(function () { return _id__get$1; });
-const _lazy_01Etb6 = () => Promise.resolve().then(function () { return suggestions_get$1; });
-const _lazy_gmCxpi = () => Promise.resolve().then(function () { return suggestionsProducts_get$1; });
-const _lazy_9Sh7Fb = () => Promise.resolve().then(function () { return suggestionsPromt_get$1; });
-const _lazy_vKfbeN = () => Promise.resolve().then(function () { return renderer; });
+const _lazy_G2RXgG = () => Promise.resolve().then(function () { return _id__get$1; });
+const _lazy_9RDFMj = () => Promise.resolve().then(function () { return suggestions_get$1; });
+const _lazy_UTanuh = () => Promise.resolve().then(function () { return suggestionsProducts_get$1; });
+const _lazy_vW30Me = () => Promise.resolve().then(function () { return suggestionsPromt_get$1; });
+const _lazy_ghIsoW = () => Promise.resolve().then(function () { return renderer; });
 
 const handlers = [
-  { route: '', handler: _HQKWd_, lazy: false, middleware: true, method: undefined },
-  { route: '/api/categories/:id', handler: _lazy_adW1Qu, lazy: true, middleware: false, method: "get" },
-  { route: '/api/cities/suggestions', handler: _lazy_01Etb6, lazy: true, middleware: false, method: "get" },
-  { route: '/api/products/suggestionsProducts', handler: _lazy_gmCxpi, lazy: true, middleware: false, method: "get" },
-  { route: '/api/products/suggestionsPromt', handler: _lazy_9Sh7Fb, lazy: true, middleware: false, method: "get" },
-  { route: '/__nuxt_error', handler: _lazy_vKfbeN, lazy: true, middleware: false, method: undefined },
+  { route: '', handler: _1VcYyg, lazy: false, middleware: true, method: undefined },
+  { route: '/api/categories/:id', handler: _lazy_G2RXgG, lazy: true, middleware: false, method: "get" },
+  { route: '/api/cities/suggestions', handler: _lazy_9RDFMj, lazy: true, middleware: false, method: "get" },
+  { route: '/api/products/suggestionsProducts', handler: _lazy_UTanuh, lazy: true, middleware: false, method: "get" },
+  { route: '/api/products/suggestionsPromt', handler: _lazy_vW30Me, lazy: true, middleware: false, method: "get" },
+  { route: '/__nuxt_error', handler: _lazy_ghIsoW, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_island/**', handler: handler$1, lazy: false, middleware: false, method: undefined },
-  { route: '/_i18n/:hash/:locale/messages.json', handler: _uW2hd8, lazy: false, middleware: false, method: undefined },
-  { route: '/**', handler: _lazy_vKfbeN, lazy: true, middleware: false, method: undefined }
+  { route: '/_i18n/:hash/:locale/messages.json', handler: __73yAN, lazy: false, middleware: false, method: undefined },
+  { route: '/**', handler: _lazy_ghIsoW, lazy: true, middleware: false, method: undefined }
 ];
 
 function createNitroApp() {

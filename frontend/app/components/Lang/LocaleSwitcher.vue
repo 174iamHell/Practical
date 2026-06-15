@@ -1,30 +1,19 @@
 <script setup lang="ts">
-const { locale, setLocale } = useI18n();
+const { locale, locales, availableLocales, setLocale } = useI18n();
 
-const languages = [
-  { code: 'en', name: 'English' },
-  { code: 'ru', name: 'Русский' }
-];
-
-const switchLanguage = (langCode: string) => {
-  setLocale(langCode as 'en' | 'ru');
+const switchLanguage = (langCode: typeof availableLocales[0]) => {
+  setLocale(langCode);
 };
 </script>
 
 <template>
   <div class="locale-switcher">
-    <button
-      v-for="lang in languages"
-      :key="lang.code"
-      @click="switchLanguage(lang.code)"
-      :class="{ active: locale === lang.code }"
-    >
+    <button v-for="lang in locales" :key="lang.code" @click="switchLanguage(lang.code)"
+      :class="{ active: locale === lang.code }">
       {{ lang.name }}
     </button>
   </div>
 </template>
-
-
 
 <style scoped>
 .locale-switcher {

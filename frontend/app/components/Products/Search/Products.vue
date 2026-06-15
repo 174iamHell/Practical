@@ -12,12 +12,30 @@ const query = computed(() => ({
     search: term
 }));
 
-const search = async.debounce({
-    callback: () => {
-        execute()
-    },
-    timeout: 1000
-});
+// const search = async.debounce({
+//     callback: () => {
+//         execute()
+//     },
+//     timeout: 1000
+// });
+
+function debounce(callback: (...args: any[]) => void, timeout: number) {
+    let timeId: ReturnType<typeof setTimeout>;
+
+    return function (...args: any[]) {
+        clearTimeout(timeId);
+
+        timeId = setTimeout(() => {
+            callback(...args);
+        }, timeout);
+    };
+}
+
+
+const search = debounce(() => {
+    execute()
+    console.log('execute')
+}, 1000)
 
 const { data: items, execute } = await useFetch("/api/products/suggestionsProducts", {
     server: false,

@@ -1,7 +1,7 @@
 {
-  "_hash": "hhoR-QleC5S8V-NhD_4VPbspwZUEZbXu83MEYugEEyk",
+  "_hash": "O1WXi_b5xdWs3voRJUmUFbsmXce9eByU80e1bTyapHo",
   "project": {
-    "rootDir": "C:/проекты/Practical/frontend"
+    "rootDir": "/home/vladimir/www/api/frontend"
   },
   "versions": {
     "nuxt": "4.4.2"

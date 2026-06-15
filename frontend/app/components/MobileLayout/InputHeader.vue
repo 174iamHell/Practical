@@ -15,11 +15,6 @@ function searchActiveOn() {
     searchActive.value = true
 }
 
-
-
-
-
-
 watch(searchActive, (isActive) => {
     if (isActive) {
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-const{t} = useI18n({
-    useScope:'local'
+const { t } = useI18n({
+    useScope: 'local'
 })
 </script>
 <template>
@@ -10,6 +10,7 @@ const{t} = useI18n({
         <a href="">{{ t('contact') }}</a>
     </div>
 </template>
+
 <style scoped>
 .block-contact {
     display: flex;
@@ -23,7 +24,6 @@ a {
     line-height: 20px;
 }
 </style>
-
 
 <i18n lang="yaml">
 en:
