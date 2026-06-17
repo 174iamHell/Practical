@@ -6,8 +6,8 @@ const popapRef = useTemplateRef('popap');
 const toggleCity = () => { isCity.value = !isCity.value }
 
 const handleSelectCity = (city: { id: number; name: string }) => {
-    currentCity.value = city.name;  
-    isCity.value = false;           
+    currentCity.value = city.name;
+    isCity.value = false;
 }
 
 </script>
@@ -15,7 +15,7 @@ const handleSelectCity = (city: { id: number; name: string }) => {
 <template>
     <div class="block-city">
         <button @click="toggleCity" class="button-city">
-            {{currentCity}}
+            {{ currentCity }}
             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
                 <path fill="currentColor"
                     d="M12 14c2.206 0 4-1.794 4-4s-1.794-4-4-4s-4 1.794-4 4s1.794 4 4 4m0-6c1.103 0 2 .897 2 2s-.897 2-2 2s-2-.897-2-2s.897-2 2-2">
@@ -87,6 +87,7 @@ const handleSelectCity = (city: { id: number; name: string }) => {
 }
 
 .button-city {
+    display: flex;
     color: #e30016;
     border: none;
     background-color: white;

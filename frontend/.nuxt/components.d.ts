@@ -33,6 +33,8 @@ export const PopapModal: typeof import("../app/components/Popap/Modal.vue")['def
 export const ProductsCategories: typeof import("../app/components/Products/Categories.vue")['default']
 export const ProductsItem: typeof import("../app/components/Products/Item.vue")['default']
 export const ProductsList: typeof import("../app/components/Products/List.vue")['default']
+export const ProductsSearchMobileProducts: typeof import("../app/components/Products/Search/Mobile/Products.vue")['default']
+export const ProductsSearchMobilePromt: typeof import("../app/components/Products/Search/Mobile/Promt.vue")['default']
 export const ProductsSearchProducts: typeof import("../app/components/Products/Search/Products.vue")['default']
 export const ProductsSearchPromt: typeof import("../app/components/Products/Search/Promt.vue")['default']
 export const ProductsSearchTextHighlight: typeof import("../app/components/Products/Search/TextHighlight.vue")['default']
@@ -81,6 +83,8 @@ export const LazyPopapModal: LazyComponent<typeof import("../app/components/Popa
 export const LazyProductsCategories: LazyComponent<typeof import("../app/components/Products/Categories.vue")['default']>
 export const LazyProductsItem: LazyComponent<typeof import("../app/components/Products/Item.vue")['default']>
 export const LazyProductsList: LazyComponent<typeof import("../app/components/Products/List.vue")['default']>
+export const LazyProductsSearchMobileProducts: LazyComponent<typeof import("../app/components/Products/Search/Mobile/Products.vue")['default']>
+export const LazyProductsSearchMobilePromt: LazyComponent<typeof import("../app/components/Products/Search/Mobile/Promt.vue")['default']>
 export const LazyProductsSearchProducts: LazyComponent<typeof import("../app/components/Products/Search/Products.vue")['default']>
 export const LazyProductsSearchPromt: LazyComponent<typeof import("../app/components/Products/Search/Promt.vue")['default']>
 export const LazyProductsSearchTextHighlight: LazyComponent<typeof import("../app/components/Products/Search/TextHighlight.vue")['default']>

@@ -1,44 +1,29 @@
 <script setup lang="ts">
 import { async } from '@ankasru/utils-ts';
-
-
-const props = defineProps<{
-    term: string | undefined;
+import TextHighlight from '../TextHighlight.vue';
+const {
+    term
+} = defineProps<{
+    term: string;
 }>();
-// const search = async.debounce({
-//     callback: () => {
-//         execute()
-//     },
-//     timeout: 1000
-// });
+
+const query = computed(() => ({
+    search: term
+}));
 
 const { data: items, execute } = await useFetch("/api/products/suggestionsProducts", {
-    immediate: false,
     server: false,
+    immediate: false,
     watch: false,
-    query: () => ({
-        search: props.term
-    })
+    query,
+})
+
+const search = async.debounce({
+    callback: execute,
+    timeout: 1000
 });
 
-function debounce(callback: (...args: any[]) => void, timeout: number) {
-    let timeId: ReturnType<typeof setTimeout>;
-
-    return function (...args: any[]) {
-        clearTimeout(timeId);
-
-        timeId = setTimeout(() => {
-            callback(...args);
-        }, timeout);
-    };
-}
-
-
-const search = debounce(() => {
-    execute()
-}, 1000)
-
-watch(() => props.term, () => { search(); console.log('поменялось' + props.term) })
+watch(query, () => { search() })
 </script>
 
 <template>
@@ -49,7 +34,7 @@ watch(() => props.term, () => { search(); console.log('поменялось' + p
                     <a :href="product.url" class="list-link">
                         <img src="https://profpribor.ru/wp-content/uploads/2017/08/%D0%9C%D0%B5%D1%80%D0%BD%D0%B8%D0%BA-%D0%9C2%D1%80-10-01%D0%9F-%D1%81-%D0%BF%D0%B5%D0%BD%D0%BE%D0%B3%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D0%B5%D0%BC-2.jpg"
                             alt="" class="list-img">
-                        <span class="list-span">{{ product.name }}</span>
+                        <TextHighlight :query="query.search" :text="product.name" />
                     </a>
                 </li>
             </ul>
@@ -64,9 +49,6 @@ watch(() => props.term, () => { search(); console.log('поменялось' + p
 .list-block {
     display: flex;
     flex-direction: column;
-    max-height: 700px;
-    min-height: 500px;
-    overflow-y: scroll;
 }
 
 .list-categories {

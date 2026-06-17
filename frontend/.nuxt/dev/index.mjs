@@ -2814,7 +2814,22 @@ _aD3cP2VOVOCeELcZFrvHHC5gUo0HWGHAWt71wqEqiTk,
 _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw
 ];
 
-const assets = {};
+const assets = {
+  "/index.mjs": {
+    "type": "text/javascript; charset=utf-8",
+    "etag": "\"247ec-VtMg/CKIrcQhKDJait9yPYVLSSI\"",
+    "mtime": "2026-06-17T07:50:46.064Z",
+    "size": 149484,
+    "path": "index.mjs"
+  },
+  "/index.mjs.map": {
+    "type": "application/json",
+    "etag": "\"93071-UuoMBTVi/5ijlVZJIBXPmPSXZrw\"",
+    "mtime": "2026-06-17T07:50:46.065Z",
+    "size": 602225,
+    "path": "index.mjs.map"
+  }
+};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));
@@ -3827,6 +3842,9 @@ const suggestions_get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineP
 const suggestionsProducts_get = defineEventHandler((event) => {
   const query = getQuery$1(event);
   const searchText = (query.search || "").toString().toLowerCase().trim();
+  if (searchText == "") {
+    return { items: { products: [], show_get_more: false } };
+  }
   const products = {
     "items": {
       "products": [
@@ -3912,6 +3930,9 @@ const suggestionsProducts_get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object
 const suggestionsPromt_get = defineEventHandler((event) => {
   const query = getQuery$1(event);
   const searchText = (query.search || "").toString().toLowerCase().trim();
+  if (searchText == "") {
+    return { items: { categories: [], brands: [] } };
+  }
   const categories = {
     "items": {
       "categories": [

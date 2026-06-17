@@ -7,11 +7,6 @@ const popupRef = useTemplateRef('myPopap');
 const searchActive = ref(false);
 const inputSearch = ref('');
 
-const searchActiveInput = () => {
-    return (inputSearch.value !== '' && searchActive.value);
-}
-
-
 const { data: dataCities, execute } = await useFetch('/api/cities/suggestions', {
     server: false,
     immediate: false,
@@ -38,7 +33,7 @@ function toggleBlock() {
     onOpen();
 }
 
-function onSelectCity(city: any) {
+function onSelectCity(city: { name: string }) {
 
     selectCity.value = city.name;
 
@@ -58,7 +53,7 @@ function searchActiveOff() {
     <div class="menu">
         <PopapModal :top="20" :left="40" ref="myPopap">
             <div class="flex title">
-                <h2 class="h2-title">Обратный звонок</h2>
+                <span class="h2-title">Обратный звонок</span>
                 <button @click="popupRef?.close" class="close-button flex">
                     <svg viewBox="0 0 24 24" width="25" height="25">
                         <path fill="currentColor"
@@ -70,11 +65,11 @@ function searchActiveOff() {
             <div class="box-number">
                 <div class="form-number">
                     <p class="p-box-number">Телефон</p>
-                    <input type="text" alt="0000-000-0-000-">
+                    <input type="text" placeholder="0000-000-0-000-">
                 </div>
                 <div class="form-name">
                     <p class="p-box-number">Фамилия Имя Отчество</p>
-                    <input type="text" alt="Фамилия Имя Отчество">
+                    <input type="text" placeholder="Фамилия Имя Отчество">
                 </div>
             </div>
             <button class="send-button flex">
@@ -97,7 +92,7 @@ function searchActiveOff() {
             </div>
             <div class="search-block">
                 <div @click="searchActiveOff" v-if="searchActive" class="overlay"></div>
-                <div v-if="searchActiveInput()" class="modal">
+                <div v-if="searchActive" class="modal">
                     <ProductsSearchPromt :term="inputSearch" />
                     <ProductsSearchProducts :term="inputSearch" />
                 </div>
@@ -195,8 +190,9 @@ function searchActiveOff() {
                             <input v-model="querySearch" @input="() => execute" class="city-input" type="text">
                             <ul ref="slider" class="list-citys">
                                 <li v-for="city in dataCities" :key="city.id" @click="onSelectCity(city)"
-                                    class="city-item hover-red" role="button" tabindex="0">{{
-                                        city.name }}</li>
+                                    class="city-item hover-red" role="button" tabindex="0">
+                                    {{ city.name }}
+                                </li>
                             </ul>
                         </form>
                     </div>

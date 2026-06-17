@@ -23,7 +23,7 @@ function onAccepted() {
             <h2 class="title">Согласие на обработку Cookies и других данных</h2>
             <p class="text">Используя сайт, вы даете согласие на обработку Cookies и других данных, в соответствии с
                 Политикой конфиденциально сти и с пользовательским соглашением.</p>
-            <button @click="onAccepted()" class="ok">OK</button>
+            <button @click="onAccepted" class="ok">OK</button>
         </div>
     </PopapModal>
 </template>

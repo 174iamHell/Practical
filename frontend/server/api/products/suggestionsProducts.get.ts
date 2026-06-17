@@ -2,7 +2,11 @@
 export default defineEventHandler((event) => {
 
     const query = getQuery(event)
+
     const searchText = (query.search || '').toString().toLowerCase().trim()
+    if (searchText == '') {
+        return { items: { products: [], show_get_more: false } }
+    }
 
     const products =
     {

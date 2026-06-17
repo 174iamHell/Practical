@@ -33,6 +33,8 @@ interface _GlobalComponents {
   ProductsCategories: typeof import("../../app/components/Products/Categories.vue")['default']
   ProductsItem: typeof import("../../app/components/Products/Item.vue")['default']
   ProductsList: typeof import("../../app/components/Products/List.vue")['default']
+  ProductsSearchMobileProducts: typeof import("../../app/components/Products/Search/Mobile/Products.vue")['default']
+  ProductsSearchMobilePromt: typeof import("../../app/components/Products/Search/Mobile/Promt.vue")['default']
   ProductsSearchProducts: typeof import("../../app/components/Products/Search/Products.vue")['default']
   ProductsSearchPromt: typeof import("../../app/components/Products/Search/Promt.vue")['default']
   ProductsSearchTextHighlight: typeof import("../../app/components/Products/Search/TextHighlight.vue")['default']
@@ -81,6 +83,8 @@ interface _GlobalComponents {
   LazyProductsCategories: LazyComponent<typeof import("../../app/components/Products/Categories.vue")['default']>
   LazyProductsItem: LazyComponent<typeof import("../../app/components/Products/Item.vue")['default']>
   LazyProductsList: LazyComponent<typeof import("../../app/components/Products/List.vue")['default']>
+  LazyProductsSearchMobileProducts: LazyComponent<typeof import("../../app/components/Products/Search/Mobile/Products.vue")['default']>
+  LazyProductsSearchMobilePromt: LazyComponent<typeof import("../../app/components/Products/Search/Mobile/Promt.vue")['default']>
   LazyProductsSearchProducts: LazyComponent<typeof import("../../app/components/Products/Search/Products.vue")['default']>
   LazyProductsSearchPromt: LazyComponent<typeof import("../../app/components/Products/Search/Promt.vue")['default']>
   LazyProductsSearchTextHighlight: LazyComponent<typeof import("../../app/components/Products/Search/TextHighlight.vue")['default']>

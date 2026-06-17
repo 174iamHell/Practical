@@ -1,21 +1,19 @@
 <script setup lang="ts">
-const searchActive = ref(false);
+const modalActive = ref(false);
 const input = ref('');
+const searchActive = ref(false);
 
-const searchActiveInput = () => {
-    return (input.value !== '' && searchActive.value)
-}
 
 function searchActiveOff() {
-    searchActive.value = false
+    modalActive.value = false
     input.value = ''
 }
 
 function searchActiveOn() {
-    searchActive.value = true
+    modalActive.value = true
 }
 
-watch(searchActive, (isActive) => {
+watch(modalActive, (isActive) => {
     if (isActive) {
 
         document.body.style.overflow = 'hidden'
@@ -25,35 +23,59 @@ watch(searchActive, (isActive) => {
     }
 })
 
-const handleSearchClick = () => {
-    searchActive.value = true
-}
-
 </script>
 
 <template>
     <div class="block">
-        <div @click="searchActiveOff" v-if="searchActive" class="overlay"></div>
-        <div v-if="searchActiveInput()" class="modal">
-            <ProductsSearchPromt :term="input" />
-            <ProductsSearchProducts :term="input" />
+        <div @click="searchActiveOff" v-if="modalActive" class="overlay"></div>
+        <div v-if="modalActive" class="modal">
+            <button @click="searchActiveOff" class="button-exit">
+                Отмена
+            </button>
+            <ProductsSearchMobilePromt :term="input" />
+            <ProductsSearchMobileProducts :term="input" />
         </div>
-        <search class="input-block">
-            <input v-model="input" @click="searchActiveOn" class="input" type="text">
-                <button class="search-button" alt="поиск">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                        class="bi bi-search" viewBox="0 0 16 16">
-                        <path
-                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                    </svg>
-                </button>
-        </search>
+        <div class="search-wrapper" :class="{ 'is-active': modalActive }">
+
+            <search class="input-block">
+                <input v-model="input" @click="searchActiveOn" class="input" type="text">
+
+                    <button class="search-button" alt="поиск">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="20" fill="currentColor"
+                            class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                        </svg>
+                    </button>
+
+            </search>
+        </div>
     </div>
 </template>
 
 <style scoped>
+.button-exit {
+    position: fixed;
+    top: 10px;
+    left: 80%;
+}
+
+.search-wrapper {
+    position: relative;
+    width: 100%;
+    z-index: 100;
+    transition: all 0.3s;
+}
+
+.search-wrapper.is-active {
+    position: fixed;
+    left: 20px;
+    transform: translateY(-60px);
+    width: 70%;
+}
+
 .block {
-    z-index: 999;
+    z-index: 9999;
     position: relative;
 }
 
@@ -77,14 +99,16 @@ const handleSearchClick = () => {
     color: white;
     background-color: #e30016;
     border: none;
+
 }
 
 .modal {
-    position: absolute;
+    position: fixed;
     z-index: 1;
     left: 0;
-    top: 100%;
-
+    top: 5%;
+    max-height: 100vh;
+    min-height: 200px;
 
     width: 100%;
     margin-top: 10px;
@@ -92,10 +116,11 @@ const handleSearchClick = () => {
 
     background: #ffffff;
     border-radius: 8px;
-    overflow: hidden;
+    overflow: auto;
 
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(2);
+    gap: 10px;
     z-index: 2;
 }
 

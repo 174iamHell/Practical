@@ -18,7 +18,6 @@
     flex-direction: column;
     align-items: center;
     gap: 5px;
-    margin-bottom: 40px;
     background-color: white;
 }
 

@@ -1,7 +1,7 @@
 <template>
     <div class="body">
         <header>
-            <LangLocaleSwitcher/>
+            <LangLocaleSwitcher />
             <MobileLayoutHeader />
         </header>
         <main>
@@ -32,6 +32,7 @@
 body {
     min-height: 100vh;
     margin: 0;
+    padding-bottom: 38px;
     font-family: 'GT Eesti Pro Display';
 }
 

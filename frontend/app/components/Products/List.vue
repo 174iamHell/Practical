@@ -12,11 +12,9 @@ const { title, products } = defineProps<{
 <template>
     <div class="box-main">
         <p class="bestsellers">{{ title }}</p>
-        <div class="cards-block">
-            <ul class="catalog-cards">
-                <ProductsItem v-for="product in products" :key="product.title" :product="product" />
-            </ul>
-        </div>
+        <ul class="catalog-cards">
+            <ProductsItem v-for="product in products" :key="product.title" :product="product" />
+        </ul>
     </div>
 
 </template>

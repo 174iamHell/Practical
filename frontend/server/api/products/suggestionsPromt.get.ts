@@ -3,6 +3,10 @@ export default defineEventHandler((event) => {
     const query = getQuery(event);
     const searchText = (query.search || '').toString().toLowerCase().trim();
 
+    if (searchText == '') {
+        return { items: { categories: [], brands: [] } }
+    }
+
     const categories =
     {
         "items": {

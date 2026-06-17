@@ -50,7 +50,7 @@
     display: flex;
     position: fixed;
     z-index: 999;
-    top: 94%;
+    top: 94.5%;
     width: 100%;
     background: white;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
